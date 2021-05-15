@@ -1,0 +1,115 @@
+.left_background {
+  background-color: #5e50a1;
+}
+
+.image_background {
+  width: 100%;
+  opacity: 50%;
+}
+
+.job_bridge_brand {
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  bottom: 0;
+  right: 0;
+  width: 95px;
+}
+
+.job_bridge_brand_word {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  bottom: 45%;
+  right: 85%;
+  margin: auto;
+  width: 400px;
+  height: 400px;
+  line-height: 2em;
+  text-align: justify;
+  word-spacing: 8px;
+}
+
+.button_position {
+  display: block;
+}
+
+.sign_in_button {
+  position: absolute;
+  top: 100%;
+  left: 5%;
+  bottom: 45%;
+  right: 85%;
+  border-color: #5e50a1 !important;
+  color: #5e50a1 !important;
+  background-color: white !important;
+  width: 500px;
+  height: 50px;
+}
+
+.sign_in_button:hover {
+  position: absolute;
+  top: 100%;
+  left: 5%;
+  bottom: 45%;
+  right: 85%;
+  border-color: #5e50a1 !important;
+  color: white !important;
+  background-color: #5e50a1 !important;
+  width: 500px;
+  height: 50px;
+}
+
+.left_column_small_word {
+  display: none;
+  position: absolute;
+  top: 113%;
+  left: 22%;
+  bottom: 45%;
+  right: 85%;
+  color: white;
+}
+
+.sign_in_button_2 {
+  position: absolute;
+  top: 120%;
+  left: 5%;
+  bottom: 45%;
+  right: 85%;
+  border-color: #5e50a1 !important;
+  color: white !important;
+  background-color: #5e50a1 !important;
+  width: 500px;
+  height: 50px;
+}
+
+.sign_in_button_2:hover {
+  position: absolute;
+  top: 120%;
+  left: 5%;
+  bottom: 45%;
+  right: 85%;
+  border-color: #5e50a1 !important;
+  color: #5e50a1 !important;
+  background-color: white !important;
+  width: 500px;
+  height: 50px;
+}
+
+.right_column {
+  display: block;
+  padding-left: 50px;
+}
+
+/* Responsive Design */
+
+@media only screen and (max-width: 600px) {
+  .right_column {
+    display: none;
+  }
+
+  .button_position {
+    display: block;
+  }
+}
