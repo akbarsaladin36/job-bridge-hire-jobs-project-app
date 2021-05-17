@@ -1,16 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-<<<<<<< HEAD
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
-=======
 // import './index.css';
-import "bootstrap/dist/css/bootstrap.min.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
->>>>>>> aul-pekerja
 
 ReactDOM.render(
   <React.StrictMode>
