@@ -403,6 +403,55 @@
   box-shadow: none !important;
 }
 @media (max-width: 992px) {
+  .landingPage {
+    padding-top: 0;
+  }
+  .container {
+    padding-left: 40px;
+    padding-right: 20px;
+  }
+
+  .imgLP1 {
+    width: 80%;
+    height: auto;
+    padding-left: 20px;
+    margin-left: 20px;
+  }
+
+  .col {
+    height: 72%;
+  }
+
+  .Box {
+    margin-top: 20px;
+    width: 70px;
+    height: 70px;
+  }
+  .titleTalenta {
+    font-size: 30px;
+    line-height: 50px;
+  }
+
+  .container2 {
+    padding-left: 40px;
+    padding-right: 20px;
+  }
+
+  .imgLP2 {
+    width: 40%;
+  }
+
+  .imgLP3 {
+    width: 40%;
+  }
+
+  .container3 {
+    padding-left: 40px;
+    padding-right: 20px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
   .card2 {
     display: none;
   }
@@ -413,7 +462,21 @@
   }
 
   .list {
-    margin-left: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 8px;
+  }
+
+  .imgLp4 {
+    margin-top: 0;
+    width: 80%;
+  }
+  .col3 {
+    margin-bottom: 28%;
+  }
+
+  .Box2 {
+    margin-bottom: 28%;
   }
   .titleContent5 {
     font-size: 20px;
@@ -426,5 +489,17 @@
     width: 100%;
     margin-bottom: -160px;
     /* display: none; */
+  }
+
+  .rowCard {
+    padding-left: 40px;
+    padding-right: 20px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .titleSkill,
+  .titleTalenta {
+    font-size: 24px;
   }
 }
