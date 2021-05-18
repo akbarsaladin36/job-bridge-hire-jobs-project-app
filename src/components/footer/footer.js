@@ -1,19 +1,17 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import myStyle from "./footer.module.css";
+import { Container, Row, Col, Image } from "react-bootstrap";
+import myStyle from "./Footer.module.css";
+import logo from "../../assets/smallicons/logo2-job-bridge.png";
 
 class Footer extends Component {
   render() {
     return (
       <>
-        <Container
-          fluid
-          className={`${myStyle.purpleBackground} d-none d-sm-block`}
-        >
+        <Container fluid className={`${myStyle.purpleBackground}`}>
           <Container className={`pt-5`}>
             <Row className="pt-1 mb-2">
               <Col lg={5} md={5} sm={5} xs={5} className={myStyle.zeroPadding}>
-                <h3>Job Bridge</h3>
+                <Image src={logo} className={myStyle.logo} />
               </Col>
             </Row>
             <Row className={`pb-5`}>

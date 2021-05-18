@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 .zeroPadding {
   padding-left: 0px !important;
 }
@@ -6,9 +8,14 @@
   padding-right: 0px !important;
 }
 
+.logo {
+  margin-bottom: 20px;
+}
+
 .purpleBackground {
   background-color: #5e50a1;
   color: white;
+  font-family: "Open Sans", sans-serif;
 }
 
 .belowBorder {

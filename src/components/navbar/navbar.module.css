@@ -13,11 +13,6 @@
   padding-right: 0;
 }
 
-.jobBridgeColor {
-  width: auto;
-  height: 35px;
-}
-
 .purpleText {
   color: #5e50a1;
 }
@@ -66,4 +61,46 @@
   border-color: #fbb017;
   outline: none !important;
   box-shadow: none !important;
+}
+
+/* .bell,
+.mail {
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100%;
+} */
+.dropdown {
+  height: max-content;
+  margin-left: 10px;
+}
+.imgProfile {
+  border-radius: 100%;
+}
+
+.listSort {
+  border-radius: 3px;
+  font-weight: lighter;
+  color: white;
+}
+.titleSort:hover,
+.titleSort:active,
+.titleSort:focus,
+.listSort:hover,
+.listSort:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #fbb017;
+  color: #e5e5e5;
+}
+
+.titleSort::after {
+  display: none;
+}
+
+.menuDropdown {
+  border: 3px solid #dedede;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #5e50a1;
 }

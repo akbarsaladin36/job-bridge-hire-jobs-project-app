@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import NavBar from "../components/Navbar/navbar";
-import Footer from "../components/footer/footer";
-import MobileFooter from "../components/mobilefooter/mobilefooter";
+import { Container } from "react-bootstrap";
+import NavBar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 class Home extends Component {
   render() {
@@ -11,21 +10,8 @@ class Home extends Component {
         <NavBar />
         <Container>
           <h1>FRONT-END JOB BRIDGE</h1>
-          <Row>
-            <Col lg={6} md={6} sm={6} xs={6}>
-              LEFT
-            </Col>
-            <Col
-              lg={6}
-              md={6}
-              sm={6}
-              xs={6}
-              className="d-flex justify-content-end"
-            ></Col>
-          </Row>
         </Container>
         <Footer />
-        <MobileFooter />
       </>
     );
   }
