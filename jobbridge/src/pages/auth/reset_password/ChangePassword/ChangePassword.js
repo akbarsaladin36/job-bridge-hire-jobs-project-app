@@ -10,12 +10,12 @@ class ChangePasswordPage extends Component {
           <Row>
             <Col lg={7} className={ChangePasswordStyle.left_background}>
               <img
-                src="/img/left-column-image.jpg"
+                src="../../assets/img/left-column-image.jpg"
                 className={ChangePasswordStyle.image_background}
                 alt="job bridge background"
               />
               <img
-                src="/img/peword-white-logo.png"
+                src="../../assets/img/peword-white-logo.png"
                 className={ChangePasswordStyle.job_bridge_brand}
                 alt="job bridge brand"
               />
@@ -31,7 +31,7 @@ class ChangePasswordPage extends Component {
               className={`${ChangePasswordStyle.right_column} mt-5 pt-5`}
             >
               <img
-                src="/img/peword-purple-logo.png"
+                src="../../assets/img/peword-purple-logo.png"
                 alt="peword logo"
                 className={`${ChangePasswordStyle.job_bridge_brand_2} mb-5`}
               />

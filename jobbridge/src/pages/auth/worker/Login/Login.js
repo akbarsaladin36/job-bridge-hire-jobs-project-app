@@ -11,12 +11,12 @@ class LoginPage extends Component {
           <Row>
             <Col lg={7} className={LoginStyle.left_background}>
               <img
-                src="/img/left-column-image.jpg"
+                src="../../assets/img/left-column-image.jpg"
                 className={LoginStyle.image_background}
                 alt="job bridge background"
               />
               <img
-                src="/img/peword-white-logo.png"
+                src="../../assets/img/peword-white-logo.png"
                 className={LoginStyle.job_bridge_brand}
                 alt="job bridge brand"
               />
@@ -29,7 +29,7 @@ class LoginPage extends Component {
             </Col>
             <Col lg={4} className={`${LoginStyle.right_column} mt-5 pt-5`}>
               <img
-                src="/img/peword-purple-logo.png"
+                src="../../assets/img/peword-purple-logo.png"
                 alt="peword logo"
                 className={`${LoginStyle.job_bridge_brand_2} mb-5`}
               />
