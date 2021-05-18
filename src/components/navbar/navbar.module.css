@@ -104,3 +104,9 @@
   padding-right: 10px;
   background-color: #5e50a1;
 }
+
+@media (max-width: 992px) {
+  .purpleButton {
+    margin-left: 0;
+  }
+}
