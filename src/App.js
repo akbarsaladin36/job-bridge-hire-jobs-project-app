@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage/LandingPage";
 
 // Import Components
-import Navbar from "./components/navbar/navbar";
+import Navbar from "./components/Navbar/navbar";
 
 class App extends Component {
   render() {

@@ -47,11 +47,6 @@
   box-shadow: none !important;
 }
 
-/* 
-button:focus {
-  outline: 2px solid #5e50a1 !important;
-} */
-
 .purpleButtonOutline {
   background-color: white;
   color: #5e50a1;

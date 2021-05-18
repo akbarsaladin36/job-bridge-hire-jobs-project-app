@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import NavBar from "../components/navbar/navbar";
+import NavBar from "../components/Navbar/navbar";
 import Footer from "../components/footer/footer";
 import MobileFooter from "../components/mobilefooter/mobilefooter";
 
