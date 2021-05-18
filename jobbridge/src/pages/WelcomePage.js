@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Row, Col, Button, Container } from "react-bootstrap";
 // import { Link } from "react-router-dom";
 import WelcomePageStyle from "./WelcomePageStyle.module.css";
+import Image1 from "../../src/assets/img/left-column-image.jpg";
+import ImageLogo1 from "../../src/assets/img/peword-white-logo.png";
 
 class WelcomePage extends Component {
   render() {
@@ -11,12 +13,12 @@ class WelcomePage extends Component {
           <Row>
             <Col lg={7} className={WelcomePageStyle.left_background}>
               <img
-                src="/img/left-column-image.jpg"
+                src={Image1}
                 className={WelcomePageStyle.image_background}
                 alt="job bridge background"
               />
               <img
-                src="/img/peword-white-logo.png"
+                src={ImageLogo1}
                 className={WelcomePageStyle.job_bridge_brand}
                 alt="job bridge brand"
               />

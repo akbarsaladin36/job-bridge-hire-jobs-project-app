@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Button, Form } from "react-bootstrap";
 import LoginAfterResetPasswordStyle from "./LoginAfterResetPasswordStyle.module.css";
+import Image1 from "../../../../assets/img/left-column-image.jpg";
+import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
+import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
 class LoginAfterResetPasswordPage extends Component {
   render() {
@@ -13,12 +16,12 @@ class LoginAfterResetPasswordPage extends Component {
               className={LoginAfterResetPasswordStyle.left_background}
             >
               <img
-                src="../../assets/img/left-column-image.jpg"
+                src={Image1}
                 className={LoginAfterResetPasswordStyle.image_background}
                 alt="job bridge background"
               />
               <img
-                src="../../assets/img/peword-white-logo.png"
+                src={ImageLogo1}
                 className={LoginAfterResetPasswordStyle.job_bridge_brand}
                 alt="job bridge brand"
               />
@@ -36,7 +39,7 @@ class LoginAfterResetPasswordPage extends Component {
               className={`${LoginAfterResetPasswordStyle.right_column} mt-5 pt-5`}
             >
               <img
-                src="../../assets/img/peword-purple-logo.png"
+                src={ImageLogo2}
                 alt="peword logo"
                 className={`${LoginAfterResetPasswordStyle.job_bridge_brand_2} mb-5`}
               />

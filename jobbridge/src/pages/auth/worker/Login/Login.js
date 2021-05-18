@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginStyle from "./LoginStyle.module.css";
+import Image1 from "../../../../assets/img/left-column-image.jpg";
+import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
+import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
 class LoginPage extends Component {
   render() {
@@ -11,12 +14,12 @@ class LoginPage extends Component {
           <Row>
             <Col lg={7} className={LoginStyle.left_background}>
               <img
-                src="../../assets/img/left-column-image.jpg"
+                src={Image1}
                 className={LoginStyle.image_background}
                 alt="job bridge background"
               />
               <img
-                src="../../assets/img/peword-white-logo.png"
+                src={ImageLogo1}
                 className={LoginStyle.job_bridge_brand}
                 alt="job bridge brand"
               />
@@ -27,9 +30,9 @@ class LoginPage extends Component {
                 </h1>
               </div>
             </Col>
-            <Col lg={4} className={`${LoginStyle.right_column} mt-5 pt-5`}>
+            <Col lg={4} className={`${LoginStyle.right_column} mt-5 ml-3 pt-5`}>
               <img
-                src="../../assets/img/peword-purple-logo.png"
+                src={ImageLogo2}
                 alt="peword logo"
                 className={`${LoginStyle.job_bridge_brand_2} mb-5`}
               />

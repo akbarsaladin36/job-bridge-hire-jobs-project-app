@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginRecruiterStyle from "./LoginRecruiterStyle.module.css";
+import Image1 from "../../../../assets/img/left-column-image.jpg";
+import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
+import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
 class LoginRecruiterPage extends Component {
   render() {
@@ -11,12 +14,12 @@ class LoginRecruiterPage extends Component {
           <Row>
             <Col lg={7} className={LoginRecruiterStyle.left_background}>
               <img
-                src="../../assets/img/left-column-image.jpg"
+                src={Image1}
                 className={LoginRecruiterStyle.image_background}
                 alt="job bridge background"
               />
               <img
-                src="../../assets/img/peword-white-logo.png"
+                src={ImageLogo1}
                 className={LoginRecruiterStyle.job_bridge_brand}
                 alt="job bridge brand"
               />
@@ -32,7 +35,7 @@ class LoginRecruiterPage extends Component {
               className={`${LoginRecruiterStyle.right_column} mt-5 pt-5`}
             >
               <img
-                src="../../assets/img/peword-purple-logo.png"
+                src={ImageLogo2}
                 alt="peword logo"
                 className={`${LoginRecruiterStyle.job_bridge_brand_2} mb-5`}
               />

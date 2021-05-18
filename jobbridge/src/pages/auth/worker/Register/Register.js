@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Row, Col, Form, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import RegisterStyle from "./RegisterStyle.module.css";
+import Image1 from "../../../../assets/img/left-column-image.jpg";
+import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
+import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
 class RegisterPage extends Component {
   render() {
@@ -11,12 +14,12 @@ class RegisterPage extends Component {
           <Row>
             <Col lg={7} className={RegisterStyle.left_background}>
               <img
-                src="../../assets/img/left-column-image.jpg"
+                src={Image1}
                 className={RegisterStyle.image_background}
                 alt="job bridge background"
               />
               <img
-                src="../../assets/img/peword-white-logo.png"
+                src={ImageLogo1}
                 className={RegisterStyle.job_bridge_brand}
                 alt="job bridge brand"
               />
@@ -27,9 +30,12 @@ class RegisterPage extends Component {
                 </h1>
               </div>
             </Col>
-            <Col lg={4} className={`${RegisterStyle.right_column} mt-5 pt-5`}>
+            <Col
+              lg={4}
+              className={`${RegisterStyle.right_column} mt-5 pt-5 ml-3`}
+            >
               <img
-                src="../../assets/img/peword-purple-logo.png"
+                src={ImageLogo2}
                 alt="peword logo"
                 className={`${RegisterStyle.job_bridge_brand_2} mb-5`}
               />
