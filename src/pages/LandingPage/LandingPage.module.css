@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 .landingPage {
+  padding-top: 12%;
   font-family: "Open Sans", sans-serif;
   background-color: #e5e5e5;
 }

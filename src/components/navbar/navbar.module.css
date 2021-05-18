@@ -63,12 +63,10 @@
   box-shadow: none !important;
 }
 
-/* .bell,
-.mail {
-  margin-top: auto;
-  margin-bottom: auto;
-  height: 100%;
-} */
+.handleResponsive {
+  display: none;
+}
+
 .dropdown {
   height: max-content;
   margin-left: 10px;
@@ -106,7 +104,43 @@
 }
 
 @media (max-width: 992px) {
+  .purpleButtonOutline {
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    background-color: #e5e5e5;
+    border: #e5e5e5 solid 2px;
+  }
   .purpleButton {
+    width: 100%;
+    color: #5e50a1;
+    font-weight: bold;
     margin-left: 0;
+    text-align: left;
+    background-color: #e5e5e5;
+    border: #e5e5e5 solid 2px;
+  }
+
+  .mail,
+  .bell,
+  .imgProfile {
+    display: none;
+  }
+
+  .jobBridgeColor {
+    margin-top: 20px;
+  }
+
+  .titleSort {
+    color: #5e50a1;
+    border-radius: 0;
+    width: 100%;
+  }
+  .handleResponsive {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+    text-align: left;
+    font-weight: bold;
   }
 }

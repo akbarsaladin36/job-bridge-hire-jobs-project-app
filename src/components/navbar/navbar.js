@@ -47,7 +47,7 @@ class NavBar extends Component {
                       Daftar
                     </Button>
                   </Nav>
-                ) : user === true ? (
+                ) : user === false ? (
                   <Nav>
                     <Button variant="fff" className={`${myStyle.purpleButton}`}>
                       Profile
@@ -63,6 +63,9 @@ class NavBar extends Component {
                         className={myStyle.titleSort}
                       >
                         <Image src={bell} className={myStyle.bell} />
+                        <p className={myStyle.handleResponsive}>
+                          Notifications
+                        </p>
                       </Dropdown.Toggle>
                       <Dropdown.Menu className={myStyle.menuDropdown}>
                         <Dropdown.Item className={myStyle.listSort}>
@@ -82,6 +85,7 @@ class NavBar extends Component {
                         className={myStyle.titleSort}
                       >
                         <Image src={mail} className={myStyle.mail} />
+                        <p className={myStyle.handleResponsive}>Messages</p>
                       </Dropdown.Toggle>
                       <Dropdown.Menu className={myStyle.menuDropdown}>
                         <Dropdown.Item className={myStyle.listSort}>
@@ -104,10 +108,11 @@ class NavBar extends Component {
                           src={imgProfile}
                           className={myStyle.imgProfile}
                         />
+                        <p className={myStyle.handleResponsive}>Profile</p>
                       </Dropdown.Toggle>
                       <Dropdown.Menu className={myStyle.menuDropdown}>
                         <Dropdown.Item className={myStyle.listSort}>
-                          Profile
+                          My Profile
                         </Dropdown.Item>
                         <Dropdown.Item className={myStyle.listSort}>
                           Logout
