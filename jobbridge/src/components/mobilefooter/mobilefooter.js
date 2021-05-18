@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "../../App.css";
 import myStyle from "./mobilefooter.module.css";
-import firstMenu from "../img/smallicons/firstmenu.png";
-import secondMenu from "../img/smallicons/secondmenu2.png";
-import thirdMenu from "../img/smallicons/thirdmenu.png";
-import fourthMenu from "../img/smallicons/fourthmenu.png";
+import firstMenu from "../../assets/smallicons/firstmenu.png";
+import secondMenu from "../../assets/smallicons/secondmenu2.png";
+import thirdMenu from "../../assets/smallicons/thirdmenu.png";
+import fourthMenu from "../../assets/smallicons/fourthmenu.png";
 
 class MobileNavBar extends Component {
   render() {

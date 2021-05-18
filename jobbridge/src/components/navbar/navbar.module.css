@@ -1,14 +1,21 @@
-body {
-  background-color: white;
-}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-.whiteBackground {
-  background-color: white;
+.container {
+  font-family: "Open Sans", sans-serif;
+  background-color: #e5e5e5;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+.containerNavbar {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .jobBridgeColor {
-  font-weight: bold;
-  color: #5e50a1;
+  width: auto;
+  height: 35px;
 }
 
 .purpleText {
@@ -20,13 +27,24 @@ body {
 }
 
 .purpleButton {
-  background-color: #5e50a1 !important;
-  border: 1px solid #5e50a1 !important;
+  background-color: #5e50a1;
+  border: 1px solid #5e50a1;
   border-radius: 4px;
   height: 44px;
-  width: 87px;
+  width: 100px;
   color: white;
-  font-weight: bold;
+  font-weight: lighter;
+  margin-left: 20px;
+}
+
+.purpleButton:active,
+.purpleButton:hover,
+.purpleButton:focus {
+  color: white;
+  background-color: #fbb017;
+  border-color: #fbb017;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* 
@@ -41,11 +59,16 @@ button:focus {
   border: 1px solid #5e50a1;
   border-radius: 4px;
   height: 44px;
-  width: 87px;
+  width: 100px;
 }
 
-.purpleButtonOutline:hover {
-  background-color: white;
-  color: #5e50a1;
-  border: 1px solid #5e50a1;
+.purpleButtonOutline:active,
+.purpleButtonOutline:hover,
+.purpleButtonOutline:focus {
+  color: white;
+  font-weight: lighter;
+  background-color: #fbb017;
+  border-color: #fbb017;
+  outline: none !important;
+  box-shadow: none !important;
 }
