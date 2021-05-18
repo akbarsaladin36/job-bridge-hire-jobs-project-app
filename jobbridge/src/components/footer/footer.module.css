@@ -1,0 +1,20 @@
+.zeroPadding {
+  padding-left: 0px !important;
+}
+
+.zeroPaddingRight {
+  padding-right: 0px !important;
+}
+
+.purpleBackground {
+  background-color: #5e50a1;
+  color: white;
+}
+
+.belowBorder {
+  border-bottom: 1px solid white;
+}
+
+.topBorder {
+  border-top: 1px solid white;
+}
