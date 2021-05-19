@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import NavBar from "../../components/Navbar/Navbar";
+import NavBar from "../../../components/Navbar/Navbar";
 import myStyle from "./profile.module.css";
-import LouisProfilePicture from "../../components/img/louis_circle.png";
-import Footer from "../../components/Footer/Footer";
+import LouisProfilePicture from "../../../components/img/louis_circle.png";
+import Footer from "../../../components/Footer/Footer";
 
 class ProfilePage extends Component {
   render() {
