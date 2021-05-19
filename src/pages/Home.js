@@ -3,7 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import NavBar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
 import MobileFooter from "../components/mobilefooter/mobilefooter";
-import myStyle from "./home.module.css";
 
 class Home extends Component {
   render() {
