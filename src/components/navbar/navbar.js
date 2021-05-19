@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import {
   Container,
   Navbar,
@@ -13,11 +12,6 @@ import logo from "../../assets/smallicons/logo-job-bridge.png";
 import imgProfile from "../../assets/smallicons/profile-navbar.png";
 import bell from "../../assets/smallicons/bell.png";
 import mail from "../../assets/smallicons/mail.png";
-=======
-import { Container, Navbar, Nav } from "react-bootstrap";
-import myStyle from "./navbar.module.css";
-import "../../App.css";
->>>>>>> elaz-profile
 
 class NavBar extends Component {
   constructor(props) {
@@ -31,7 +25,6 @@ class NavBar extends Component {
     const { login, user } = this.state;
     return (
       <>
-<<<<<<< HEAD
         <Container fluid className={myStyle.container}>
           <Navbar expand="lg" className={`${myStyle.whiteBackground}`}>
             <Container className={`${myStyle.containerNavbar} py-2`}>
@@ -132,34 +125,6 @@ class NavBar extends Component {
             </Container>
           </Navbar>
         </Container>
-=======
-        <Navbar
-          expand="lg"
-          className={`d-none d-sm-block ${myStyle.whiteBackground}`}
-        >
-          <Container className="py-2">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <Navbar.Brand href="#home" className="">
-                  <span className={myStyle.jobBridgeColor}>Job Bridge</span>
-                </Navbar.Brand>
-              </Nav>
-              <Nav inline>
-                <button
-                  type="button"
-                  className={`${myStyle.purpleButtonOutline}`}
-                >
-                  Masuk
-                </button>
-                <button type="button" className={`${myStyle.purpleButton}`}>
-                  Log In
-                </button>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
->>>>>>> elaz-profile
       </>
     );
   }
