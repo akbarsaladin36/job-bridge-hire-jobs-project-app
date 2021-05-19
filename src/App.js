@@ -18,7 +18,6 @@ class App extends Component {
         <Switch>
           {/* sesuaikan dengan codingan kemaren untuk route */}
           <Route path="/" exact component={Home} />
-<<<<<<< HEAD
           <Route path="/jobbridge/landing-page" exact component={LandingPage} />
           <Route
             path="/jobbridge/profile-worker"
@@ -27,10 +26,9 @@ class App extends Component {
           />
           <Route path="/jobbridge/edit-worker" exact component={EditWorker} />
           <Route path="/jobbridge/chat" exact component={Chat} />
-=======
           <Route path="/profilepage" exact component={ProfilePage} />
->>>>>>> elaz-profile
 
+          {/* Route cek Components */}
           <Route path="/jobbridge/navbar" exact component={Navbar} />
           <Route path="/jobbridge/upload-image" exact component={UploadImage} />
         </Switch>
