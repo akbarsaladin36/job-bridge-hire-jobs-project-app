@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProfileWorker from "./pages/Worker/ProfileWorker/ProfileWorker";
 import EditWorker from "./pages/Worker/EditWorker/EditWorker";
+import Chat from "./pages/Chat/Chat";
 
 // Import Components
 import Navbar from "./components/Navbar/Navbar";
@@ -23,6 +24,7 @@ class App extends Component {
             component={ProfileWorker}
           />
           <Route path="/jobbridge/edit-worker" exact component={EditWorker} />
+          <Route path="/jobbridge/chat" exact component={Chat} />
 
           {/* Route Components */}
           <Route path="/jobbridge/navbar" exact component={Navbar} />
