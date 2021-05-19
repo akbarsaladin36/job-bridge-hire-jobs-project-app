@@ -1,5 +1,19 @@
-.whiteBackground {
-  background-color: white;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.container {
+  font-family: "Open Sans", sans-serif;
+  background-color: #e5e5e5;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+.containerNavbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+.purpleText {
+  color: #5e50a1;
 }
 
 .purpleBackground {
