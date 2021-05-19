@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.container {
+  font-family: "Open Sans", sans-serif;
+  height: 500px;
+  padding-top: 130px;
+  padding-bottom: 20px;
+  background-color: transparent;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  position: absolute;
+}
+
+.container1 {
+  font-family: "Open Sans", sans-serif;
+  height: 760px;
+  background-color: #e5e5e5;
+}
+
+.container2 {
+  font-family: "Open Sans", sans-serif;
+  padding-top: 100px;
+  background-color: #5e50a1;
+  position: sticky;
+  height: 400px;
+  display: flex;
+  z-index: 0;
+}
+
+.rowContainer {
+  justify-content: space-between;
+}
+
+.left {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  margin-right: 20px;
+  align-items: center;
+}
+
+.imgProfile {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+}
+
+.nameWorker {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2a36;
+  text-align: left;
+}
+
+.jobWorker {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #1f2a36;
+}
+
+.partJob,
+.location,
+.phone,
+.description,
+.sosmed {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  color: #9ea0a5;
+}
+
+.iconLocation,
+.iconPhone,
+.Email,
+.Instagram,
+.Github,
+.Gitlab {
+  margin-right: 10px;
+}
+
+.btnHire {
+  margin-top: 10px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: lighter;
+  line-height: 20px;
+  color: white;
+  width: 100%;
+  height: 50px;
+  border-color: #5e50a1;
+  background-color: #5e50a1;
+}
+
+.btnHire:active,
+.btnHire:hover,
+.btnHire:focus {
+  color: white;
+  background-color: #fbb017;
+  border-color: #fbb017;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.skill {
+  margin-top: 40px;
+  width: 100%;
+  color: #1f2a36;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+}
+
+.rowSkill {
+  padding: 20px;
+  justify-content: left;
+  align-items: center;
+}
+
+.listSkill {
+  width: max-content;
+  margin-right: 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+  height: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  color: white;
+  background-color: rgba(251, 176, 23, 0.6);
+  border: 1px solid #fbb017;
+}
+
+.right {
+  font-family: "Open Sans", sans-serif;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.rowTab {
+  padding: 20px;
+}
+
+.rowTabContent {
+  padding: 30px;
+}
+
+.Portofolio,
+.ExperienceWork {
+  margin-right: 20px;
+  color: #9ea0a5;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 56px;
+  text-align: left;
+}
+
+.Portofolio:hover,
+.Portofolio:active,
+.Portofolio:focus,
+.ExperienceWork:hover,
+.ExperienceWork:active,
+.ExperienceWork:focus {
+  border-bottom: 5px solid #5e50a1;
+  color: #1f2a36;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.colTabContent {
+  width: max-content;
+  height: max-content;
+  cursor: pointer;
+  padding: 0;
+}
+.imgPortofolio {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 148px;
+  width: 219px;
+  border-radius: 4px;
+}
+.titlePortofolio {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #1f2a36;
+}
+
+.rowExperienceWork {
+  margin-bottom: 20px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.ExperienceWorkLeft {
+  display: flex;
+  justify-content: center;
+}
+
+.positionJob {
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2a36;
+}
+
+.companyJob {
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #46505c;
+}
+
+.durationJob {
+  font-size: 16px;
+  font-weight: 400;
+  color: #9ea0a5;
+}
+
+.dateDurationJob {
+  margin-right: 10px;
+}
+
+.descriptionJob {
+  font-size: 14px;
+  font-weight: 400;
+  color: #1f2a36;
+}
+
+@media (max-width: 992px) {
+  .container {
+    width: 90%;
+    margin-top: 0;
+    margin-left: 30px;
+    padding-right: 0;
+    padding-top: 110px;
+  }
+
+  .container1 {
+    height: 1540px;
+  }
+
+  .right {
+    margin-top: 40px;
+    margin-right: 20px;
+  }
+
+  .Portofolio,
+  .ExperienceWork {
+    font-size: 18px;
+  }
+
+  .rowTabContent {
+    justify-content: space-between;
+  }
+  .colTabContent {
+    width: 160px;
+  }
+
+  .imgPortofolio {
+    width: 80%;
+    height: auto;
+  }
+
+  .ExperienceWorkLeft {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+}

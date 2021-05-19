@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.boxUpload {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 348px;
+  border-radius: 8px;
+  border: dashed 5px #9ea0a5;
+}
+
+.rowIcon {
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 20px;
+  width: 32px;
+  height: 32px;
+}
+
+.text {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 20px;
+  color: #1f2a36;
+}
+
+.text2 {
+  font-size: 12px;
+  font-weight: 400;
+  color: #1f2a36;
+}
+
+.textIcon {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  color: #1f2a36;
+}
+
+@media (max-width: 992px) {
+  .content {
+    width: 80%;
+  }
+}
