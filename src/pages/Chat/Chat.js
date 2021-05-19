@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Image, Form, Button } from "react-bootstrap";
-import NavBar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
+import NavBar from "../../components/navbar/navbar";
+import Footer from "../../components/footer/footer";
 import styles from "./Chat.module.css";
 import chatImg from "../../assets/img/chat.png";
 import profile from "../../assets/img/profile.png";

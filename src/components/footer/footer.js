@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import myStyle from "./Footer.module.css";
+import myStyle from "./footer.module.css";
 import logo from "../../assets/smallicons/logo2-job-bridge.png";
 
 class Footer extends Component {

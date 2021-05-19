@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import NavBar from "../../components/navbar/navbar";
-import myStyle from "./profile.module.css";
+import myStyle from "./hire.module.css";
 import LouisProfilePicture from "../../components/img/louis_circle.png";
 import Footer from "../../components/footer/footer";
 // import MobileFooter from "../../components/mobilefooter/mobilefooter";
 
-class ProfilePage extends Component {
+class hire extends Component {
   render() {
     return (
       <>
@@ -22,7 +22,7 @@ class ProfilePage extends Component {
                   xs={3}
                   className={`${myStyle.noPadding}`}
                 >
-                  <div className={`${myStyle.whiteColumn} mb-2`}>
+                  <div className={`${myStyle.whiteColumn} mb-2  `}>
                     <Row className={`w-100 mx-auto`}>
                       <img
                         src={LouisProfilePicture}
@@ -45,19 +45,66 @@ class ProfilePage extends Component {
                         risus at.
                       </p>
                     </Row>
+                    <Row className="w-100 mx-auto px-4 mt-4">
+                      <h3 className={`${myStyle.fontBold}`}>Skill</h3>
+                    </Row>
+                    <Row className="w-100 mx-auto px-4 mt-4 pb-3">
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill} ${myStyle.buttonSkillSpacing}`}
+                      >
+                        <span className="px-2">Python</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill} ${myStyle.buttonSkillSpacing}`}
+                      >
+                        <span className="px-2">Laravel</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill} ${myStyle.buttonSkillSpacing}`}
+                      >
+                        <span className="px-2">Golang</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill} ${myStyle.buttonSkillSpacing}`}
+                      >
+                        <span className="px-2">JavaScript</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill} ${myStyle.buttonSkillSpacing}`}
+                      >
+                        <span className="px-2">PHP</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill} ${myStyle.buttonSkillSpacing}`}
+                      >
+                        <span className="px-2">HTML</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill} ${myStyle.buttonSkillSpacing}`}
+                      >
+                        <span className="px-2">C++</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill} ${myStyle.buttonSkillSpacing}`}
+                      >
+                        <span className="px-3">Kotlin</span>
+                      </button>
+                      <button
+                        type="button"
+                        className={`${myStyle.orangeButtonSkill}`}
+                      >
+                        <span className="px-3">Swift</span>
+                      </button>
+                    </Row>
                   </div>
-                  <button
-                    type="button"
-                    className={`${myStyle.hireButton} w-100 mt-2`}
-                  >
-                    Simpan
-                  </button>
-                  <button
-                    type="submit"
-                    className={`${myStyle.hireButtonOutline} w-100 mt-2`}
-                  >
-                    Batal
-                  </button>
                 </Col>
                 <Col
                   lg={8}
@@ -71,7 +118,7 @@ class ProfilePage extends Component {
                   </div>
                   <form className="px-4 pt-3 pb-4">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">
+                      <label for="exampleInputEmail1" class={`form-label`}>
                         <span className={`${myStyle.grayText}`}>
                           Nama Perusahaan
                         </span>
@@ -179,4 +226,4 @@ class ProfilePage extends Component {
   }
 }
 
-export default ProfilePage;
+export default hire;

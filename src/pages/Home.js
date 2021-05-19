@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
-import NavBar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+import NavBar from "../components/navbar/navbar";
+import Footer from "../components/footer/footer";
 
 class Home extends Component {
   render() {

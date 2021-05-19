@@ -18,8 +18,8 @@ import checklist from "../../assets/img/checklist.png";
 import imgLP4 from "../../assets/img/img3.png";
 import imgLP5 from "../../assets/img/harrystyles.png";
 import imgLP6 from "../../assets/img/line.png";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/navbar/navbar";
+import Footer from "../../components/footer/footer";
 
 class LandingPage extends Component {
   render() {

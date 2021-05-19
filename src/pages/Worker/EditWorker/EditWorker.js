@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Image, Button, Form } from "react-bootstrap";
-import NavBar from "../../../components/Navbar/Navbar";
-import Footer from "../../../components/Footer/Footer";
+import NavBar from "../../../components/navbar/navbar";
+import Footer from "../../../components/footer/footer";
 import styles from "./EditWorker.module.css";
 import imgProfile from "../../../assets/img/louis.png";
 import iconLocation from "../../../assets/img/icon-location.png";
