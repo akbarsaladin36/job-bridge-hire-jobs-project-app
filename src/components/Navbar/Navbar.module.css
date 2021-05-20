@@ -2,7 +2,7 @@
 
 .container {
   font-family: "Open Sans", sans-serif;
-  background-color: #e5e5e5;
+  background-color: white;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -29,6 +29,9 @@
   color: white;
   font-weight: 500;
   margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .purpleButton:active,
@@ -74,6 +77,11 @@
   margin-left: 10px;
 }
 
+.dropdownNotification {
+  height: max-content;
+  margin-left: 10px;
+}
+
 .dropdownDaftar {
   height: max-content;
   margin: 0;
@@ -103,6 +111,9 @@
   display: none;
 }
 
+.titleSortNotification::after {
+  display: none;
+}
 .titleSortDaftar {
   margin: 0;
   padding: 0;
@@ -126,6 +137,35 @@
   padding-left: 10px;
   padding-right: 10px;
   background-color: #5e50a1;
+}
+
+.menuDropdownNotification {
+  border: 3px solid #dedede;
+  height: 300px;
+  width: 300px;
+  align-items: center;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+}
+
+.rowNotification {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat {
+  margin-top: 40px;
+}
+
+.textChat {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2a36;
 }
 
 .menuDropdownDaftar {
