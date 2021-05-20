@@ -1,25 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-.container {
-  font-family: "Open Sans", sans-serif;
-  height: 500px;
-  padding-top: 130px;
-  padding-bottom: 20px;
-  background-color: transparent;
-  left: 0;
-  right: 0;
-  top: 0;
-  margin: auto;
-  position: absolute;
+.boxContent {
+  background-color: #fbb017;
+  margin: 0;
+  padding: 0;
+  height: max-content;
 }
 
-.container1 {
-  font-family: "Open Sans", sans-serif;
-  height: 24.5in;
-  background-color: #e5e5e5;
-}
-
-.container2 {
+.containerPurple {
   font-family: "Open Sans", sans-serif;
   padding-top: 100px;
   background-color: #5e50a1;
@@ -29,15 +17,38 @@
   z-index: 0;
 }
 
+.containerWhite {
+  font-family: "Open Sans", sans-serif;
+  height: 27in;
+  background-color: #e5e5e5;
+}
+
+.container {
+  font-family: "Open Sans", sans-serif;
+  height: 500px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-color: transparent;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  position: absolute;
+}
+
 .rowContainer {
   justify-content: space-between;
 }
+
+/* .colLeft {
+  background-color: #fbb017;
+} */
 
 .left {
   font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   background-color: white;
   margin-right: 20px;
@@ -62,7 +73,7 @@
 .jobWorker {
   width: 100%;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 24px;
   text-align: left;
   color: #1f2a36;
@@ -95,10 +106,13 @@
 }
 
 .btnPrev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
   font-size: 16px;
   font-style: normal;
-  font-weight: lighter;
+  font-weight: 600;
   line-height: 20px;
   color: #5e50a1;
   width: 100%;
@@ -107,7 +121,7 @@
   background-color: white;
   margin-left: 0;
   margin-right: 20px;
-  border-color: #5e50a1;
+  border: 2px solid #5e50a1;
 }
 
 .btnPrev:active,
@@ -118,6 +132,7 @@
   border-color: #fbb017;
   outline: none !important;
   box-shadow: none !important;
+  font-weight: 500;
 }
 
 .right {
@@ -176,7 +191,7 @@
 .placeholder option:active {
   outline: none !important;
   box-shadow: none !important;
-  border-color: #5f2eea;
+  border: 2px solid #5e50a1;
 }
 
 .rowBtnSave,
@@ -192,7 +207,7 @@
   justify-content: center;
   display: flex;
   font-size: 16px;
-  font-weight: lighter;
+  font-weight: 500;
   color: white;
   width: 100px;
   height: 45px;
@@ -205,8 +220,8 @@
 .btnSave:hover,
 .btnSave:focus {
   color: white;
-  background-color: #5f2eea;
-  border-color: #5f2eea;
+  background-color: #5e50a1;
+  border-color: #5e50a1;
   outline: none !important;
   box-shadow: none !important;
 }
@@ -249,7 +264,7 @@
   justify-content: center;
   display: flex;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   color: #fbb017;
   width: 100%;
   height: 45px;
@@ -262,7 +277,7 @@
 .btnAddExperienceWork:hover,
 .btnAddExperienceWork:focus {
   color: white;
-  font-weight: lighter;
+  font-weight: 500;
   background-color: #fbb017;
   border-color: #fbb017;
   outline: none !important;
@@ -277,8 +292,8 @@
     padding-top: 110px;
   }
 
-  .container1 {
-    height: 32in;
+  .containerWhite {
+    height: 34in;
   }
 
   .right {

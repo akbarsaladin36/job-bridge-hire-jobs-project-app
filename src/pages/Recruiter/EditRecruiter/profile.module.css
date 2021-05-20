@@ -4,9 +4,14 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.fullArea {
+  background-color: #e5e5e5;
+}
+
 .purpleArea {
   background-color: #5e50a1;
   max-height: 19rem;
+  padding-top: 7em;
 }
 
 .whiteColumn {

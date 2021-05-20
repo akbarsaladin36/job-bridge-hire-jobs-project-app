@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import NavBar from "../../components/navbar/navbar";
+import { Container, Row, Col } from "react-bootstrap";
+import NavBar from "../../../components/Navbar/Navbar";
 import myStyle from "./profile.module.css";
-import LouisProfilePicture from "../../components/img/louis_circle.png";
-import Footer from "../../components/footer/footer";
+import LouisProfilePicture from "../../../components/img/louis_circle.png";
 // import MobileFooter from "../../components/mobilefooter/mobilefooter";
+import Footer from "../../../components/Footer/Footer";
 
 class ProfilePage extends Component {
   render() {
     return (
       <>
         <NavBar />
-        <div style={{ minHeight: "90rem" }}>
+        <div style={{ minHeight: "90rem" }} className={myStyle.fullArea}>
           <div className={myStyle.purpleArea}>
             <Container>
               <Row className="py-4 d-flex justify-content-between">

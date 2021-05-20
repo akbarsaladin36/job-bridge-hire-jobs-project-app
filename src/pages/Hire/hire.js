@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import NavBar from "../../components/navbar/navbar";
-import myStyle from "./hire.module.css";
+import NavBar from "../../components/Navbar/Navbar";
+import myStyle from "./Hire.module.css";
 import LouisProfilePicture from "../../components/img/louis_circle.png";
-import Footer from "../../components/footer/footer";
+import Footer from "../../components/Footer/Footer";
 // import MobileFooter from "../../components/mobilefooter/mobilefooter";
 
 class hire extends Component {

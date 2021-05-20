@@ -1,16 +1,17 @@
-body {
-  background-color: white;
-}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-.whiteBackground {
-  background-color: white;
+.container {
+  font-family: "Open Sans", sans-serif;
+  background-color: #e5e5e5;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
 }
-
-.jobBridgeColor {
-  font-weight: bold;
-  color: #5e50a1;
+.containerNavbar {
+  padding-left: 0;
+  padding-right: 0;
 }
-
 .purpleText {
   color: #5e50a1;
 }
@@ -20,30 +21,49 @@ body {
 }
 
 .purpleButton {
-  background-color: #5e50a1 !important;
-  border: 1px solid #5e50a1 !important;
+  background-color: #5e50a1;
+  border: 1px solid #5e50a1;
   border-radius: 4px;
   height: 44px;
-  width: 87px;
+  width: 100px;
   color: white;
-  font-weight: bold;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.purpleButton:active,
+.purpleButton:hover,
+.purpleButton:focus {
+  font-weight: 500;
+  color: white;
+  background-color: #fbb017;
+  border-color: #fbb017;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .purpleButtonOutline {
   background-color: white;
   color: #5e50a1;
-  font-weight: bold;
+  font-weight: 600;
   border: 1px solid #5e50a1;
   margin-right: 9px;
   border-radius: 4px;
   height: 44px;
-  width: 87px;
+  width: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.purpleButtonOutline:hover {
-  background-color: white;
-  color: #5e50a1;
-  border: 1px solid #5e50a1;
+.purpleButtonOutline:active,
+.purpleButtonOutline:hover,
+.purpleButtonOutline:focus {
+  color: white;
+  font-weight: 500;
+  background-color: #fbb017;
+  border-color: #fbb017;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .handleResponsive {
@@ -54,6 +74,13 @@ body {
   height: max-content;
   margin-left: 10px;
 }
+
+.dropdownDaftar {
+  height: max-content;
+  margin: 0;
+  padding: 0;
+}
+
 .imgProfile {
   border-radius: 100%;
 }
@@ -73,16 +100,41 @@ body {
   background-color: #fbb017;
   color: #e5e5e5;
 }
-
 .titleSort::after {
   display: none;
 }
 
+.titleSortDaftar {
+  margin: 0;
+  padding: 0;
+}
+
+.titleSortDaftar:hover,
+.titleSortDaftar:active,
+.titleSortDaftar:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+.titleSortDaftar::after {
+  display: none;
+}
 .menuDropdown {
   border: 3px solid #dedede;
   border-radius: 15px;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: #5e50a1;
+}
+
+.menuDropdownDaftar {
+  border: 3px solid #dedede;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 40px;
   background-color: #5e50a1;
 }
 
