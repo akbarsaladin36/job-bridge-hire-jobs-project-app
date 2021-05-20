@@ -10,7 +10,7 @@ class ProfilePage extends Component {
     return (
       <>
         <NavBar />
-        <div style={{ minHeight: "90rem" }}>
+        <div style={{ minHeight: "90rem" }} className={myStyle.fullArea}>
           <div className={myStyle.purpleArea}>
             <Container>
               <Row className="py-4 d-flex justify-content-between">
