@@ -6,14 +6,11 @@ body {
   background-color: white;
 }
 
-<<<<<<< HEAD
-=======
 .jobBridgeColor {
   font-weight: bold;
   color: #5e50a1;
 }
 
->>>>>>> elaz-profile
 .purpleText {
   color: #5e50a1;
 }
@@ -37,6 +34,7 @@ body {
   color: #5e50a1;
   font-weight: bold;
   border: 1px solid #5e50a1;
+  margin-right: 9px;
   border-radius: 4px;
   height: 44px;
   width: 87px;
@@ -91,17 +89,19 @@ body {
 @media (max-width: 992px) {
   .purpleButtonOutline {
     width: 100%;
-    text-align: left;
+    text-align: center;
+    margin-left: 0px;
+    margin-bottom: 5px;
     font-weight: bold;
     background-color: #e5e5e5;
     border: #e5e5e5 solid 2px;
   }
   .purpleButton {
     width: 100%;
-    color: #5e50a1;
+    background-color: #5e50a1;
+    color: white;
     font-weight: bold;
-    margin-left: 0;
-    text-align: left;
+    text-align: center;
     background-color: #e5e5e5;
     border: #e5e5e5 solid 2px;
   }

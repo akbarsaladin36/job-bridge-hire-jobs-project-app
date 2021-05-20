@@ -54,6 +54,15 @@ body {
   border-radius: 4px;
 }
 
+.kirimButton {
+  background-color: #fbb017;
+  color: white;
+  border-radius: 4px;
+  height: 50px;
+  border: 1px solid #fbb017;
+  font-weight: bold;
+}
+
 .noMargin {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
@@ -62,4 +71,8 @@ body {
 .buttonSkillSpacing {
   margin-right: 10px;
   margin-bottom: 20px;
+}
+
+.formHeight {
+  height: 50px;
 }

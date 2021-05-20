@@ -71,7 +71,7 @@ class ProfilePage extends Component {
                   </div>
                   <form className="px-4 pt-3 pb-4">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">
+                      <label for="exampleInputEmail1" className="form-label">
                         <span className={`${myStyle.grayText}`}>
                           Nama Perusahaan
                         </span>
@@ -115,7 +115,7 @@ class ProfilePage extends Component {
                         </span>
                       </label>
                       <textarea
-                        class="form-control"
+                        className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="3"
                         placeholder="Masukkan deskripsi singkat"

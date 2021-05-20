@@ -15,10 +15,7 @@ class NavBar extends Component {
     const { login, user } = this.state;
     return (
       <>
-        <Navbar
-          expand="lg"
-          className={`d-none d-sm-block ${myStyle.whiteBackground}`}
-        >
+        <Navbar expand="lg" className={`${myStyle.whiteBackground}`}>
           <Container className="py-2">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
