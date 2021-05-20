@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import NavBar from "../../../components/Navbar/Navbar";
-import myStyle from "./profile.module.css";
+import myStyle from "./Profile.module.css";
 import LouisProfilePicture from "../../../components/img/louis_circle.png";
 // import MobileFooter from "../../components/mobilefooter/mobilefooter";
 import Footer from "../../../components/Footer/Footer";

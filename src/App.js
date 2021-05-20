@@ -27,7 +27,6 @@ class App extends Component {
       <Router>
         <Switch>
           {/* sesuaikan dengan codingan kemaren untuk route */}
-          <Route path="/" exact component={Home} />
           {/* <Route path="/profilepage" exact component={ProfilePage} /> */}
           <Route path="/hire" exact component={Hire} />
 
