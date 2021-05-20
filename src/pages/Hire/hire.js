@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import NavBar from "../../components/Navbar/Navbar";
 import myStyle from "./Hire.module.css";
 import LouisProfilePicture from "../../components/img/louis_circle.png";

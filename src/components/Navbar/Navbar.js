@@ -50,7 +50,6 @@ class NavBar extends Component {
                     <Dropdown className={myStyle.dropdownDaftar}>
                       <Dropdown.Toggle
                         variant="#fff"
-                        title="sort"
                         id="dropdown-basic"
                         className={myStyle.titleSortDaftar}
                       >
@@ -81,7 +80,6 @@ class NavBar extends Component {
                     <Dropdown className={myStyle.dropdownDaftar}>
                       <Dropdown.Toggle
                         variant="#fff"
-                        title="sort"
                         id="dropdown-basic"
                         className={myStyle.titleSortDaftar}
                       >
