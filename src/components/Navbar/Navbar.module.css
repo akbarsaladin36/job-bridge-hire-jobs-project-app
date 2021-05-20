@@ -27,13 +27,14 @@
   height: 44px;
   width: 100px;
   color: white;
-  font-weight: lighter;
+  font-weight: 500;
   margin-left: 20px;
 }
 
 .purpleButton:active,
 .purpleButton:hover,
 .purpleButton:focus {
+  font-weight: 500;
   color: white;
   background-color: #fbb017;
   border-color: #fbb017;
@@ -44,18 +45,20 @@
 .purpleButtonOutline {
   background-color: white;
   color: #5e50a1;
-  font-weight: bold;
+  font-weight: 600;
   border: 1px solid #5e50a1;
   border-radius: 4px;
   height: 44px;
   width: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .purpleButtonOutline:active,
 .purpleButtonOutline:hover,
 .purpleButtonOutline:focus {
   color: white;
-  font-weight: lighter;
+  font-weight: 500;
   background-color: #fbb017;
   border-color: #fbb017;
   outline: none !important;
@@ -70,6 +73,13 @@
   height: max-content;
   margin-left: 10px;
 }
+
+.dropdownDaftar {
+  height: max-content;
+  margin: 0;
+  padding: 0;
+}
+
 .imgProfile {
   border-radius: 100%;
 }
@@ -92,11 +102,38 @@
 .titleSort::after {
   display: none;
 }
+
+.titleSortDaftar {
+  margin: 0;
+  padding: 0;
+}
+
+.titleSortDaftar:hover,
+.titleSortDaftar:active,
+.titleSortDaftar:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+.titleSortDaftar::after {
+  display: none;
+}
 .menuDropdown {
   border: 3px solid #dedede;
   border-radius: 15px;
   padding-left: 10px;
   padding-right: 10px;
+  background-color: #5e50a1;
+}
+
+.menuDropdownDaftar {
+  border: 3px solid #dedede;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 40px;
   background-color: #5e50a1;
 }
 

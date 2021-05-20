@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import EditRecruiter from "./pages/Recruiter/EditRecruiter/profile";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProfileWorker from "./pages/Worker/ProfileWorker/ProfileWorker";
@@ -18,8 +18,8 @@ class App extends Component {
       <Router>
         <Switch>
           {/* sesuaikan dengan codingan kemaren untuk route */}
-          <Route path="/" exact component={Home} />
-          <Route path="/jobbridge/landing-page" exact component={LandingPage} />
+          <Route path="/jobbridge" exact component={Home} />
+          <Route path="/" exact component={LandingPage} />
           <Route
             path="/jobbridge/profile-worker"
             exact
