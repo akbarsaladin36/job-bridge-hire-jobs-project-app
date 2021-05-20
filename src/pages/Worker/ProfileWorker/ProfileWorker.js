@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import NavBar from "../../../assets/navbar/Navbar";
-import Footer from "../../../assets/footer/Footer";
+import NavBar from "../../../components/Navbar/Navbar";
+import Footer from "../../../components/Footer/Footer";
 import styles from "./ProfileWorker.module.css";
 import imgProfile from "../../../assets/img/louis.png";
 import iconLocation from "../../../assets/img/icon-location.png";
