@@ -38,12 +38,37 @@ class NavBar extends Component {
                 </Nav>
                 {login === false ? (
                   <Nav>
-                    <Button
-                      variant="fff"
-                      className={`${myStyle.purpleButtonOutline}`}
-                    >
-                      Masuk
-                    </Button>
+                    <Dropdown className={myStyle.dropdownDaftar}>
+                      <Dropdown.Toggle
+                        variant="#fff"
+                        title="sort"
+                        id="dropdown-basic"
+                        className={myStyle.titleSortDaftar}
+                      >
+                        <Button
+                          variant="fff"
+                          className={`${myStyle.purpleButtonOutline}`}
+                        >
+                          Masuk
+                        </Button>
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu className={myStyle.menuDropdownDaftar}>
+                        <Dropdown.Item
+                          as={Link}
+                          to="/auth/worker/login"
+                          className={myStyle.listSort}
+                        >
+                          Masuk Pekerja
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          as={Link}
+                          to="/auth/recruiter/login"
+                          className={myStyle.listSort}
+                        >
+                          Masuk Perekrut
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                     <Dropdown className={myStyle.dropdownDaftar}>
                       <Dropdown.Toggle
                         variant="#fff"
@@ -61,14 +86,14 @@ class NavBar extends Component {
                       <Dropdown.Menu className={myStyle.menuDropdownDaftar}>
                         <Dropdown.Item
                           as={Link}
-                          to="/"
+                          to="/auth/worker/register"
                           className={myStyle.listSort}
                         >
                           Daftar Pekerja
                         </Dropdown.Item>
                         <Dropdown.Item
                           as={Link}
-                          to="/"
+                          to="/auth/recruiter/register"
                           className={myStyle.listSort}
                         >
                           Daftar Perekrut
