@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Hire from "./pages/Hire/Hire";
 import Home from "./pages/Home/Home";
@@ -24,66 +29,82 @@ import SearchWorkerPage from "./pages/SearchWorker/Search_Worker";
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          {/* sesuaikan dengan codingan kemaren untuk route */}
-          {/* <Route path="/profilepage" exact component={ProfilePage} /> */}
-          <Route path="/hire" exact component={Hire} />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router>
+            <Switch>
+              {/* sesuaikan dengan codingan kemaren untuk route */}
+              {/* <Route path="/profilepage" exact component={ProfilePage} /> */}
+              <Route path="/hire" exact component={Hire} />
 
-          <Route path="/jobbridge/navbar" exact component={NavBar} />
-          <Route path="/jobbridge" exact component={Home} />
-          <Route path="/" exact component={LandingPage} />
-          <Route
-            path="/jobbridge/profile-worker"
-            exact
-            component={ProfileWorker}
-          />
-          <Route path="/jobbridge/edit-worker" exact component={EditWorker} />
-          <Route path="/jobbridge/chat" exact component={Chat} />
-          <Route
-            path="/jobbridge/edit-recruiter"
-            exact
-            component={EditRecruiter}
-          />
-          <Route
-            path="/jobbridge/profile-recruiter"
-            exact
-            component={ProfileRecruiter}
-          />
+              <Route path="/jobbridge/navbar" exact component={NavBar} />
+              <Route path="/jobbridge" exact component={Home} />
+              <Route path="/" exact component={LandingPage} />
+              <Route
+                path="/jobbridge/profile-worker"
+                exact
+                component={ProfileWorker}
+              />
+              <Route
+                path="/jobbridge/edit-worker"
+                exact
+                component={EditWorker}
+              />
+              <Route path="/jobbridge/chat" exact component={Chat} />
+              <Route
+                path="/jobbridge/edit-recruiter"
+                exact
+                component={EditRecruiter}
+              />
+              <Route
+                path="/jobbridge/profile-recruiter"
+                exact
+                component={ProfileRecruiter}
+              />
 
-          {/* Route cek Components */}
-          <Route path="/jobbridge/navbar" exact component={NavBar} />
-          <Route path="/jobbridge/upload-image" exact component={UploadImage} />
-          <Route path="/auth/worker/login" exact component={LoginPage} />
-          <Route path="/auth/worker/register" exact component={RegisterPage} />
-          <Route
-            path="/auth/recruiter/login"
-            exact
-            component={LoginRecruiterPage}
-          />
-          <Route
-            path="/auth/recruiter/register"
-            exact
-            component={RegisterRecruiterPage}
-          />
-          <Route
-            path="/auth/reset-password"
-            exact
-            component={ResetPasswordPage}
-          />
-          <Route
-            path="/auth/change-password"
-            exact
-            component={ChangePasswordPage}
-          />
-          <Route
-            path="/auth/login-reset"
-            exact
-            component={LoginAfterResetPasswordPage}
-          />
-          <Route path="/search-worker" exact component={SearchWorkerPage} />
-        </Switch>
-      </Router>
+              {/* Route cek Components */}
+              <Route path="/jobbridge/navbar" exact component={NavBar} />
+              <Route
+                path="/jobbridge/upload-image"
+                exact
+                component={UploadImage}
+              />
+              <Route path="/auth/worker/login" exact component={LoginPage} />
+              <Route
+                path="/auth/worker/register"
+                exact
+                component={RegisterPage}
+              />
+              <Route
+                path="/auth/recruiter/login"
+                exact
+                component={LoginRecruiterPage}
+              />
+              <Route
+                path="/auth/recruiter/register"
+                exact
+                component={RegisterRecruiterPage}
+              />
+              <Route
+                path="/auth/reset-password"
+                exact
+                component={ResetPasswordPage}
+              />
+              <Route
+                path="/auth/change-password"
+                exact
+                component={ChangePasswordPage}
+              />
+              <Route
+                path="/auth/login-reset"
+                exact
+                component={LoginAfterResetPasswordPage}
+              />
+              <Route path="/search-worker" exact component={SearchWorkerPage} />
+            </Switch>
+          </Router>
+        </PersistGate>
+      </Provider>
     );
   }
 }

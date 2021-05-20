@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Row, Col, Form, Button, Container } from "react-bootstrap";
+import { connect } from "react-redux";
+import { loginRecruiter } from "../../../../redux/action/auth";
+import { Row, Col, Form, Button, Container, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginRecruiterStyle from "./LoginRecruiterStyle.module.css";
 import Image1 from "../../../../assets/img/left-column-image.jpg";
@@ -7,7 +9,50 @@ import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
 class LoginRecruiterPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        userEmail: "",
+        userPassword: "",
+      },
+      msg: "",
+    };
+  }
+
+  changeText = (event) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  handleLogin = (event) => {
+    const { userEmail, userPassword } = this.state.form;
+    this.props
+      .loginRecruiter({
+        emailRepresentationCompany: userEmail,
+        passwordCompany: userPassword,
+      })
+      .then((res) => {
+        localStorage.setItem("token", this.props.auth.data.token);
+        this.setState({
+          msg: this.props.auth.msg,
+        });
+        this.props.history.push("/");
+      })
+      .catch((err) => {
+        console.log("ERROR RSP", err.response);
+        this.setState({
+          msg: err.response.data.msg,
+        });
+      });
+  };
+
   render() {
+    const { msg } = this.state;
     return (
       <>
         <Container fluid>
@@ -51,6 +96,7 @@ class LoginRecruiterPage extends Component {
                     type="email"
                     name="userEmail"
                     placeholder="Masukkan email"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
@@ -59,15 +105,24 @@ class LoginRecruiterPage extends Component {
                     type="password"
                     name="userPassword"
                     placeholder="Masukkan kata sandi"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <p className="float-end mt-3">Lupa kata sandi</p>
-                <Button
-                  className={`${LoginRecruiterStyle.sign_in_button} mt-2`}
-                >
-                  Masuk
-                </Button>
+                {msg.length > 0 ? (
+                  <Alert variant="warning" className="text-center">
+                    {msg}
+                  </Alert>
+                ) : (
+                  ""
+                )}
               </Form>
+              <Button
+                className={`${LoginRecruiterStyle.sign_in_button} mt-2 mb-3`}
+                onClick={() => this.handleLogin()}
+              >
+                Masuk
+              </Button>
               <p className="text-center mt-3">
                 Anda belum punya akun?{" "}
                 <Link
@@ -85,4 +140,9 @@ class LoginRecruiterPage extends Component {
   }
 }
 
-export default LoginRecruiterPage;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+const mapDispatchToProps = { loginRecruiter };
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRecruiterPage);
