@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.container {
+  font-family: "Open Sans", sans-serif;
+  background-color: #e5e5e5;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+.containerNavbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+.purpleText {
+  color: #5e50a1;
+}
+.purpleBackground {
+  background-color: #5e50a1;
+}
+
+.purpleButton {
+  background-color: #5e50a1 !important;
+  border: 1px solid #5e50a1 !important;
+  border-radius: 4px;
+  height: 44px;
+  width: 87px;
+  color: white;
+  font-weight: bold;
+}
+
+.purpleButtonOutline {
+  background-color: white;
+  color: #5e50a1;
+  font-weight: bold;
+  border: 1px solid #5e50a1;
+  border-radius: 4px;
+  height: 44px;
+  width: 87px;
+}
+
+.purpleButtonOutline:hover {
+  background-color: white;
+  color: #5e50a1;
+  border: 1px solid #5e50a1;
+}
+
+.handleResponsive {
+  display: none;
+}
+
+.dropdown {
+  height: max-content;
+  margin-left: 10px;
+}
+.imgProfile {
+  border-radius: 100%;
+}
+
+.listSort {
+  border-radius: 3px;
+  font-weight: lighter;
+  color: white;
+}
+.titleSort:hover,
+.titleSort:active,
+.titleSort:focus,
+.listSort:hover,
+.listSort:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #fbb017;
+  color: #e5e5e5;
+}
+
+.titleSort::after {
+  display: none;
+}
+.menuDropdown {
+  border: 3px solid #dedede;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #5e50a1;
+}
+
+@media (max-width: 992px) {
+  .purpleButtonOutline {
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    background-color: #e5e5e5;
+    border: #e5e5e5 solid 2px;
+  }
+  .purpleButton {
+    width: 100%;
+    color: #5e50a1;
+    font-weight: bold;
+    margin-left: 0;
+    text-align: left;
+    background-color: #e5e5e5;
+    border: #e5e5e5 solid 2px;
+  }
+
+  .mail,
+  .bell,
+  .imgProfile {
+    display: none;
+  }
+
+  .jobBridgeColor {
+    margin-top: 20px;
+  }
+
+  .titleSort {
+    color: #5e50a1;
+    border-radius: 0;
+    width: 100%;
+  }
+  .handleResponsive {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+    text-align: left;
+    font-weight: bold;
+  }
+}
