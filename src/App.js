@@ -8,7 +8,7 @@ import EditWorker from "./pages/Worker/EditWorker/EditWorker";
 import Chat from "./pages/Chat/Chat";
 
 // Import Components
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./assets/navbar/Navbar";
 import UploadImage from "./components/UploadImage/UploadImage";
 
 class App extends Component {
