@@ -28,7 +28,7 @@
   width: 100px;
   color: white;
   font-weight: 500;
-  margin-left: 20px;
+  margin-left: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -180,7 +180,7 @@
 
 @media (max-width: 992px) {
   .purpleButtonOutline {
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
     margin-left: 0px;
     margin-bottom: 5px;
@@ -189,35 +189,36 @@
     border: #e5e5e5 solid 2px;
   }
   .purpleButton {
-    width: 100%;
+    /* width: 100%; */
     background-color: #5e50a1;
     color: white;
     font-weight: bold;
+    margin-left: 0px !important;
     text-align: center;
     background-color: #e5e5e5;
     border: #e5e5e5 solid 2px;
   }
+}
 
-  .mail,
-  .bell,
-  .imgProfile {
-    display: none;
-  }
+.mail,
+.bell,
+.imgProfile {
+  display: none;
+}
 
-  .jobBridgeColor {
-    margin-top: 20px;
-  }
+/* .jobBridgeColor {
+  margin-top: 20px;
+} */
 
-  .titleSort {
-    color: #5e50a1;
-    border-radius: 0;
-    width: 100%;
-  }
-  .handleResponsive {
-    margin-top: auto;
-    margin-bottom: auto;
-    display: block;
-    text-align: left;
-    font-weight: bold;
-  }
+.titleSort {
+  color: #5e50a1;
+  border-radius: 0;
+  width: 100%;
+}
+.handleResponsive {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: block;
+  text-align: left;
+  font-weight: bold;
 }

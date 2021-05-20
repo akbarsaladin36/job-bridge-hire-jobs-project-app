@@ -67,7 +67,7 @@ class ProfilePage extends Component {
                   className={`${myStyle.whiteColumn} ${myStyle.noPadding}`}
                 >
                   <div className={`${myStyle.myBottomBorder} w-100`}>
-                    <h3 className="px-4 pt-3 pb-2">Data Diri</h3>
+                    <h3 className={`px-4 pt-3 pb-2`}>Data Diri</h3>
                   </div>
                   <form className="px-4 pt-3 pb-4">
                     <div class="mb-3">
