@@ -7,6 +7,7 @@ import {
   Image,
   Dropdown,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import myStyle from "./Navbar.module.css";
 import logo from "../../assets/smallicons/logo-job-bridge.png";
 import imgProfile from "../../assets/smallicons/profile-navbar.png";
@@ -43,15 +44,61 @@ class NavBar extends Component {
                     >
                       Masuk
                     </Button>
-                    <Button variant="fff" className={`${myStyle.purpleButton}`}>
-                      Daftar
-                    </Button>
+                    <Dropdown className={myStyle.dropdownDaftar}>
+                      <Dropdown.Toggle
+                        variant="#fff"
+                        title="sort"
+                        id="dropdown-basic"
+                        className={myStyle.titleSortDaftar}
+                      >
+                        <Button
+                          variant="fff"
+                          className={`${myStyle.purpleButton}`}
+                        >
+                          Daftar
+                        </Button>
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu className={myStyle.menuDropdownDaftar}>
+                        <Dropdown.Item
+                          as={Link}
+                          to="/"
+                          className={myStyle.listSort}
+                        >
+                          Daftar Pekerja
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          as={Link}
+                          to="/"
+                          className={myStyle.listSort}
+                        >
+                          Daftar Perekrut
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </Nav>
                 ) : user === false ? (
                   <Nav>
-                    <Button variant="fff" className={`${myStyle.purpleButton}`}>
-                      Profile
-                    </Button>
+                    <Dropdown className={myStyle.dropdown}>
+                      <Dropdown.Toggle
+                        variant="#fff"
+                        title="sort"
+                        id="dropdown-basic"
+                        className={myStyle.titleSort}
+                      >
+                        <Image src={bell} className={myStyle.bell} />
+                        <p className={myStyle.handleResponsive}>
+                          Notifications
+                        </p>
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu className={myStyle.menuDropdown}>
+                        <Dropdown.Item className={myStyle.listSort}>
+                          Pemberitahuan 1
+                        </Dropdown.Item>
+                        <Dropdown.Item className={myStyle.listSort}>
+                          Pemberitahuan 2
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </Nav>
                 ) : (
                   <Nav>
