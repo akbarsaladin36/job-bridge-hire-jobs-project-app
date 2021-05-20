@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import ProfilePage from "./pages/profile/profile";
+import ProfilePage from "./pages/Recruiter/";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProfileWorker from "./pages/Worker/ProfileWorker/ProfileWorker";
 import EditWorker from "./pages/Worker/EditWorker/EditWorker";
