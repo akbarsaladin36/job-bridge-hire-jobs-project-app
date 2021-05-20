@@ -8,6 +8,7 @@ import WelcomePage from "./pages/WelcomePage";
 import LoginAfterResetPasswordPage from "./pages/auth/reset_password/LoginAfterResetPassword/LoginAfterResetPassword";
 import LoginRecruiterPage from "./pages/auth/recruiter/Login/Login_Recruiter";
 import RegisterRecruiterPage from "./pages/auth/recruiter/Register/Register_Recruiter";
+import SearchWorkerPage from "./pages/SearchWorker/Search_Worker";
 
 class App extends Component {
   render() {
@@ -43,6 +44,7 @@ class App extends Component {
             exact
             component={LoginAfterResetPasswordPage}
           />
+          <Route path="/search-worker" exact component={SearchWorkerPage} />
         </Switch>
       </Router>
     );

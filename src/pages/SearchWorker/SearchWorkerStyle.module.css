@@ -1,0 +1,20 @@
+.top_jobs_background {
+  max-width: 100%;
+  background-color: #5e50a1;
+}
+
+.sort_button {
+  background-color: white;
+}
+
+.search_button {
+  border-color: #5e50a1 !important;
+  color: white !important;
+  background-color: #5e50a1 !important;
+}
+
+.skills_button {
+  border-color: #fbb017 !important;
+  color: white !important;
+  background-color: #fbb017 !important;
+}
