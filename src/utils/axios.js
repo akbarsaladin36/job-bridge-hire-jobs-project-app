@@ -32,7 +32,7 @@ axiosApiIntances.interceptors.response.use(
     if (error.response.status === 403) {
       alert("please login");
       localStorage.clear();
-      window.location.href = "/signin";
+      window.location.href = "/";
     }
     return Promise.reject(error);
   }

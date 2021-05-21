@@ -3,7 +3,7 @@ import { Container, Navbar, Nav, Image, Dropdown, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import myStyle from "./Navbar.module.css";
 import logo from "../../assets/smallicons/logo-job-bridge.png";
-import imgProfile from "../../assets/smallicons/profile-navbar.png";
+import imgProfile from "../../assets/img/img-not-found.png";
 import bell from "../../assets/smallicons/bell.png";
 import mail from "../../assets/smallicons/mail.png";
 import chat from "../../assets/img/chat.png";
@@ -13,6 +13,9 @@ class NavBar extends Component {
     console.log("navbar");
     const { auth } = JSON.parse(localStorage.getItem("persist:root"));
     const { dataWorker, login, roleUser } = JSON.parse(auth);
+    const { image_worker } = dataWorker;
+    console.log("ini navbar");
+    console.log(this.props);
     return (
       <>
         <Container fluid className={`${myStyle.container} shadow`}>
@@ -141,10 +144,18 @@ class NavBar extends Component {
                           id="dropdown-basic"
                           className={myStyle.titleSort}
                         >
-                          <Image
-                            src={imgProfile}
-                            className={myStyle.imgProfile}
-                          />
+                          {image_worker ? (
+                            <Image
+                              src={image_worker}
+                              className={myStyle.imgProfile}
+                            />
+                          ) : (
+                            <Image
+                              src={imgProfile}
+                              className={myStyle.imgProfile}
+                            />
+                          )}
+
                           <p className={myStyle.handleResponsive}>Profile</p>
                         </Dropdown.Toggle>
                         <Dropdown.Menu
@@ -155,7 +166,6 @@ class NavBar extends Component {
                             as={Link}
                             to="/jobbridge/profile-worker"
                             className={myStyle.listSort}
-                            onClick={() => this.handleMyProfile(false)}
                           >
                             My Profile
                           </Dropdown.Item>
@@ -165,6 +175,13 @@ class NavBar extends Component {
                             className={myStyle.listSort}
                           >
                             Edit Profile
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            as={Link}
+                            to="/jobbridge/profile-worker"
+                            className={myStyle.listSort}
+                          >
+                            Change Photo Profile
                           </Dropdown.Item>
                           <Dropdown.Item className={myStyle.listSort}>
                             Change Password
@@ -206,6 +223,13 @@ class NavBar extends Component {
                             className={myStyle.listSort}
                           >
                             Edit Profile
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            as={Link}
+                            to="/jobbridge/edit-recruiter"
+                            className={myStyle.listSort}
+                          >
+                            Change Photo Profile
                           </Dropdown.Item>
                           <Dropdown.Item className={myStyle.listSort}>
                             Change Password

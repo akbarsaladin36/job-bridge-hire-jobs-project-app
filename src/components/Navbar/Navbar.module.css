@@ -92,6 +92,8 @@
 
 .imgProfile {
   border-radius: 100%;
+  width: 32px;
+  height: 32px;
 }
 
 .listSort {
@@ -107,7 +109,8 @@
   outline: none !important;
   box-shadow: none !important;
   background-color: #fbb017;
-  color: #e5e5e5;
+  color: white;
+  font-weight: 500;
 }
 .titleSort::after {
   display: none;
