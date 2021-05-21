@@ -16,6 +16,10 @@
   color: #5e50a1;
 }
 
+.chat {
+  width: 1000px;
+}
+
 .purpleBackground {
   background-color: #5e50a1;
 }
@@ -28,7 +32,7 @@
   width: 100px;
   color: white;
   font-weight: 500;
-  margin-left: 20px;
+  margin-left: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,7 +93,11 @@
   margin: 0;
   padding: 0;
 }
-
+.mail,
+.bell,
+.imgProfile {
+  display: block;
+}
 .imgProfile {
   border-radius: 100%;
   width: 32px;
@@ -187,6 +195,7 @@
     width: 100%;
   }
   .purpleButtonOutline {
+    /* width: 100%; */
     width: 100%;
     display: flex;
     justify-content: left;
@@ -200,6 +209,14 @@
     text-align: left;
   }
   .purpleButton {
+    /* width: 100%; */
+    background-color: #5e50a1;
+    color: white;
+    font-weight: bold;
+    margin-left: 0px !important;
+    text-align: center;
+    background-color: #e5e5e5;
+    border: #e5e5e5 solid 2px;
     width: 100%;
     display: flex;
     justify-content: left;
@@ -212,27 +229,27 @@
     font-weight: bold;
     text-align: left;
   }
+}
 
-  .mail,
-  .bell,
-  .imgProfile {
-    display: none;
-  }
+.mail,
+.bell,
+.imgProfile {
+  display: none;
+}
 
-  .jobBridgeColor {
-    margin-top: 20px;
-  }
+/* .jobBridgeColor {
+  margin-top: 20px;
+} */
 
-  .titleSort {
-    color: #5e50a1;
-    border-radius: 0;
-    width: 100%;
-  }
-  .handleResponsive {
-    margin-top: auto;
-    margin-bottom: auto;
-    display: block;
-    text-align: left;
-    font-weight: bold;
-  }
+.titleSort {
+  color: #5e50a1;
+  border-radius: 0;
+  width: 100%;
+}
+.handleResponsive {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: block;
+  text-align: left;
+  font-weight: bold;
 }

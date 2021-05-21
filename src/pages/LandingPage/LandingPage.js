@@ -23,6 +23,8 @@ import Footer from "../../components/Footer/Footer";
 
 class LandingPage extends Component {
   render() {
+    //   console.log("PROPS", this.props.auth.data);
+    //   console.log(process.env.REACT_APP_IMAGE_URL);
     return (
       <>
         <Navbar />
