@@ -12,3 +12,10 @@ export const logout = (data) => {
     type: "LOGOUT",
   };
 };
+
+export const loginWorker = (data) => {
+  return {
+    type: "LOGIN_WORKER",
+    payload: axiosApiIntances.post("auth/login-worker", data),
+  };
+};

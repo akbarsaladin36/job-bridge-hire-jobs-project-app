@@ -5,14 +5,13 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Hire from "./pages/Hire/Hire";
 import Home from "./pages/Home/Home";
-import EditRecruiter from "./pages/Recruiter/EditRecruiter/Profile";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProfileWorker from "./pages/Worker/ProfileWorker/ProfileWorker";
 import EditWorker from "./pages/Worker/EditWorker/EditWorker";
 import Chat from "./pages/Chat/Chat";
 import ProfileRecruiter from "./pages/Recruiter/ProfileRecruiter/ProfileRecruiter";
+import EditRecruiter from "./pages/Recruiter/EditRecruiter/Profile";
 
 // Import Components
 import NavBar from "./components/Navbar/Navbar";
@@ -35,7 +34,6 @@ class App extends Component {
             <Switch>
               {/* sesuaikan dengan codingan kemaren untuk route */}
               {/* <Route path="/profilepage" exact component={ProfilePage} /> */}
-              <Route path="/hire" exact component={Hire} />
 
               <Route path="/jobbridge/navbar" exact component={NavBar} />
               <Route path="/jobbridge" exact component={Home} />
@@ -51,15 +49,16 @@ class App extends Component {
                 component={EditWorker}
               />
               <Route path="/jobbridge/chat" exact component={Chat} />
-              <Route
-                path="/jobbridge/edit-recruiter"
-                exact
-                component={EditRecruiter}
-              />
+
               <Route
                 path="/jobbridge/profile-recruiter"
                 exact
                 component={ProfileRecruiter}
+              />
+              <Route
+                path="/jobbridge/edit-recruiter"
+                exact
+                component={EditRecruiter}
               />
 
               {/* Route cek Components */}

@@ -1,32 +1,28 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Navbar,
-  Nav,
-  Button,
-  Image,
-  Dropdown,
-  Row,
-} from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../redux/action/auth";
+import { Container, Navbar, Nav, Image, Dropdown, Row } from "react-bootstrap";
+// import { Link } from "react-router-dom";
 import myStyle from "./Navbar.module.css";
 import logo from "../../assets/smallicons/logo-job-bridge.png";
-import imgProfile from "../../assets/smallicons/profile-navbar.png";
+import imgProfile from "../../assets/img/img-not-found.png";
 import bell from "../../assets/smallicons/bell.png";
 import mail from "../../assets/smallicons/mail.png";
 import chat from "../../assets/img/chat.png";
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      login: false,
-      user: false,
-      roleUser: 0,
-    };
-  }
+  handleLogout = (params) => {
+    console.log(this.props);
+    if (params) {
+      localStorage.clear();
+      window.location.href = "/";
+    }
+  };
   render() {
-    const { login, user, roleUser } = this.state;
+    const { login, roleUser } = this.props.auth;
+    const { image_worker, company_image } = this.props.auth.data;
+    const { logout } = this.props;
     return (
       <>
         <Container fluid className={`${myStyle.container} shadow`}>
@@ -53,12 +49,12 @@ class NavBar extends Component {
                         id="dropdown-basic"
                         className={myStyle.titleSortDaftar}
                       >
-                        <Button
+                        <p
                           variant="fff"
                           className={`${myStyle.purpleButtonOutline}`}
                         >
                           Masuk
-                        </Button>
+                        </p>
                       </Dropdown.Toggle>
                       <Dropdown.Menu className={myStyle.menuDropdownDaftar}>
                         <Dropdown.Item
@@ -83,12 +79,9 @@ class NavBar extends Component {
                         id="dropdown-basic"
                         className={myStyle.titleSortDaftar}
                       >
-                        <Button
-                          variant="fff"
-                          className={`${myStyle.purpleButton}`}
-                        >
+                        <p variant="fff" className={`${myStyle.purpleButton}`}>
                           Daftar
-                        </Button>
+                        </p>
                       </Dropdown.Toggle>
                       <Dropdown.Menu className={myStyle.menuDropdownDaftar}>
                         <Dropdown.Item
@@ -107,28 +100,6 @@ class NavBar extends Component {
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-                  </Nav>
-                ) : user === false ? (
-                  <Nav>
-                    {roleUser === 0 ? (
-                      <Button
-                        as={Link}
-                        to="/jobbridge/profile-worker"
-                        variant="fff"
-                        className={`${myStyle.purpleButton}`}
-                      >
-                        Profile
-                      </Button>
-                    ) : (
-                      <Button
-                        as={Link}
-                        to="/jobbridge/profile-recruiter"
-                        variant="fff"
-                        className={`${myStyle.purpleButton}`}
-                      >
-                        Profile
-                      </Button>
-                    )}
                   </Nav>
                 ) : (
                   <Nav>
@@ -180,10 +151,18 @@ class NavBar extends Component {
                           id="dropdown-basic"
                           className={myStyle.titleSort}
                         >
-                          <Image
-                            src={imgProfile}
-                            className={myStyle.imgProfile}
-                          />
+                          {image_worker ? (
+                            <Image
+                              src={`${process.env.REACT_APP_IMAGE_URL}${image_worker}`}
+                              className={myStyle.imgProfile}
+                            />
+                          ) : (
+                            <Image
+                              src={imgProfile}
+                              className={myStyle.imgProfile}
+                            />
+                          )}
+
                           <p className={myStyle.handleResponsive}>Profile</p>
                         </Dropdown.Toggle>
                         <Dropdown.Menu
@@ -204,10 +183,21 @@ class NavBar extends Component {
                           >
                             Edit Profile
                           </Dropdown.Item>
+                          <Dropdown.Item
+                            as={Link}
+                            to="/jobbridge/profile-worker"
+                            className={myStyle.listSort}
+                          >
+                            Change Photo Profile
+                          </Dropdown.Item>
                           <Dropdown.Item className={myStyle.listSort}>
                             Change Password
                           </Dropdown.Item>
-                          <Dropdown.Item className={myStyle.listSort}>
+                          <Dropdown.Item
+                            className={myStyle.listSort}
+                            // onClick={this.props.logout}
+                            onClick={() => this.handleLogout(logout)}
+                          >
                             Logout
                           </Dropdown.Item>
                         </Dropdown.Menu>
@@ -220,10 +210,17 @@ class NavBar extends Component {
                           id="dropdown-basic"
                           className={myStyle.titleSort}
                         >
-                          <Image
-                            src={imgProfile}
-                            className={myStyle.imgProfile}
-                          />
+                          {company_image ? (
+                            <Image
+                              src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
+                              className={myStyle.imgProfile}
+                            />
+                          ) : (
+                            <Image
+                              src={imgProfile}
+                              className={myStyle.imgProfile}
+                            />
+                          )}
                           <p className={myStyle.handleResponsive}>Profile</p>
                         </Dropdown.Toggle>
                         <Dropdown.Menu
@@ -244,10 +241,20 @@ class NavBar extends Component {
                           >
                             Edit Profile
                           </Dropdown.Item>
+                          <Dropdown.Item
+                            as={Link}
+                            to="/jobbridge/edit-recruiter"
+                            className={myStyle.listSort}
+                          >
+                            Change Photo Profile
+                          </Dropdown.Item>
                           <Dropdown.Item className={myStyle.listSort}>
                             Change Password
                           </Dropdown.Item>
-                          <Dropdown.Item className={myStyle.listSort}>
+                          <Dropdown.Item
+                            className={myStyle.listSort}
+                            onClick={() => this.handleLogout(logout)}
+                          >
                             Logout
                           </Dropdown.Item>
                         </Dropdown.Menu>
@@ -263,5 +270,9 @@ class NavBar extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+const mapDispatchToProps = { logout };
 
-export default NavBar;
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
