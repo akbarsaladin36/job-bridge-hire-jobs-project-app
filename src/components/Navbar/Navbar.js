@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Navbar,
-  Nav,
-  Button,
-  Image,
-  Dropdown,
-  Row,
-} from "react-bootstrap";
+import { Container, Navbar, Nav, Image, Dropdown, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import myStyle from "./Navbar.module.css";
 import logo from "../../assets/smallicons/logo-job-bridge.png";
@@ -17,16 +9,10 @@ import mail from "../../assets/smallicons/mail.png";
 import chat from "../../assets/img/chat.png";
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      login: false,
-      user: false,
-      roleUser: 0,
-    };
-  }
   render() {
-    const { login, user, roleUser } = this.state;
+    console.log("navbar");
+    const { auth } = JSON.parse(localStorage.getItem("persist:root"));
+    const { dataWorker, login, roleUser } = JSON.parse(auth);
     return (
       <>
         <Container fluid className={`${myStyle.container} shadow`}>
@@ -53,12 +39,12 @@ class NavBar extends Component {
                         id="dropdown-basic"
                         className={myStyle.titleSortDaftar}
                       >
-                        <Button
+                        <p
                           variant="fff"
                           className={`${myStyle.purpleButtonOutline}`}
                         >
                           Masuk
-                        </Button>
+                        </p>
                       </Dropdown.Toggle>
                       <Dropdown.Menu className={myStyle.menuDropdownDaftar}>
                         <Dropdown.Item
@@ -83,12 +69,9 @@ class NavBar extends Component {
                         id="dropdown-basic"
                         className={myStyle.titleSortDaftar}
                       >
-                        <Button
-                          variant="fff"
-                          className={`${myStyle.purpleButton}`}
-                        >
+                        <p variant="fff" className={`${myStyle.purpleButton}`}>
                           Daftar
-                        </Button>
+                        </p>
                       </Dropdown.Toggle>
                       <Dropdown.Menu className={myStyle.menuDropdownDaftar}>
                         <Dropdown.Item
@@ -107,28 +90,6 @@ class NavBar extends Component {
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-                  </Nav>
-                ) : user === false ? (
-                  <Nav>
-                    {roleUser === 0 ? (
-                      <Button
-                        as={Link}
-                        to="/jobbridge/profile-worker"
-                        variant="fff"
-                        className={`${myStyle.purpleButton}`}
-                      >
-                        Profile
-                      </Button>
-                    ) : (
-                      <Button
-                        as={Link}
-                        to="/jobbridge/profile-recruiter"
-                        variant="fff"
-                        className={`${myStyle.purpleButton}`}
-                      >
-                        Profile
-                      </Button>
-                    )}
                   </Nav>
                 ) : (
                   <Nav>
@@ -194,6 +155,7 @@ class NavBar extends Component {
                             as={Link}
                             to="/jobbridge/profile-worker"
                             className={myStyle.listSort}
+                            onClick={() => this.handleMyProfile(false)}
                           >
                             My Profile
                           </Dropdown.Item>
@@ -234,6 +196,7 @@ class NavBar extends Component {
                             as={Link}
                             to="/jobbridge/profile-recruiter"
                             className={myStyle.listSort}
+                            onClick={() => this.handleMyProfile(false)}
                           >
                             My Profile
                           </Dropdown.Item>
