@@ -4,7 +4,7 @@ import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import NavBar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import styles from "./ProfileRecruiter.module.css";
-import imgProfile from "../../../assets/img/louis.png";
+// import imgProfile from "../../../assets/img/louis.png";
 import iconLocation from "../../../assets/img/icon-location.png";
 import Email from "../../../assets/img/mail.png";
 import Instagram from "../../../assets/img/instagram.png";

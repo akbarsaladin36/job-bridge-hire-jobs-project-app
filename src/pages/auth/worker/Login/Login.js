@@ -21,7 +21,6 @@ class LoginPage extends Component {
   }
 
   changeText = (event) => {
-    console.log({ [event.target.name]: event.target.value });
     this.setState({
       form: {
         ...this.state.form,
@@ -39,8 +38,7 @@ class LoginPage extends Component {
         passwordWorker: userPassword,
       })
       .then((res) => {
-        console.log(res);
-        localStorage.setItem("token", this.props.auth.dataWorker.token);
+        localStorage.setItem("token", this.props.auth.data.token);
         this.setState({
           msg: this.props.auth.msg,
         });
@@ -55,8 +53,6 @@ class LoginPage extends Component {
   };
   render() {
     const { msg } = this.state;
-    console.log(this.state);
-    console.log(this.props);
     return (
       <>
         <Container fluid>

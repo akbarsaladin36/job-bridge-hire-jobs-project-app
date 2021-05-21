@@ -28,7 +28,7 @@
   width: 100px;
   color: white;
   font-weight: 500;
-  margin-left: 0px;
+  margin-left: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,7 +80,6 @@
 }
 
 .dropdownNotification {
-  background-color: turquoise;
   height: max-content;
   margin-left: 10px;
 }
@@ -188,7 +187,6 @@
     width: 100%;
   }
   .purpleButtonOutline {
-    /* width: 100%; */
     width: 100%;
     display: flex;
     justify-content: left;
@@ -202,14 +200,6 @@
     text-align: left;
   }
   .purpleButton {
-    /* width: 100%; */
-    background-color: #5e50a1;
-    color: white;
-    font-weight: bold;
-    margin-left: 0px !important;
-    text-align: center;
-    background-color: #e5e5e5;
-    border: #e5e5e5 solid 2px;
     width: 100%;
     display: flex;
     justify-content: left;
@@ -222,27 +212,34 @@
     font-weight: bold;
     text-align: left;
   }
-}
 
-.mail,
-.bell,
-.imgProfile {
-  display: none;
-}
+  .mail,
+  .bell,
+  .imgProfile {
+    display: none;
+  }
 
-/* .jobBridgeColor {
-  margin-top: 20px;
-} */
+  .jobBridgeColor {
+    margin-top: 20px;
+  }
 
-.titleSort {
-  color: #5e50a1;
-  border-radius: 0;
-  width: 100%;
-}
-.handleResponsive {
-  margin-top: auto;
-  margin-bottom: auto;
-  display: block;
-  text-align: left;
-  font-weight: bold;
+  .titleSort {
+    color: #5e50a1;
+    border-radius: 0;
+    width: 100%;
+  }
+  .handleResponsive {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+    text-align: left;
+    font-weight: 500;
+    font-weight: bold;
+  }
+
+  .handleResponsive:hover,
+  .handleResponsive:focus,
+  .handleResponsive:active {
+    font-weight: 500;
+  }
 }

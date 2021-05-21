@@ -1,6 +1,5 @@
 const initialState = {
   data: {},
-  dataWorker: {},
   login: false, // false : tampilan navbar sebelum login || true: tampilan navbar setalah login
   roleUser: 0, // 0 = worker || 1 = recruiter
   isLoading: false,
@@ -13,6 +12,8 @@ const auth = (state = initialState, action) => {
     case "LOGIN_RECRUITER_PENDING": // prosesnya sedang berjalan
       return {
         ...state,
+        login: false,
+        roleUser: 0,
         isLoading: true,
         isError: false,
         msg: "",
@@ -20,6 +21,8 @@ const auth = (state = initialState, action) => {
     case "LOGIN_RECRUITER_FULFILLED": // ketika sukses
       return {
         ...state,
+        login: true,
+        roleUser: 0,
         isLoading: false,
         isError: false,
         data: action.payload.data.data,
@@ -28,6 +31,8 @@ const auth = (state = initialState, action) => {
     case "LOGIN_RECRUITER_REJECTED": // ketika gagal
       return {
         ...state,
+        login: false,
+        roleUser: 0,
         isLoading: false,
         isError: true,
         data: {},
@@ -58,7 +63,7 @@ const auth = (state = initialState, action) => {
         roleUser: 0,
         isLoading: false,
         isError: false,
-        dataWorker: action.payload.data.data,
+        data: action.payload.data.data,
         msg: action.payload.data.msg,
       };
     case "LOGIN_WORKER_REJECTED": // ketika gagal
