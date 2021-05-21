@@ -39,7 +39,10 @@ class ProfileRecruiter extends Component {
                   <Row className={styles.left}>
                     <Image
                       src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
-                      className={styles.imgProfile}
+                      className={`${styles.imgProfile} p-3`}
+                      alt="NONE"
+                      roundedCircle
+                      fluid
                     />
                     <p className={styles.nameRecruiter}>{company_name}</p>
                     <p className={styles.positionRecruiter}>{company_field}</p>
