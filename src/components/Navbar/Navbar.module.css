@@ -183,14 +183,11 @@
     width: 100%;
   }
   .purpleButtonOutline {
-<<<<<<< HEAD
     /* width: 100%; */
-=======
     width: 100%;
     display: flex;
     justify-content: left;
     align-items: center;
->>>>>>> ee9ae3e6444d87c03fa58ee03299fb1c71df488d
     text-align: center;
     padding-right: 0;
     margin: 0;
@@ -200,7 +197,6 @@
     text-align: left;
   }
   .purpleButton {
-<<<<<<< HEAD
     /* width: 100%; */
     background-color: #5e50a1;
     color: white;
@@ -209,7 +205,6 @@
     text-align: center;
     background-color: #e5e5e5;
     border: #e5e5e5 solid 2px;
-=======
     width: 100%;
     display: flex;
     justify-content: left;
@@ -221,7 +216,6 @@
     border: transparent;
     font-weight: bold;
     text-align: left;
->>>>>>> ee9ae3e6444d87c03fa58ee03299fb1c71df488d
   }
 }
 
