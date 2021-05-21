@@ -153,7 +153,7 @@ class NavBar extends Component {
                         >
                           {image_worker ? (
                             <Image
-                              src={image_worker}
+                              src={`${process.env.REACT_APP_IMAGE_URL}${image_worker}`}
                               className={myStyle.imgProfile}
                             />
                           ) : (
@@ -212,7 +212,7 @@ class NavBar extends Component {
                         >
                           {company_image ? (
                             <Image
-                              src={image_worker}
+                              src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
                               className={myStyle.imgProfile}
                             />
                           ) : (

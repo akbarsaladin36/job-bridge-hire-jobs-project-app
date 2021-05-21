@@ -13,7 +13,7 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         login: false,
-        roleUser: 0,
+        roleUser: 1,
         isLoading: true,
         isError: false,
         msg: "",
@@ -22,7 +22,7 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         login: true,
-        roleUser: 0,
+        roleUser: 1,
         isLoading: false,
         isError: false,
         data: action.payload.data.data,
@@ -32,7 +32,7 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         login: false,
-        roleUser: 0,
+        roleUser: 1,
         isLoading: false,
         isError: true,
         data: {},

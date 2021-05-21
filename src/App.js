@@ -11,6 +11,7 @@ import ProfileWorker from "./pages/Worker/ProfileWorker/ProfileWorker";
 import EditWorker from "./pages/Worker/EditWorker/EditWorker";
 import Chat from "./pages/Chat/Chat";
 import ProfileRecruiter from "./pages/Recruiter/ProfileRecruiter/ProfileRecruiter";
+import EditRecruiter from "./pages/Recruiter/EditRecruiter/Profile";
 
 // Import Components
 import NavBar from "./components/Navbar/Navbar";
@@ -53,6 +54,11 @@ class App extends Component {
                 path="/jobbridge/profile-recruiter"
                 exact
                 component={ProfileRecruiter}
+              />
+              <Route
+                path="/jobbridge/edit-recruiter"
+                exact
+                component={EditRecruiter}
               />
 
               {/* Route cek Components */}
