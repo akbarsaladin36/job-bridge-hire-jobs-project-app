@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import NavBar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
@@ -12,6 +13,19 @@ import Linked from "../../../assets/img/linked.png";
 
 class ProfileRecruiter extends Component {
   render() {
+    // console.log("PROPS", this.props.auth.data);
+    // console.log(process.env.REACT_APP_IMAGE_URL);
+    const {
+      company_name,
+      company_field,
+      company_city,
+      company_desc,
+      company_email,
+      company_instagram,
+      company_phone_number,
+      company_linkedin,
+      company_image,
+    } = this.props.auth.data;
     return (
       <>
         <NavBar />
@@ -23,23 +37,20 @@ class ProfileRecruiter extends Component {
               <Row className={styles.rowContainer}>
                 <Col lg={6} className={styles.colRecruiter}>
                   <Row className={styles.left}>
-                    <Image src={imgProfile} className={styles.imgProfile} />
-                    <p className={styles.nameRecruiter}>
-                      PT. Martabat Jaya Abadi
-                    </p>
-                    <p className={styles.positionRecruiter}>Financial</p>
+                    <Image
+                      src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
+                      className={styles.imgProfile}
+                    />
+                    <p className={styles.nameRecruiter}>{company_name}</p>
+                    <p className={styles.positionRecruiter}>{company_field}</p>
                     <p className={styles.location}>
                       <Image
                         src={iconLocation}
                         className={styles.iconLocation}
                       />
-                      Purwokerto, Jawa Tengah
+                      {company_city}
                     </p>
-                    <p className={styles.description}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                      urna. Curabitur eu lacus fringilla, vestibulum risus at.
-                    </p>
+                    <p className={styles.description}>{company_desc}</p>
                     <Button variant="fff" className={styles.btnEdit}>
                       Edit Profile
                     </Button>
@@ -47,25 +58,25 @@ class ProfileRecruiter extends Component {
                     <p className={styles.sosmed}>
                       <Row className={styles.rowTextSosmed}>
                         <Image src={Email} className={styles.Email} />
-                        martabatjaya@gmail.com
+                        {company_email}
                       </Row>
                     </p>
                     <p className={styles.sosmed}>
                       <Row className={styles.rowTextSosmed}>
                         <Image src={Instagram} className={styles.Instagram} />
-                        martabat_jaya
+                        {company_instagram}
                       </Row>
                     </p>
                     <p className={styles.sosmed}>
                       <Row className={styles.rowTextSosmed}>
                         <Image src={Phone} className={styles.Phone} />
-                        0821-8190-1821
+                        {company_phone_number}
                       </Row>
                     </p>
                     <p className={styles.sosmed}>
                       <Row className={styles.rowTextSosmed}>
                         <Image src={Linked} className={styles.Linked} />
-                        Martabat Jaya Abadi
+                        {company_linkedin}
                       </Row>
                     </p>
                   </Row>
@@ -80,4 +91,8 @@ class ProfileRecruiter extends Component {
   }
 }
 
-export default ProfileRecruiter;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(ProfileRecruiter);
