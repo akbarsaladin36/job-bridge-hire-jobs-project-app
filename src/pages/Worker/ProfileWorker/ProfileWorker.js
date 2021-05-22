@@ -21,13 +21,31 @@ class ProfileWorker extends Component {
     super(props);
     this.state = {
       tabContent: false,
+      hireButton: true,
+      idWorker: null,
     };
   }
 
   componentDidMount() {
-    console.log("PROPS", this.props);
-    const id = this.props.history.location.search.split("=")[1];
-    this.props.getDataWorker(id);
+    // console.log("PROPS", this.props);
+    if (this.props.history.location.search) {
+      const id = this.props.history.location.search.split("=")[1];
+      this.props.getDataWorker(id);
+      this.setState({
+        idWorker: id,
+      });
+    } else {
+      this.props.getDataWorker(this.props.auth.data.id_worker);
+      this.setState({
+        idWorker: this.props.auth.data.id_worker,
+      });
+    }
+
+    if (this.props.auth.data.id_worker) {
+      this.setState({
+        hireButton: false,
+      });
+    }
   }
 
   handleTabContent = (params) => {
@@ -36,7 +54,8 @@ class ProfileWorker extends Component {
     });
   };
   render() {
-    const { tabContent } = this.state;
+    console.log("PROPS", this.props);
+    const { tabContent, hireButton, idWorker } = this.state;
     const {
       image_worker,
       fullname_worker,
@@ -80,17 +99,17 @@ class ProfileWorker extends Component {
                   {phone_number_worker}
                 </p>
                 <p className={styles.description}>{description_worker}</p>
-                {this.props.history.location.search ? (
-                  ""
-                ) : (
+                {hireButton ? (
                   <Button
                     as={Link}
-                    to="/jobbridge/hire"
+                    to={`/jobbridge/hire/${idWorker}`}
                     variant="fff"
                     className={styles.btnHire}
                   >
                     Hire
                   </Button>
+                ) : (
+                  ""
                 )}
                 <p className={styles.skill}>Skill</p>
                 <Row className={styles.rowSkill}>
