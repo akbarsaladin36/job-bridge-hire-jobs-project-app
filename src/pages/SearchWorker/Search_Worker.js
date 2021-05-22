@@ -8,33 +8,100 @@ import {
   DropdownButton,
   Row,
   Col,
+  Image,
+  Nav,
 } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
+import axiosApiIntances from "../../utils/axios";
 import ProfilePicture from "../../assets/img/default-profile-picture.png";
 import SearchWorkerStyle from "./SearchWorkerStyle.module.css";
+import NavBar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 class SearchWorkerPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: [],
+      sortBy: "ORDER BY w.number_of_skills_worker ASC|sort by",
+      search: "",
       page: 1,
+      limit: 2,
       pagination: {},
     };
   }
 
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
+    const { sortBy, search, page, limit } = this.state;
+    axiosApiIntances
+      .get(
+        `worker?sortBy=${
+          sortBy.split("|")[0]
+        }&search=%${search}%&page=${page}&limit=${limit}`
+      )
+      .then((res) => {
+        // console.log(res.data);
+        this.setState({
+          data: res.data.data,
+          pagination: res.data.pagination,
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+  getWorker = (id) => {
+    console.log("get worker id ", id);
+    // this.props.history.push("")
+  };
+
+  changeText = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  handleSelect = (event) => {
+    // console.log(event);
+    this.setState({
+      sortBy: event,
+    });
+  };
+
   handlePageClick = (event) => {
     const selectedPage = event.selected + 1;
     this.setState({ page: selectedPage }, () => {
-      // this.getData();
+      this.getData();
       console.log(selectedPage);
+    });
+  };
+
+  handleSearch = () => {
+    const { sortBy, search, page, limit } = this.state;
+    this.setState({ page: 1 }, () => {
+      this.getData();
+      this.props.history.push(
+        `/search-worker?search=${search}&sortBy=${
+          sortBy.split("|")[1]
+        }&page=${page}&limit=${limit}`
+      );
     });
   };
 
   render() {
     const { totalPage } = this.state.pagination;
+    const { data, search, sortBy } = this.state;
+    console.log(this.state);
+
     return (
       <>
-        <Container>
+        <NavBar />
+        <Container className="pt-5" fluid>
           <div className={`${SearchWorkerStyle.top_jobs_background} py-2 mt-5`}>
             <h3 className="text-light ml-5">Top Jobs</h3>
           </div>
@@ -45,23 +112,39 @@ class SearchWorkerPage extends Component {
                   placeholder="Search for any skill"
                   aria-label="Search for any skill"
                   aria-describedby="basic-addon2"
+                  name="search"
+                  value={search}
+                  onChange={(event) => this.changeText(event)}
                 />
                 <DropdownButton
                   as={InputGroup.Append}
                   variant="outline-secondary"
                   className={SearchWorkerStyle.sort_button}
-                  title="Sort"
+                  title={sortBy.split("|")[1]}
                   id="input-group-dropdown-2"
+                  onSelect={this.handleSelect}
                 >
-                  <Dropdown.Item href="#">Action</Dropdown.Item>
-                  <Dropdown.Item href="#">Another action</Dropdown.Item>
-                  <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                  <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                  <Dropdown.Item eventKey="ORDER BY w.fullname_worker ASC|Sortir berdasarkan Nama">
+                    Sortir berdasarkan Nama
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="ORDER BY w.number_of_skills_worker DESC|Sortir berdasarkan Skill">
+                    Sortir berdasarkan Skill
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="ORDER BY w.city_worker ASC|Sortir berdasarkan Lokasi">
+                    Sortir berdasarkan Lokasi
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="AND w.work_preference_worker = 'part-time'|Sortir berdasarkan Freelance">
+                    Sortir berdasarkan Freelance
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="AND w.work_preference_worker = 'full-time'|Sortir berdasarkan Fulltime">
+                    Sortir berdasarkan Fulltime
+                  </Dropdown.Item>
                 </DropdownButton>
                 <InputGroup.Append>
                   <Button
                     variant="outline-secondary"
                     className={SearchWorkerStyle.search_button}
+                    onClick={() => this.handleSearch()}
                   >
                     Search
                   </Button>
@@ -70,92 +153,60 @@ class SearchWorkerPage extends Component {
             </Form.Row>
           </Form>
           <div className="mt-5">
-            <Row className="ml-5">
-              <Col className="ml-5">
-                <Row>
-                  <Col xs={2}>
-                    <img
-                      src={ProfilePicture}
-                      alt="worker profile"
-                      className={SearchWorkerStyle.profile_picture_size}
-                    />
-                  </Col>
-                  <Col>
-                    <p>Louis Tomlinson</p>
-                    <p className="text-muted">Web developer - Freelance</p>
-                    <p className="text-muted">Lorem ipsum</p>
-                    <Row className={SearchWorkerStyle.skills_position}>
-                      <Button
-                        className={`${SearchWorkerStyle.skills_button} mr-3`}
-                      >
-                        PHP
-                      </Button>
-                      <Button
-                        className={`${SearchWorkerStyle.skills_button} mr-3`}
-                      >
-                        Javascript
-                      </Button>
-                      <Button
-                        className={`${SearchWorkerStyle.skills_button} mr-3`}
-                      >
-                        HTML
-                      </Button>
+            {data.length > 0
+              ? data.map((item, index) => {
+                  return (
+                    <Row className="ml-5" key={index}>
+                      <Col className="ml-5">
+                        <Row>
+                          <Col xs={2}>
+                            <Image
+                              src={
+                                item.image_worker.length > 0
+                                  ? `${process.env.REACT_APP_IMAGE_URL}${item.image_worker}`
+                                  : ProfilePicture
+                              }
+                              alt="no image"
+                              className={SearchWorkerStyle.profile_picture_size}
+                              roundedCircle
+                            />
+                          </Col>
+                          <Col>
+                            <p>{item.fullname_worker}</p>
+                            <p className="text-muted">
+                              {`${item.role_worker} - ${item.work_preference_worker}`}
+                            </p>
+                            <p className="text-muted">{item.address_worker}</p>
+                            <Row className={SearchWorkerStyle.skills_position}>
+                              {item.skill.map((item, index) => {
+                                return (
+                                  <Button
+                                    key={index}
+                                    className={`${SearchWorkerStyle.skills_button} mr-3`}
+                                  >
+                                    {item.name_skill}
+                                  </Button>
+                                );
+                              })}
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col sm={3}>
+                        <Button
+                          className={`${SearchWorkerStyle.get_profile_button} mt-4`}
+                          onClick={() => this.getWorker(item.id_worker)}
+                        >
+                          Lihat Profil
+                        </Button>
+                      </Col>
+                      <hr
+                        className={`${SearchWorkerStyle.line_size} mt-4 mb-4`}
+                      />
                     </Row>
-                  </Col>
-                </Row>
-              </Col>
-              <Col sm={3}>
-                <Button
-                  className={`${SearchWorkerStyle.get_profile_button} mt-4`}
-                >
-                  Lihat Profil
-                </Button>
-              </Col>
-            </Row>
-            <hr className={`${SearchWorkerStyle.line_size} mt-5`} />
-            <Row className="ml-5 mt-5">
-              <Col className="ml-5">
-                <Row>
-                  <Col xs={2}>
-                    <img
-                      src={ProfilePicture}
-                      alt="worker profile"
-                      className={SearchWorkerStyle.profile_picture_size}
-                    />
-                  </Col>
-                  <Col>
-                    <p>Louis Tomlinson</p>
-                    <p className="text-muted">Web developer - Freelance</p>
-                    <p className="text-muted">Lorem ipsum</p>
-                    <Row className={SearchWorkerStyle.skills_position}>
-                      <Button
-                        className={`${SearchWorkerStyle.skills_button} mr-3`}
-                      >
-                        PHP
-                      </Button>
-                      <Button
-                        className={`${SearchWorkerStyle.skills_button} mr-3`}
-                      >
-                        Javascript
-                      </Button>
-                      <Button
-                        className={`${SearchWorkerStyle.skills_button} mr-3`}
-                      >
-                        HTML
-                      </Button>
-                    </Row>
-                  </Col>
-                </Row>
-              </Col>
-              <Col sm={3}>
-                <Button
-                  className={`${SearchWorkerStyle.get_profile_button} mt-4`}
-                >
-                  Lihat Profil
-                </Button>
-              </Col>
-            </Row>
-            <hr className={`${SearchWorkerStyle.line_size} mt-5`} />
+                  );
+                })
+              : ""}
           </div>
           <ReactPaginate
             previousLabel={"<"}
@@ -171,6 +222,7 @@ class SearchWorkerPage extends Component {
             activeClassName={SearchWorkerStyle.active}
           />
         </Container>
+        <Footer />
       </>
     );
   }
