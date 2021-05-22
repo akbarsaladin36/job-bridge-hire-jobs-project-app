@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { getDataWorker } from "../../redux/action/worker";
 import { logout } from "../../redux/action/auth";
 import { Container, Navbar, Nav, Image, Dropdown, Row } from "react-bootstrap";
 // import { Link } from "react-router-dom";
@@ -13,12 +14,13 @@ import chat from "../../assets/img/chat.png";
 
 class NavBar extends Component {
   handleLogout = (params) => {
-    console.log(this.props);
+    // console.log(this.props);
     if (params) {
       localStorage.clear();
       window.location.href = "/";
     }
   };
+
   render() {
     const { login, roleUser } = this.props.auth;
     const { image_worker, company_image } = this.props.auth.data;
@@ -106,7 +108,6 @@ class NavBar extends Component {
                     <Dropdown className={myStyle.dropdownNotification}>
                       <Dropdown.Toggle
                         variant="#fff"
-                        title="sort"
                         id="dropdown-basic"
                         className={myStyle.titleSort}
                       >
@@ -135,7 +136,6 @@ class NavBar extends Component {
                     >
                       <Dropdown.Toggle
                         variant="#fff"
-                        title="sort"
                         id="dropdown-basic"
                         className={myStyle.titleSort}
                       >
@@ -147,7 +147,6 @@ class NavBar extends Component {
                       <Dropdown className={myStyle.dropdown}>
                         <Dropdown.Toggle
                           variant="#fff"
-                          title="sort"
                           id="dropdown-basic"
                           className={myStyle.titleSort}
                         >
@@ -206,7 +205,6 @@ class NavBar extends Component {
                       <Dropdown className={myStyle.dropdown}>
                         <Dropdown.Toggle
                           variant="#fff"
-                          title="sort"
                           id="dropdown-basic"
                           className={myStyle.titleSort}
                         >
@@ -272,7 +270,8 @@ class NavBar extends Component {
 }
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  worker: state.worker,
 });
-const mapDispatchToProps = { logout };
+const mapDispatchToProps = { logout, getDataWorker };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

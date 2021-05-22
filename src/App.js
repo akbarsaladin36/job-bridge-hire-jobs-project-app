@@ -39,6 +39,7 @@ class App extends Component {
               <Route path="/jobbridge/navbar" exact component={NavBar} />
               <Route path="/jobbridge/hire/:id" exact component={Hire} />
               <Route path="/jobbridge" exact component={Home} />
+              <Route path="/jobbridge/hire" exact component={Hire} />
               <Route path="/" exact component={LandingPage} />
               <Route
                 path="/jobbridge/profile-worker"

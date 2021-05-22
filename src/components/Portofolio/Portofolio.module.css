@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+.cardImage {
+  font-family: "Open Sans", sans-serif;
+  width: auto;
+  height: 150px;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.cardBody {
+  cursor: pointer;
+  padding-top: 10px;
+  align-items: center;
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.cardImage1 {
+  display: block;
+}
+
+.cardContent {
+  display: block;
+}
+
+.cardBody {
+  background-color: white;
+  border-color: white !important ;
+}
+
+.cardBody:hover {
+  background-color: #fbaf17;
+  width: 400px;
+  margin-bottom: -200px;
+  position: absolute;
+  z-index: 2;
+  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.363);
+  padding: 5px;
+  border: 3px solid #5e50a1;
+  border-radius: 8px;
+}
+.cardImage1:not(:hover) + .cardContent:not(:hover) {
+  display: none;
+}
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.text {
+  margin-top: 20px;
+  color: white;
+  text-align: justify;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.detail {
+  background-color: white !important;
+  color: #5f2eea !important;
+  border-color: #5f2eea !important;
+}
+
+@media (max-width: 991.98px) {
+  .cardBody {
+    padding-top: 10px;
+    align-items: center;
+  }
+
+  .cardImage {
+    width: auto;
+    height: 130px;
+  }
+
+  .cardBody:hover {
+    width: 180px;
+    height: auto;
+  }
+  .title {
+    font-size: 13px;
+  }
+  .text {
+    font-size: 10px;
+  }
+  .bookingShowing,
+  .detail {
+    font-size: 12px;
+  }
+}

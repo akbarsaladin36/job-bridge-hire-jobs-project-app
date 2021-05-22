@@ -1,5 +1,6 @@
 import { Component } from "react";
 // import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import styles from "./LandingPage.module.css";
 import {
   Container,
@@ -342,4 +343,9 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  worker: state.worker,
+});
+
+export default connect(mapStateToProps)(LandingPage);

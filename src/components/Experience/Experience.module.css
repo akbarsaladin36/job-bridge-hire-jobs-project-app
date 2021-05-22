@@ -258,23 +258,24 @@
 .companyJob {
   margin-bottom: 0;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 600;
   color: #46505c;
 }
 
 .durationJob {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  color: #9ea0a5;
+  color: #88898a;
 }
 
 .dateDurationJob {
+  font-size: 15px;
   margin-right: 10px;
 }
 
 .descriptionJob {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
   color: #1f2a36;
 }
 
