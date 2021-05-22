@@ -9,7 +9,6 @@ import {
   Row,
   Col,
   Image,
-  Nav,
 } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import axiosApiIntances from "../../utils/axios";

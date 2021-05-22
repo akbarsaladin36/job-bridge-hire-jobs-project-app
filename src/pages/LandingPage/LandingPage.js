@@ -23,6 +23,10 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
 class LandingPage extends Component {
+  handleClick = () => {
+    this.props.history.push("/search-worker");
+  };
+
   render() {
     return (
       <>
@@ -41,7 +45,11 @@ class LandingPage extends Component {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                     euismod ipsum et dui rhoncus auctor.
                   </h1>
-                  <Button variant="fff" className={styles.buttonStart}>
+                  <Button
+                    variant="fff"
+                    className={styles.buttonStart}
+                    onClick={() => this.handleClick()}
+                  >
                     Mulai Dari Sekarang
                   </Button>
                 </Row>
