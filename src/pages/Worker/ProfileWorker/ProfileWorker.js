@@ -1,17 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import { getDataWorker } from "../../../redux/action/worker";
 import NavBar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
+import Portofolio from "../../../components/Portofolio/Portofolio";
+import Experience from "../../../components/Experience/Experience";
 import styles from "./ProfileWorker.module.css";
-import imgProfile from "../../../assets/img/louis.png";
+import { Link } from "react-router-dom";
+import imgProfile from "../../../assets/img/img-not-found.png";
 import iconLocation from "../../../assets/img/icon-location.png";
 import iconPhone from "../../../assets/img/icon-phone.png";
 import Email from "../../../assets/img/mail.png";
 import Instagram from "../../../assets/img/instagram.png";
 import Github from "../../../assets/img/github.png";
 import Gitlab from "../../../assets/img/gitlab.png";
-import Portofolio from "../../../assets/img/portofolio.png";
-import suitcase from "../../../assets/img/suitcase.png";
 
 class ProfileWorker extends Component {
   constructor(props) {
@@ -28,6 +31,20 @@ class ProfileWorker extends Component {
   };
   render() {
     const { tabContent } = this.state;
+    const {
+      image_worker,
+      fullname_worker,
+      role_worker,
+      work_preference_worker,
+      address_worker,
+      phone_number_worker,
+      description_worker,
+      email_worker,
+      instagram_worker,
+      github_worker,
+      gitlab_worker,
+    } = this.props.worker.data;
+    const { skill, portofolio, experience } = this.props.worker;
     return (
       <>
         <NavBar />
@@ -35,174 +52,108 @@ class ProfileWorker extends Component {
         <Container fluid className={styles.container1}></Container>
         <Container className={styles.container}>
           <Row className={styles.rowContainer}>
-            <Col lg={4}>
-              <Row className={styles.left}>
-                <Image src={imgProfile} className={styles.imgProfile} />
-                <p className={styles.nameWorker}>Louis Tomlinson</p>
-                <p className={styles.jobWorker}>Web Developer</p>
-                <p className={styles.partJob}>Freelancer</p>
+            <Col lg={4} className={styles.left}>
+              <Col className={styles.colCardBiodata}>
+                {image_worker ? (
+                  <Image
+                    src={`${process.env.REACT_APP_IMAGE_URL}${image_worker}`}
+                    className={styles.imgProfile}
+                  />
+                ) : (
+                  <Image src={imgProfile} className={styles.imgProfile} />
+                )}
+                <p className={styles.nameWorker}>{fullname_worker}</p>
+                <p className={styles.jobWorker}>{role_worker}</p>
+                <p className={styles.partJob}>{work_preference_worker}</p>
                 <p className={styles.location}>
                   <Image src={iconLocation} className={styles.iconLocation} />
-                  Purwokerto, Jawa Tengah
+                  {address_worker}
                 </p>
                 <p className={styles.phone}>
                   <Image src={iconPhone} className={styles.iconPhone} />
-                  0812 - 3456 - 789
+                  {phone_number_worker}
                 </p>
-                <p className={styles.description}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                  urna. Curabitur eu lacus fringilla, vestibulum risus at.
-                </p>
-                <Button variant="fff" className={styles.btnHire}>
+                <p className={styles.description}>{description_worker}</p>
+                <Button
+                  as={Link}
+                  to="/jobbridge/hire"
+                  variant="fff"
+                  className={styles.btnHire}
+                >
                   Hire
                 </Button>
                 <p className={styles.skill}>Skill</p>
                 <Row className={styles.rowSkill}>
-                  <p className={styles.listSkill}>Phyton</p>
-                  <p className={styles.listSkill}>Laravel</p>
-                  <p className={styles.listSkill}>Golang</p>
-                  <p className={styles.listSkill}>Javascript</p>
-                  <p className={styles.listSkill}>PHP</p>
-                  <p className={styles.listSkill}>HTML</p>
-                  <p className={styles.listSkill}>C++</p>
-                  <p className={styles.listSkill}>Kotlin</p>
-                  <p className={styles.listSkill}>Swift</p>
+                  {skill.map((item, index) => {
+                    return (
+                      <Col lg={4} key={index} className={styles.colSkill}>
+                        <p className={styles.listSkill}>{item.name_skill}</p>
+                      </Col>
+                    );
+                  })}
                 </Row>
                 <p className={styles.sosmed}>
                   <Image src={Email} className={styles.Email} />
-                  Louistommo@gmail.com
+                  {email_worker}
                 </p>
                 <p className={styles.sosmed}>
                   <Image src={Instagram} className={styles.Instagram} />
-                  @Louist91
+                  {instagram_worker}
                 </p>
                 <p className={styles.sosmed}>
                   <Image src={Github} className={styles.Github} />
-                  @Louistommo
+                  {github_worker}
                 </p>
                 <p className={styles.sosmed}>
                   <Image src={Gitlab} className={styles.Gitlab} />
-                  @Louistommo91
+                  {gitlab_worker}
                 </p>
-              </Row>
+              </Col>
             </Col>
-            <Col lg={8}>
-              <Row className={styles.right}>
-                <Col className={styles.colRight}>
-                  <Row className={styles.rowTab}>
-                    <Button
-                      variant="fff"
-                      className={styles.Portofolio}
-                      onClick={() => this.handleTabContent(false)}
-                    >
-                      Portofolio
-                    </Button>
-                    <Button
-                      variant="fff"
-                      className={styles.ExperienceWork}
-                      onClick={() => this.handleTabContent(true)}
-                    >
-                      Pengalaman Kerja
-                    </Button>
+            <Col lg={8} className={styles.right}>
+              <Col className={styles.colRight}>
+                <Row className={styles.rowTab}>
+                  <Button
+                    variant="fff"
+                    className={styles.Portofolio}
+                    onClick={() => this.handleTabContent(false)}
+                  >
+                    Portofolio
+                  </Button>
+                  <Button
+                    variant="fff"
+                    className={styles.ExperienceWork}
+                    onClick={() => this.handleTabContent(true)}
+                  >
+                    Pengalaman Kerja
+                  </Button>
+                </Row>
+                {tabContent === false ? (
+                  <Row className={styles.rowTabContent}>
+                    {portofolio.map((item, index) => {
+                      return (
+                        <Col
+                          lg={4}
+                          key={index}
+                          className={styles.colTabContent}
+                        >
+                          <Portofolio portofolio={item} />
+                        </Col>
+                      );
+                    })}
                   </Row>
-                  {tabContent === false ? (
-                    <Row className={styles.rowTabContent}>
-                      <Col lg={4} className={styles.colTabContent}>
-                        <Image
-                          src={Portofolio}
-                          className={styles.imgPortofolio}
-                        />
-                        <p className={styles.titlePortofolio}>Remainder app</p>
-                      </Col>
-                      <Col lg={4} className={styles.colTabContent}>
-                        <Image
-                          src={Portofolio}
-                          className={styles.imgPortofolio}
-                        />
-                        <p className={styles.titlePortofolio}>Remainder app</p>
-                      </Col>
-                      <Col lg={4} className={styles.colTabContent}>
-                        <Image
-                          src={Portofolio}
-                          className={styles.imgPortofolio}
-                        />
-                        <p className={styles.titlePortofolio}>Remainder app</p>
-                      </Col>
-                      <Col lg={4} className={styles.colTabContent}>
-                        <Image
-                          src={Portofolio}
-                          className={styles.imgPortofolio}
-                        />
-                        <p className={styles.titlePortofolio}>Remainder app</p>
-                      </Col>
-                      <Col lg={4} className={styles.colTabContent}>
-                        <Image
-                          src={Portofolio}
-                          className={styles.imgPortofolio}
-                        />
-                        <p className={styles.titlePortofolio}>Remainder app</p>
-                      </Col>
-                      <Col lg={4} className={styles.colTabContent}>
-                        <Image
-                          src={Portofolio}
-                          className={styles.imgPortofolio}
-                        />
-                        <p className={styles.titlePortofolio}>Remainder app</p>
-                      </Col>
-                    </Row>
-                  ) : (
-                    <Row className={styles.rowTabContent}>
-                      <Row className={styles.rowExperienceWork}>
-                        <Col lg={3} className={styles.ExperienceWorkLeft}>
-                          <Image src={suitcase} />
-                        </Col>
-                        <Col lg={8}>
-                          <p className={styles.positionJob}>Engineer</p>
-                          <p className={styles.companyJob}>Tokopedia</p>
-                          <Col>
-                            <Row className={styles.durationJob}>
-                              <p className={styles.dateDurationJob}>
-                                July 2019 - January 2020
-                              </p>{" "}
-                              <p className={styles.longDurationJob}>6 months</p>
-                            </Row>
-                          </Col>
-                          <p className={styles.descriptionJob}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Vestibulum erat orci, mollis nec gravida sed,
-                            ornare quis urna. Curabitur eu lacus fringilla,
-                            vestibulum risus at.
-                          </p>
-                        </Col>
-                      </Row>
-                      <Row className={styles.rowExperienceWork}>
-                        <Col lg={3} className={styles.ExperienceWorkLeft}>
-                          <Image src={suitcase} />
-                        </Col>
-                        <Col lg={8}>
-                          <p className={styles.positionJob}>Engineer</p>
-                          <p className={styles.companyJob}>Tokopedia</p>
-                          <Col>
-                            <Row className={styles.durationJob}>
-                              <p className={styles.dateDurationJob}>
-                                July 2019 - January 2020
-                              </p>{" "}
-                              <p className={styles.longDurationJob}>6 months</p>
-                            </Row>
-                          </Col>
-                          <p className={styles.descriptionJob}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Vestibulum erat orci, mollis nec gravida sed,
-                            ornare quis urna. Curabitur eu lacus fringilla,
-                            vestibulum risus at.
-                          </p>
-                        </Col>
-                      </Row>
-                    </Row>
-                  )}
-                </Col>
-              </Row>
+                ) : (
+                  <Row className={styles.rowTabContent}>
+                    {experience.map((item, index) => {
+                      return (
+                        <Row key={index} className={styles.rowExperienceWork}>
+                          <Experience experience={item} />
+                        </Row>
+                      );
+                    })}
+                  </Row>
+                )}
+              </Col>
             </Col>
           </Row>
         </Container>
@@ -212,4 +163,11 @@ class ProfileWorker extends Component {
   }
 }
 
-export default ProfileWorker;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  worker: state.worker,
+});
+
+const mapDispatchToProps = { getDataWorker };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileWorker);

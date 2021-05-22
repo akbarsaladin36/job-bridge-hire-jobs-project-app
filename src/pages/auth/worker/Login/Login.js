@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginWorker } from "../../../../redux/action/auth";
+import { getDataWorker } from "../../../../redux/action/worker";
 import { Row, Col, Form, Button, Container, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginStyle from "./LoginStyle.module.css";
@@ -17,6 +18,7 @@ class LoginPage extends Component {
         userPassword: "",
       },
       msg: "",
+      id: "",
     };
   }
 
@@ -30,7 +32,6 @@ class LoginPage extends Component {
   };
 
   handleLogin = (event) => {
-    console.log("this handle");
     const { userEmail, userPassword } = this.state.form;
     this.props
       .loginWorker({
@@ -42,6 +43,7 @@ class LoginPage extends Component {
         this.setState({
           msg: this.props.auth.msg,
         });
+        this.props.getDataWorker(this.props.auth.data.id_worker);
         this.props.history.push("/");
       })
       .catch((err) => {
@@ -51,6 +53,7 @@ class LoginPage extends Component {
         });
       });
   };
+
   render() {
     const { msg } = this.state;
     return (
@@ -139,7 +142,8 @@ class LoginPage extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  worker: state.worker,
 });
-const mapDispatchToProps = { loginWorker };
+const mapDispatchToProps = { loginWorker, getDataWorker };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
