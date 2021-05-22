@@ -3,6 +3,7 @@ const initialState = {
   isLoading: false,
   isError: false,
   msg: "",
+  hireViaEamil: "error",
 };
 
 const recruiter = (state = initialState, action) => {
@@ -29,6 +30,21 @@ const recruiter = (state = initialState, action) => {
         isError: true,
         data: {},
         msg: action.payload.response.data.msg,
+      };
+    case "HIRE_WORKER_PENDING":
+      return {
+        ...state,
+        hireViaEamil: "pending",
+      };
+    case "HIRE_WORKER_FULFILLED": // ketika sukses
+      return {
+        ...state,
+        hireViaEamil: "succes",
+      };
+    case "HIRE_WORKER_REJECTED": // ketika gagal
+      return {
+        ...state,
+        hireViaEamil: "error",
       };
     default:
       return state;

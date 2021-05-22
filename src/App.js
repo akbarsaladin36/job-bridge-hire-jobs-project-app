@@ -6,6 +6,7 @@ import { store, persistor } from "./redux/store";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Hire from "./pages/Hire/Hire";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ProfileWorker from "./pages/Worker/ProfileWorker/ProfileWorker";
 import EditWorker from "./pages/Worker/EditWorker/EditWorker";
@@ -36,6 +37,7 @@ class App extends Component {
               {/* <Route path="/profilepage" exact component={ProfilePage} /> */}
 
               <Route path="/jobbridge/navbar" exact component={NavBar} />
+              <Route path="/jobbridge/hire/:id" exact component={Hire} />
               <Route path="/jobbridge" exact component={Home} />
               <Route path="/" exact component={LandingPage} />
               <Route
