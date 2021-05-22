@@ -24,6 +24,12 @@ class ProfileWorker extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log("PROPS", this.props);
+    const id = this.props.history.location.search.split("=")[1];
+    this.props.getDataWorker(id);
+  }
+
   handleTabContent = (params) => {
     this.setState({
       tabContent: params,
@@ -74,23 +80,31 @@ class ProfileWorker extends Component {
                   {phone_number_worker}
                 </p>
                 <p className={styles.description}>{description_worker}</p>
-                <Button
-                  as={Link}
-                  to="/jobbridge/hire"
-                  variant="fff"
-                  className={styles.btnHire}
-                >
-                  Hire
-                </Button>
+                {this.props.history.location.search ? (
+                  ""
+                ) : (
+                  <Button
+                    as={Link}
+                    to="/jobbridge/hire"
+                    variant="fff"
+                    className={styles.btnHire}
+                  >
+                    Hire
+                  </Button>
+                )}
                 <p className={styles.skill}>Skill</p>
                 <Row className={styles.rowSkill}>
-                  {skill.map((item, index) => {
-                    return (
-                      <Col lg={4} key={index} className={styles.colSkill}>
-                        <p className={styles.listSkill}>{item.name_skill}</p>
-                      </Col>
-                    );
-                  })}
+                  {Object.keys(skill).length !== 0
+                    ? skill.map((item, index) => {
+                        return (
+                          <Col lg={4} key={index} className={styles.colSkill}>
+                            <p className={styles.listSkill}>
+                              {item.name_skill}
+                            </p>
+                          </Col>
+                        );
+                      })
+                    : ""}
                 </Row>
                 <p className={styles.sosmed}>
                   <Image src={Email} className={styles.Email} />
@@ -130,27 +144,34 @@ class ProfileWorker extends Component {
                 </Row>
                 {tabContent === false ? (
                   <Row className={styles.rowTabContent}>
-                    {portofolio.map((item, index) => {
-                      return (
-                        <Col
-                          lg={4}
-                          key={index}
-                          className={styles.colTabContent}
-                        >
-                          <Portofolio portofolio={item} />
-                        </Col>
-                      );
-                    })}
+                    {Object.keys(portofolio).length !== 0
+                      ? portofolio.map((item, index) => {
+                          return (
+                            <Col
+                              lg={4}
+                              key={index}
+                              className={styles.colTabContent}
+                            >
+                              <Portofolio portofolio={item} />
+                            </Col>
+                          );
+                        })
+                      : ""}
                   </Row>
                 ) : (
                   <Row className={styles.rowTabContent}>
-                    {experience.map((item, index) => {
-                      return (
-                        <Row key={index} className={styles.rowExperienceWork}>
-                          <Experience experience={item} />
-                        </Row>
-                      );
-                    })}
+                    {Object.keys(experience).length !== 0
+                      ? experience.map((item, index) => {
+                          return (
+                            <Row
+                              key={index}
+                              className={styles.rowExperienceWork}
+                            >
+                              <Experience experience={item} />
+                            </Row>
+                          );
+                        })
+                      : ""}
                   </Row>
                 )}
               </Col>

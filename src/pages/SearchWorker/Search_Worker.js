@@ -56,7 +56,7 @@ class SearchWorkerPage extends Component {
 
   getWorker = (id) => {
     console.log("get worker id ", id);
-    // this.props.history.push("")
+    this.props.history.push(`/jobbridge/profile-worker?id=${id}`);
   };
 
   changeText = (event) => {
