@@ -6,7 +6,7 @@ import RegisterStyle from "./RegisterStyle.module.css";
 import Image1 from "../../../../assets/img/left-column-image.jpg";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
-import { registerWorker } from "../../../../redux/actions/auth";
+import { registerWorker } from "../../../../redux/action/auth";
 
 class RegisterPage extends Component {
   constructor(props) {
