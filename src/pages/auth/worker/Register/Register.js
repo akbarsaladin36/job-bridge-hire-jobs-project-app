@@ -1,13 +1,62 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import RegisterStyle from "./RegisterStyle.module.css";
 import Image1 from "../../../../assets/img/left-column-image.jpg";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
+import { registerWorker } from "../../../../redux/action/auth";
 
 class RegisterPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        fullnameWorker: "",
+        emailWorker: "",
+        phoneNumberWorker: "",
+        passwordWorker: "",
+        confirmPasswordWorker: "",
+      },
+    };
+  }
+
+  changeText = (event) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  submitData = (event) => {
+    event.preventDefault();
+    // console.log(this.props);
+    const { passwordWorker, confirmPasswordWorker } = this.state.form;
+    if (passwordWorker !== confirmPasswordWorker) {
+      alert("Passwords don't match.");
+    } else {
+      // console.log(this.props);
+      this.props.registerWorker({
+        fullnameWorker: this.state.form.fullnameWorker,
+        emailWorker: this.state.form.emailWorker,
+        phoneNumberWorker: this.state.form.phoneNumberWorker,
+        passwordWorker: confirmPasswordWorker,
+      });
+      alert("Register Worker sudah sukses. Silakan cek email anda.");
+    }
+  };
+
   render() {
+    const {
+      fullnameWorker,
+      emailWorker,
+      phoneNumberWorker,
+      passwordWorker,
+      confirmPasswordWorker,
+    } = this.state;
     return (
       <>
         <Container fluid>
@@ -44,48 +93,61 @@ class RegisterPage extends Component {
                 lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 euismod ipsum et dui rhoncus auctor
               </p>
-              <Form className="mt-5">
+              <Form className="mt-5 ml-3" onSubmit={this.submitData}>
                 <Form.Group>
                   <Form.Label>Nama</Form.Label>
                   <Form.Control
                     type="text"
-                    name="userFullName"
+                    name="fullnameWorker"
                     placeholder="Masukkan nama"
+                    value={fullnameWorker}
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="email"
-                    name="userEmail"
+                    name="emailWorker"
                     placeholder="Masukkan alamat email"
+                    value={emailWorker}
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>No handphone</Form.Label>
                   <Form.Control
                     type="text"
-                    name="userPhoneNumber"
+                    name="phoneNumberWorker"
                     placeholder="Masukkan no handphone"
+                    value={phoneNumberWorker}
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>Kata Sandi</Form.Label>
                   <Form.Control
                     type="password"
-                    name="userPassword"
+                    name="passwordWorker"
                     placeholder="Masukkan kata sandi"
+                    value={passwordWorker}
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>Konfirmasi kata sandi</Form.Label>
                   <Form.Control
                     type="password"
-                    name="userPassword"
+                    name="confirmPasswordWorker"
                     placeholder="Masukkan konfirmasi kata sandi"
+                    value={confirmPasswordWorker}
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
-                <Button className={`${RegisterStyle.register_button} mt-4`}>
+                <Button
+                  className={`${RegisterStyle.register_button} mt-4`}
+                  type="submit"
+                >
                   Daftar
                 </Button>
               </Form>
@@ -106,4 +168,10 @@ class RegisterPage extends Component {
   }
 }
 
-export default RegisterPage;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+const mapDispatchToProps = { registerWorker };
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);

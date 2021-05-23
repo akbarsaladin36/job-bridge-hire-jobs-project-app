@@ -26,3 +26,10 @@ export const loginWorker = (data) => {
     payload: axiosApiIntances.post("auth/login-worker", data),
   };
 };
+
+export const registerWorker = (data) => {
+  return {
+    type: "REGISTER_WORKER",
+    payload: axiosApiIntances.post("auth/register-worker", data),
+  };
+};
