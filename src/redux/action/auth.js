@@ -7,6 +7,13 @@ export const loginRecruiter = (data) => {
   };
 };
 
+export const RegisterPerekrut = (data) => {
+  return {
+    type: "REGISTER_RECRUITER",
+    payload: axiosApiIntances.post("auth/register-company", data),
+  };
+};
+
 export const logout = (data) => {
   return {
     type: "LOGOUT",
