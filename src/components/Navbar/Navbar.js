@@ -23,8 +23,10 @@ class NavBar extends Component {
 
   render() {
     const { login, roleUser } = this.props.auth;
-    const { image_worker, company_image } = this.props.auth.data;
+    const { company_image } = this.props.auth.data;
+    const { image_worker } = this.props.worker.biodata;
     const { logout } = this.props;
+    // console.log(this.props);
     return (
       <>
         <Container fluid className={`${myStyle.container} shadow`}>
@@ -150,14 +152,16 @@ class NavBar extends Component {
                           id="dropdown-basic"
                           className={myStyle.titleSort}
                         >
-                          {image_worker ? (
+                          {image_worker === null ||
+                          image_worker === "" ||
+                          image_worker === undefined ? (
                             <Image
-                              src={`${process.env.REACT_APP_IMAGE_URL}${image_worker}`}
+                              src={imgProfile}
                               className={myStyle.imgProfile}
                             />
                           ) : (
                             <Image
-                              src={imgProfile}
+                              src={`${process.env.REACT_APP_IMAGE_URL}${image_worker}`}
                               className={myStyle.imgProfile}
                             />
                           )}
@@ -208,7 +212,9 @@ class NavBar extends Component {
                           id="dropdown-basic"
                           className={myStyle.titleSort}
                         >
-                          {company_image ? (
+                          {company_image === null ||
+                          company_image === "" ||
+                          company_image === undefined ? (
                             <Image
                               src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
                               className={myStyle.imgProfile}

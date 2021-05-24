@@ -7,6 +7,7 @@ import iconSize from "../../assets/img/icon-size.png";
 import iconUpload from "../../assets/img/icon-upload.png";
 
 function UploadImage(props) {
+  console.log(props);
   const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
     useDropzone({
       accept: "image/jpeg, image/png, image/gif",
@@ -17,6 +18,8 @@ function UploadImage(props) {
       {file.path} - {file.size} bytes
     </li>
   ));
+
+  console.log("img porto", acceptedFileItems);
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
     <li key={file.path}>

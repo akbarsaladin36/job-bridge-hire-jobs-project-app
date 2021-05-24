@@ -12,16 +12,18 @@ class Home extends Component {
         <Card className={`${styles.cardBody} `}>
           <Row className={styles.cardImage1}>
             <Col>
-              {image_portofolio ? (
+              {image_portofolio === null ||
+              image_portofolio === "" ||
+              image_portofolio === undefined ? (
                 <Card.Img
                   variant="top"
-                  src={`${process.env.REACT_APP_IMAGE_URL}${image_portofolio}`}
+                  src={Portofolio}
                   className={styles.cardImage}
                 />
               ) : (
                 <Card.Img
                   variant="top"
-                  src={Portofolio}
+                  src={`${process.env.REACT_APP_IMAGE_URL}${image_portofolio}`}
                   className={styles.cardImage}
                 />
               )}

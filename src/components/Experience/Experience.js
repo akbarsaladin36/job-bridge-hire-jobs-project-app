@@ -50,9 +50,13 @@ class Experience extends Component {
                 <p className={styles.dateDurationJob}>
                   {DateIn} - {DateOut}
                 </p>
-                <p className={styles.longDurationJob}>
-                  {totalYear} years {totalMonth} months
-                </p>
+                {totalYear === 0 ? (
+                  <p className={styles.longDurationJob}>{totalMonth} months</p>
+                ) : (
+                  <p className={styles.longDurationJob}>
+                    {totalYear} years {totalMonth} months
+                  </p>
+                )}
               </Row>
             </Col>
             <p className={styles.descriptionJob}>{job_desc_experience}</p>
