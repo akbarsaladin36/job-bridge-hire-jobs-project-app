@@ -47,7 +47,7 @@ class App extends Component {
                 component={ProfileWorker}
               />
               <Route
-                path="/jobbridge/edit-worker"
+                path="/jobbridge/edit-worker/"
                 exact
                 component={EditWorker}
               />

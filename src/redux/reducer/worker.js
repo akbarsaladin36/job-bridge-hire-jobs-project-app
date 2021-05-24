@@ -1,5 +1,6 @@
 const initialState = {
   data: {},
+  biodata: {},
   skill: {},
   experience: {},
   portofolio: {},
@@ -12,32 +13,33 @@ const initialState = {
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_WORKER_PENDING": // prosesnya sedang berjalan
+    case "GET_WORKER_PENDING":
       return {
         ...state,
-        login: false, // false : tampilan navbar sebelum login || true: tampilan navbar setalah login
+        login: false,
         roleUser: 0,
         isLoading: true,
         isError: false,
         msg: "",
       };
-    case "GET_WORKER_FULFILLED": // ketika sukses
+    case "GET_WORKER_FULFILLED":
       return {
         ...state,
-        login: true, // false : tampilan navbar sebelum login || true: tampilan navbar setalah login
+        login: true,
         roleUser: 0,
         isLoading: false,
         isError: false,
-        data: action.payload.data.data[0],
+        data: action.payload.data.data,
+        biodata: action.payload.data.data[0],
         skill: action.payload.data.data[0].skill,
         experience: action.payload.data.data[0].experience,
         portofolio: action.payload.data.data[0].portofolio,
         msg: action.payload.data.msg,
       };
-    case "GET_WORKER_REJECTED": // ketika gagal
+    case "GET_WORKER_REJECTED":
       return {
         ...state,
-        login: false, // false : tampilan navbar sebelum login || true: tampilan navbar setalah login
+        login: false,
         roleUser: 0,
         isLoading: false,
         isError: true,
@@ -48,6 +50,149 @@ const auth = (state = initialState, action) => {
         portofolio: action.payload.data.data[0].portofolio.msg,
       };
 
+    case "UPDATE_BIODATA_WORKER_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "UPDATE_BIODATA_WORKER_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        msg: action.payload.data.msg,
+      };
+    case "UPDATE_BIODATA_WORKER_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        data: {},
+      };
+
+    case "UPDATE_IMAGE_WORKER_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "UPDATE_IMAGE_WORKER_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        msg: action.payload.data.msg,
+      };
+    case "UPDATE_IMAGE_WORKER_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        data: {},
+      };
+
+    case "UPDATE_SKILL_WORKER_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "UPDATE_SKILL_WORKER_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        msg: action.payload.data.msg,
+      };
+    case "UPDATE_SKILL_WORKER_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        data: {},
+      };
+
+    case "CREATE_EXPERIENCE_WORKER_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "CREATE_EXPERIENCE_WORKER_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        // data: action.payload.data.data[0],
+        msg: action.payload.data.msg,
+      };
+    case "CREATE_EXPERIENCE_WORKER_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        // data: {},
+        msg: action.payload.data.msg,
+      };
+
+    case "CREATE_PORTOFOLIO_WORKER_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "CREATE_PORTOFOLIO_WORKER_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        // data: action.payload.data.data[0],
+        msg: action.payload.data.msg,
+      };
+    case "CREATE_PORTOFOLIO_WORKER_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        // data: {},
+        msg: action.payload.data.msg,
+      };
     default:
       return state;
   }

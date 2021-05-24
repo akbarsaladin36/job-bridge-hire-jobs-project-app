@@ -1,45 +1,429 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Image, Button, Form } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Button,
+  Form,
+  Toast,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {
+  getDataWorker,
+  UpdateBiodataWorker,
+  UpdateImageWorker,
+  UpdateSkillWorker,
+  CreateExperienceWorker,
+  CreatePortofolioWorker,
+} from "../../../redux/action/worker";
+import Experience from "../../../components/Experience/Experience";
 import NavBar from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
 import styles from "./EditWorker.module.css";
-import imgProfile from "../../../assets/img/louis.png";
+import imgProfile from "../../../assets/img/img-not-found.png";
 import iconLocation from "../../../assets/img/icon-location.png";
 import iconPhone from "../../../assets/img/icon-phone.png";
 import iconEdit from "../../../assets/img/icon-edit.png";
 import iconDelete from "../../../assets/img/icon-delete.png";
+import rocket from "../../../assets/img/rocket.png";
 import UploadImage from "../../../components/UploadImage/UploadImage";
 
 class EditWorker extends Component {
+  constructor(props) {
+    // console.log(props);
+    super(props);
+    this.state = {
+      biodata: {
+        imageWorker: `${process.env.REACT_APP_IMAGE_URL}${this.props.worker.biodata.image_worker}`,
+        fullnameWorker: this.props.worker.biodata.fullname_worker,
+        roleWorker: this.props.worker.biodata.role_worker,
+        workPreferenceWorker: this.props.worker.biodata.work_preference_worker,
+        addressWorker: this.props.worker.biodata.address_worker,
+        phoneNumberWorker: this.props.worker.biodata.phone_number_worker,
+        instagramWorker: this.props.worker.biodata.instagram_worker,
+        githubWorker: this.props.worker.biodata.github_worker,
+        gitlabWorker: this.props.worker.biodata.gitlab_worker,
+        descriptionWorker: this.props.worker.biodata.description_worker,
+        image: null,
+      },
+      setData: {
+        skills: ["php", "java", "phyton"],
+      },
+      experience: {
+        companyNameExperience: "",
+        posistionExperience: "",
+        workDateInExperience: "",
+        workDateOutExperience: "",
+        jobDescExperience: "",
+      },
+      portofolioWorker: {
+        imagePortofolio: `${process.env.REACT_APP_IMAGE_URL}${this.props.worker.portofolio.image_portofolio}`,
+        appNamePortofolio: "",
+        linkRepositoryPortofolio: "",
+        appDescPortofolio: "",
+        image: null,
+      },
+      show: false,
+      setShow: false,
+    };
+  }
+
+  changeText = (event) => {
+    this.setState({
+      biodata: {
+        ...this.state.biodata,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  changeTextExperience = (event) => {
+    // console.log(typeof event.target.value);
+    this.setState({
+      experience: {
+        ...this.state.experience,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  changeTextPortofolio = (event) => {
+    // console.log(typeof event.target.value);
+    this.setState({
+      portofolioWorker: {
+        ...this.state.portofolioWorker,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  changeSkill = (event) => {
+    // console.log(event.target.value);
+    const data = event.target.value;
+    console.log(data);
+    this.setState({
+      setData: {
+        skills: [event.target.value],
+      },
+    });
+  };
+
+  componentDidMount() {
+    console.log("this get Data running");
+    this.getData();
+  }
+
+  setShow = (event) => {
+    this.setState({
+      show: event,
+    });
+  };
+
+  getData = () => {
+    console.log("Get Data !");
+    const id = this.props.auth.data.id_worker;
+    this.props.getDataWorker(id);
+  };
+
+  handleImage = (event) => {
+    console.log(event);
+    this.setState(
+      {
+        biodata: {
+          imageWorker: URL.createObjectURL(event.target.files[0]),
+          image: event.target.files[0],
+        },
+      },
+      () => this.updateImage()
+    );
+  };
+
+  handleImagePortofolio = (event) => {
+    this.setState({
+      portofolioWorker: {
+        imagePortofolio: this.state.portofolioWorker.imagePortofolio,
+        appNamePortofolio: this.state.portofolioWorker.appNamePortofolio,
+        linkRepositoryPortofolio:
+          this.state.portofolioWorker.linkRepositoryPortofolio,
+        appDescPortofolio: this.state.portofolioWorker.appDescPortofolio,
+        image: event.target.files[0],
+      },
+    });
+    console.log(this.state);
+  };
+
+  handleSkillEdit = (params) => {
+    const data = params.map((item) => {
+      return item.name_skill;
+    });
+    this.setState({
+      setData: {
+        skills: data,
+      },
+    });
+    console.log(data);
+  };
+
+  handleSkillDelete = (params) => {
+    const data = params.map((item) => {
+      return item.name_skill;
+    });
+    this.setState({
+      setData: {
+        skills: [],
+      },
+    });
+    console.log(data);
+  };
+
+  updateData = () => {
+    console.log("Update Data !");
+    const id = this.props.auth.data.id_worker;
+    // this.resetData();
+    const formData = new FormData();
+    formData.append("fullnameWorker", this.state.biodata.fullnameWorker);
+    formData.append("roleWorker", this.state.biodata.roleWorker);
+    formData.append(
+      "workPreferenceWorker",
+      this.state.biodata.workPreferenceWorker
+    );
+    formData.append("addressWorker", this.state.biodata.addressWorker);
+    formData.append("phoneNumberWorker", this.state.biodata.phoneNumberWorker);
+    formData.append("instagramWorker", this.state.biodata.instagramWorker);
+    formData.append("githubWorker", this.state.biodata.githubWorker);
+    formData.append("gitlabWorker", this.state.biodata.gitlabWorker);
+    formData.append("descriptionWorker", this.state.biodata.descriptionWorker);
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+    this.props
+      .UpdateBiodataWorker(id, formData)
+      .then((res) => {
+        alert("Please Click OK for Update your Profile !");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(() => {
+        this.setState({
+          show: true,
+          setShow: true,
+        });
+        this.getData(id);
+        window.location.href = `/jobbridge/edit-worker`;
+      });
+  };
+
+  updateImage = () => {
+    const id = this.props.auth.data.id_worker;
+    console.log(id);
+    const formData = new FormData();
+    for (const key in this.state.biodata) {
+      key !== "imageWorker"
+        ? formData.append(key, this.state.biodata[key])
+        : console.log("");
+    }
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+    this.props
+      .UpdateImageWorker(id, formData)
+      .then((res) => {
+        alert("Please Click OK for Update your Profile !");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(() => {
+        this.setState({
+          show: true,
+          setShow: true,
+        });
+        this.getData(id);
+        window.location.href = `/jobbridge/edit-worker`;
+      });
+  };
+
+  updateSkill = () => {
+    const id = this.props.auth.data.id_worker;
+    const { skills } = this.state.setData;
+    skills.map((e) => {
+      console.log(e);
+      const setData = {
+        skills: e.split(","),
+      };
+      this.props
+        .UpdateSkillWorker(id, setData)
+        .then((res) => {
+          alert("Please Click OK for Update your Profile !");
+        })
+        .catch((err) => {
+          console.log(err.response);
+        })
+        .finally(() => {
+          this.setState({
+            show: true,
+            setShow: true,
+          });
+          this.getData(id);
+          window.location.href = `/jobbridge/edit-worker`;
+        });
+    });
+  };
+
+  submitData = () => {
+    console.log("Save data!");
+    console.log(this.state.experience);
+    const id = this.props.auth.data.id_worker;
+    this.props
+      .CreateExperienceWorker(id, this.state.experience)
+      .then((res) => {
+        console.log(res);
+        alert("Please Click OK for create your work experience !");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(() => {
+        this.setState({
+          show: true,
+          setShow: true,
+        });
+        this.props.getDataWorker(id);
+        window.location.href = `/jobbridge/edit-worker`;
+      });
+  };
+
+  submitDataPortofolio = () => {
+    console.log("Save data!");
+    console.log(this.state.experience);
+    const id = this.props.auth.data.id_worker;
+    const formData = new FormData();
+    formData.append(
+      "appNamePortofolio",
+      this.state.portofolioWorker.appNamePortofolio
+    );
+    formData.append(
+      "linkRepositoryPortofolio",
+      this.state.portofolioWorker.linkRepositoryPortofolio
+    );
+    formData.append(
+      "appDescPortofolio",
+      this.state.portofolioWorker.appDescPortofolio
+    );
+    formData.append("image", this.state.portofolioWorker.image);
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+    this.props
+      .CreatePortofolioWorker(id, formData)
+      .then((res) => {
+        console.log(res);
+        alert("Please Click OK for create your work experience !");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(() => {
+        this.setState({
+          show: true,
+          setShow: true,
+        });
+        this.props.getDataWorker(id);
+        window.location.href = `/jobbridge/edit-worker`;
+      });
+  };
   render() {
+    const {
+      imageWorker,
+      fullnameWorker,
+      roleWorker,
+      workPreferenceWorker,
+      addressWorker,
+      phoneNumberWorker,
+      descriptionWorker,
+    } = this.state.biodata;
+    // const { experience } = this.props.worker.data;
+    const { skill, experience } = this.props.worker;
+    const {
+      companyNameExperience,
+      posistionExperience,
+      workDateInExperience,
+      workDateOutExperience,
+      jobDescExperience,
+    } = this.state.experience;
+    const {
+      imagePortofolio,
+      appNamePortofolio,
+      linkRepositoryPortofolio,
+      appDescPortofolio,
+      image,
+    } = this.state.portofolioWorker;
+    console.log(this.state);
+    console.log(this.props);
     return (
       <>
         <NavBar />
         <Container fluid className={styles.boxContent}>
           <Container fluid className={styles.containerPurple}></Container>
+          <Toast
+            className={styles.bodyToast1}
+            onClose={() => this.setShow(false)}
+            show={this.state.show}
+            delay={5000}
+            autohide
+          >
+            <Toast.Header>
+              <strong className="mr-auto">Message !</strong>
+            </Toast.Header>
+            <Toast.Body className={styles.bodyToast}>
+              <Image src={rocket} className={styles.rocket} />
+              <p className={styles.titleToast}>Success Update Profile ! </p>
+            </Toast.Body>
+          </Toast>
           <Container fluid className={styles.containerWhite}></Container>
           <Container className={styles.container}>
             <Row className={styles.rowContainer}>
               <Col lg={4} className={styles.colLeft}>
                 <Row className={styles.left}>
-                  <Image src={imgProfile} className={styles.imgProfile} />
-                  <p className={styles.nameWorker}>Louis Tomlinson</p>
-                  <p className={styles.jobWorker}>Web Developer</p>
-                  <p className={styles.partJob}>Freelancer</p>
+                  <Row>
+                    <Form.Group>
+                      <Form.Label
+                        htmlFor="files"
+                        className={styles.boxUpdateImage}
+                      >
+                        Jangan di hapus !
+                      </Form.Label>
+                      <Form.Control
+                        type="file"
+                        id="files"
+                        onChange={(event) => this.handleImage(event)}
+                        className={styles.updateImage}
+                      />
+                    </Form.Group>
+
+                    {imageWorker === null ||
+                    imageWorker === "" ||
+                    imageWorker === undefined ? (
+                      <Image src={imgProfile} className={styles.imgProfile} />
+                    ) : (
+                      <Image src={imageWorker} className={styles.imgProfile} />
+                    )}
+                  </Row>
+                  <p className={styles.nameWorker}>{fullnameWorker}</p>
+                  <p className={styles.jobWorker}>{roleWorker}</p>
+                  <p className={styles.partJob}>{workPreferenceWorker}</p>
                   <p className={styles.location}>
                     <Image src={iconLocation} className={styles.iconLocation} />
-                    Purwokerto, Jawa Tengah
+                    {addressWorker}
                   </p>
                   <p className={styles.phone}>
                     <Image src={iconPhone} className={styles.iconPhone} />
-                    0812 - 3456 - 789
+                    {phoneNumberWorker}
                   </p>
-                  <p className={styles.description}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                    urna. Curabitur eu lacus fringilla, vestibulum risus at.
-                  </p>
+                  <p className={styles.description}>{descriptionWorker}</p>
                 </Row>
                 <Row className={styles.left2}>
                   <Button
@@ -70,6 +454,9 @@ class EditWorker extends Component {
                           type="text"
                           placeholder="Masukan nama lengkap "
                           className={styles.placeholder}
+                          name="fullnameWorker"
+                          value={this.state.biodata.fullnameWorker}
+                          onChange={(event) => this.changeText(event)}
                         />
                       </Form.Group>
 
@@ -81,6 +468,9 @@ class EditWorker extends Component {
                           type="text"
                           placeholder="Masukan job desk"
                           className={styles.placeholder}
+                          name="roleWorker"
+                          value={this.state.biodata.roleWorker}
+                          onChange={(event) => this.changeText(event)}
                         />
                       </Form.Group>
 
@@ -92,10 +482,11 @@ class EditWorker extends Component {
                           as="select"
                           type="text"
                           className={styles.placeholder}
-                          defaultValue="Masukan job desk"
+                          value={this.state.biodata.workPreferenceWorker}
+                          name="workPreferenceWorker"
+                          onChange={(event) => this.changeText(event)}
                         >
-                          <option>Masukan job desk</option>
-                          <option>Freelancer</option>
+                          <option>Freelance</option>
                           <option>Fulltime</option>
                         </Form.Control>
                       </Form.Group>
@@ -107,6 +498,9 @@ class EditWorker extends Component {
                         <Form.Control
                           placeholder="Masukan domisili"
                           className={styles.placeholder}
+                          name="addressWorker"
+                          value={this.state.biodata.addressWorker}
+                          onChange={(event) => this.changeText(event)}
                         />
                       </Form.Group>
 
@@ -117,6 +511,9 @@ class EditWorker extends Component {
                         <Form.Control
                           placeholder="Masukan nomor telepon"
                           className={styles.placeholder}
+                          name="phoneNumberWorker"
+                          value={this.state.biodata.phoneNumberWorker}
+                          onChange={(event) => this.changeText(event)}
                         />
                       </Form.Group>
 
@@ -128,6 +525,9 @@ class EditWorker extends Component {
                           <Form.Control
                             placeholder="Masukan username IG"
                             className={styles.placeholder}
+                            name="instagramWorker"
+                            value={this.state.biodata.instagramWorker}
+                            onChange={(event) => this.changeText(event)}
                           />
                         </Form.Group>
 
@@ -138,6 +538,9 @@ class EditWorker extends Component {
                           <Form.Control
                             placeholder="Masukan username Github"
                             className={styles.placeholder}
+                            name="githubWorker"
+                            value={this.state.biodata.githubWorker}
+                            onChange={(event) => this.changeText(event)}
                           />
                         </Form.Group>
 
@@ -148,6 +551,9 @@ class EditWorker extends Component {
                           <Form.Control
                             placeholder="Masukan username Gitlab"
                             className={styles.placeholder}
+                            name="gitlabWorker"
+                            value={this.state.biodata.gitlabWorker}
+                            onChange={(event) => this.changeText(event)}
                           />
                         </Form.Group>
                       </Form.Row>
@@ -161,6 +567,9 @@ class EditWorker extends Component {
                           rows={5}
                           placeholder="Tuliskan deskripsi singkat"
                           className={styles.placeholder}
+                          name="descriptionWorker"
+                          value={this.state.biodata.descriptionWorker}
+                          onChange={(event) => this.changeText(event)}
                         />
                       </Form.Group>
                       <Col>
@@ -171,6 +580,7 @@ class EditWorker extends Component {
                             variant="fff"
                             type="submit"
                             className={styles.btnSave}
+                            onClick={() => this.updateData()}
                           >
                             Simpan
                           </Button>
@@ -186,7 +596,10 @@ class EditWorker extends Component {
                       </Col>
                     </Row>
                     <span className={styles.span}></span>
-                    <Form className={styles.colRight}>
+                    <Form
+                      className={styles.colRight}
+                      onSubmit={this.updateSkill}
+                    >
                       <Col className={styles.colForm}>
                         <Form.Group as={Row}>
                           <Col className={styles.skill}>
@@ -195,6 +608,9 @@ class EditWorker extends Component {
                                 type="text"
                                 placeholder="Masukan skill "
                                 className={styles.placeholder}
+                                name=""
+                                value={this.state.setData.skills}
+                                onChange={(event) => this.changeSkill(event)}
                               />
                             </Row>
                           </Col>
@@ -206,6 +622,7 @@ class EditWorker extends Component {
                                 variant="fff"
                                 type="submit"
                                 className={styles.btnSave}
+                                onClick={() => this.updateSkill()}
                               >
                                 Simpan
                               </Button>
@@ -213,14 +630,43 @@ class EditWorker extends Component {
                           </Col>
                         </Form.Group>
                       </Col>
-                      <Col>
-                        <Row className={styles.menuSkill}>
-                          <p className={styles.nameSkill}>Phyton</p>
-                          <Image src={iconEdit} className={styles.iconEdit} />
-                          <Image
-                            src={iconDelete}
-                            className={styles.iconDelete}
-                          />
+                      <Col className={styles.colSkill}>
+                        <Row>
+                          <Col>
+                            <Row>
+                              {skill.map((item, index) => {
+                                return (
+                                  <Col
+                                    lg={2}
+                                    key={index}
+                                    className={styles.colIndex}
+                                  >
+                                    <p className={styles.nameSkill}>
+                                      {item.name_skill}
+                                    </p>
+                                  </Col>
+                                );
+                              })}
+                            </Row>
+                          </Col>
+                          <Col lg={1} className={styles.colImageSkill}>
+                            <Row className={styles.rowSkillImage}>
+                              <Image
+                                src={iconEdit}
+                                className={styles.iconEdit}
+                                onClick={() => this.handleSkillEdit(skill)}
+                              />
+                            </Row>
+                          </Col>
+                          <Col lg={1} className={styles.colImageSkill}>
+                            <Row>
+                              <Image
+                                src={iconDelete}
+                                className={styles.iconDelete}
+                                onClick={() => this.handleSkillDelete(skill)}
+                              />
+                            </Row>
+                          </Col>
                         </Row>
                       </Col>
                     </Form>
@@ -233,7 +679,11 @@ class EditWorker extends Component {
                       </Col>
                     </Row>
                     <span className={styles.span}></span>
-                    <Form className={styles.colRight}>
+                    <Form
+                      className={styles.colRight}
+                      // action="/jobbridge/edit-worker"
+                      // onSubmit={this.submitData}
+                    >
                       <Form.Row>
                         <Form.Group as={Col}>
                           <Form.Label className={styles.label}>
@@ -243,6 +693,11 @@ class EditWorker extends Component {
                             type="text"
                             placeholder="Masukan nama perusahaan"
                             className={styles.placeholder}
+                            name="companyNameExperience"
+                            value={companyNameExperience}
+                            onChange={(event) =>
+                              this.changeTextExperience(event)
+                            }
                           />
                         </Form.Group>
 
@@ -254,6 +709,11 @@ class EditWorker extends Component {
                             type="text"
                             placeholder="Masukan posisi jabatan"
                             className={styles.placeholder}
+                            name="posistionExperience"
+                            value={posistionExperience}
+                            onChange={(event) =>
+                              this.changeTextExperience(event)
+                            }
                           />
                         </Form.Group>
                       </Form.Row>
@@ -264,8 +724,13 @@ class EditWorker extends Component {
                           </Form.Label>
                           <Form.Control
                             type="date"
-                            placeholder="Masukan nama perusahaan"
+                            placeholder="Masukan tahun masuk"
                             className={styles.placeholder}
+                            name="workDateInExperience"
+                            value={workDateInExperience}
+                            onChange={(event) =>
+                              this.changeTextExperience(event)
+                            }
                           />
                         </Form.Group>
 
@@ -275,8 +740,13 @@ class EditWorker extends Component {
                           </Form.Label>
                           <Form.Control
                             type="date"
-                            placeholder="Masukan posisi jabatan"
+                            placeholder="Masukan tahun keluar"
                             className={styles.placeholder}
+                            name="workDateOutExperience"
+                            value={workDateOutExperience}
+                            onChange={(event) =>
+                              this.changeTextExperience(event)
+                            }
                           />
                         </Form.Group>
                       </Form.Row>
@@ -289,6 +759,9 @@ class EditWorker extends Component {
                           rows={5}
                           placeholder="Deskripsikan pekerjaan anda"
                           className={styles.placeholder}
+                          name="jobDescExperience"
+                          value={jobDescExperience}
+                          onChange={(event) => this.changeTextExperience(event)}
                         />
                       </Form.Group>
                       <span className={styles.span}></span>
@@ -300,11 +773,24 @@ class EditWorker extends Component {
                             variant="fff"
                             type="submit"
                             className={styles.btnAddExperienceWork}
+                            onClick={() => this.submitData()}
                           >
                             Tambah pengalaman pekerja
                           </Button>
                         </Row>
                       </Col>
+                      <Row className={styles.rowTabContent}>
+                        {experience.map((item, index) => {
+                          return (
+                            <Row
+                              key={index}
+                              className={styles.rowExperienceWork}
+                            >
+                              <Experience experience={item} />
+                            </Row>
+                          );
+                        })}
+                      </Row>
                       <span className={styles.span}></span>
                     </Form>
                   </Col>
@@ -324,7 +810,10 @@ class EditWorker extends Component {
                         <Form.Control
                           type="text"
                           placeholder="Masukan nama aplikasi"
+                          name="appNamePortofolio"
+                          value={appNamePortofolio}
                           className={styles.placeholder}
+                          onChange={(event) => this.changeTextPortofolio(event)}
                         />
                       </Form.Group>
 
@@ -335,7 +824,37 @@ class EditWorker extends Component {
                         <Form.Control
                           type="text"
                           placeholder="Masukan link repository"
+                          name="linkRepositoryPortofolio"
+                          value={linkRepositoryPortofolio}
                           className={styles.placeholder}
+                          onChange={(event) => this.changeTextPortofolio(event)}
+                        />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label className={styles.label}>
+                          Descrkripsi singkat
+                        </Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={5}
+                          placeholder="Tuliskan deskripsi singkat"
+                          className={styles.placeholder}
+                          name="appDescPortofolio"
+                          value={appDescPortofolio}
+                          onChange={(event) => this.changeTextPortofolio(event)}
+                        />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label className={styles.label}>
+                          Upload Gambar
+                        </Form.Label>
+                        <Form.Control
+                          type="file"
+                          className={styles.placeholder}
+                          name="image"
+                          onChange={(event) =>
+                            this.handleImagePortofolio(event)
+                          }
                         />
                       </Form.Group>
                       <Form.Group as={Form.File}>
@@ -353,6 +872,7 @@ class EditWorker extends Component {
                             variant="fff"
                             type="submit"
                             className={styles.btnAddExperienceWork}
+                            onClick={() => this.submitDataPortofolio()}
                           >
                             Tambah portofolio
                           </Button>
@@ -371,4 +891,18 @@ class EditWorker extends Component {
   }
 }
 
-export default EditWorker;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  worker: state.worker,
+});
+
+const mapDispatchToProps = {
+  UpdateBiodataWorker,
+  getDataWorker,
+  UpdateImageWorker,
+  UpdateSkillWorker,
+  CreateExperienceWorker,
+  CreatePortofolioWorker,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditWorker);

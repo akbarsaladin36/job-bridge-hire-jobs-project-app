@@ -43,7 +43,7 @@ class ProfileWorker extends Component {
       instagram_worker,
       github_worker,
       gitlab_worker,
-    } = this.props.worker.data;
+    } = this.props.worker.biodata;
     const { skill, portofolio, experience } = this.props.worker;
     return (
       <>
@@ -54,13 +54,15 @@ class ProfileWorker extends Component {
           <Row className={styles.rowContainer}>
             <Col lg={4} className={styles.left}>
               <Col className={styles.colCardBiodata}>
-                {image_worker ? (
+                {image_worker === null ||
+                image_worker === "" ||
+                image_worker === undefined ? (
+                  <Image src={imgProfile} className={styles.imgProfile} />
+                ) : (
                   <Image
                     src={`${process.env.REACT_APP_IMAGE_URL}${image_worker}`}
                     className={styles.imgProfile}
                   />
-                ) : (
-                  <Image src={imgProfile} className={styles.imgProfile} />
                 )}
                 <p className={styles.nameWorker}>{fullname_worker}</p>
                 <p className={styles.jobWorker}>{role_worker}</p>
