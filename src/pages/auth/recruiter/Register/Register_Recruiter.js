@@ -1,13 +1,121 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { registerRecruiter } from "../../../../redux/action/auth";
 import RegisterRecruiterStyle from "./RegisterRecruiterStyle.module.css";
 import Image1 from "../../../../assets/img/left-column-image.jpg";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
 class RegisterRecruiterPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        recruiterName: "",
+        recruiterEmail: "",
+        passwordCompany: "",
+        companyName: "",
+        companyField: "",
+        companyPhoneNumber: "",
+      },
+      hasError: false,
+      hasSuccess: false,
+    };
+  }
+
+  changeText = (event) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  submitData = (event) => {
+    event.preventDefault();
+    const {
+      recruiterName,
+      recruiterEmail,
+      passwordCompany,
+      confirmPasswordCompany,
+      companyName,
+      companyField,
+      companyPhoneNumber,
+    } = this.state.form;
+    if (!recruiterName) {
+      this.setState({
+        ...this.state,
+        hasError: "Isi nama recruiter terlebih dahulu!",
+      });
+    } else if (!recruiterEmail) {
+      this.setState({
+        ...this.state,
+        hasError: "Isi emailmu!",
+      });
+    } else if (!companyName) {
+      this.setState({
+        ...this.state,
+        hasError: "masukkan nama perusahaanmu!",
+      });
+    } else if (!companyField) {
+      this.setState({
+        ...this.state,
+        hasError: "masukkan bagian perusahaanmu!",
+      });
+    } else if (!companyPhoneNumber) {
+      this.setState({
+        ...this.state,
+        hasError: "masukkan no telephone perusahaanmu!",
+      });
+    } else if (!passwordCompany) {
+      this.setState({
+        ...this.state,
+        hasError: "isi dulu password mu!",
+      });
+    } else if (!confirmPasswordCompany) {
+      this.setState({
+        ...this.state,
+        hasError: "isi dulu konfirmasi passwordmu!",
+      });
+    } else if (passwordCompany !== confirmPasswordCompany) {
+      this.setState({
+        ...this.state,
+        hasError: "passwordmu tidak sesuai dengan konfirmasi password!",
+      });
+    } else {
+      // console.log(this.state.form);
+      this.props
+        .registerRecruiter({
+          fullnameRepresentationCompany: recruiterName,
+          emailRepresentationCompany: recruiterEmail,
+          passwordCompany: confirmPasswordCompany,
+          companyName: companyName,
+          companyField: companyField,
+          companyPhoneNumber: companyPhoneNumber,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   render() {
+    const {
+      recruiterName,
+      recruiterEmail,
+      passwordCompany,
+      confirmPasswordCompany,
+      companyName,
+      companyField,
+      companyPhoneNumber,
+      hasError,
+    } = this.state;
     return (
       <>
         <Container fluid>
@@ -44,65 +152,85 @@ class RegisterRecruiterPage extends Component {
                 lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 euismod ipsum et dui rhoncus auctor
               </p>
+              {hasError && (
+                <div className="alert alert-danger" role="alert">
+                  {hasError}
+                </div>
+              )}
               <Form className="mt-5">
                 <Form.Group>
                   <Form.Label>Nama</Form.Label>
                   <Form.Control
                     type="text"
-                    name="userFullName"
+                    name="recruiterName"
+                    value={recruiterName}
                     placeholder="Masukkan nama"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="email"
-                    name="userEmail"
+                    name="recruiterEmail"
+                    value={recruiterEmail}
                     placeholder="Masukkan alamat email"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>Perusahaan</Form.Label>
                   <Form.Control
                     type="text"
-                    name="userCompany"
+                    name="companyName"
+                    value={companyName}
                     placeholder="Masukkan nama perusahaan"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>Bidang Perusahaan</Form.Label>
                   <Form.Control
                     type="text"
-                    name="userCompanyFocus"
+                    name="companyField"
+                    value={companyField}
                     placeholder="Bidang perusahaan anda"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>No handphone</Form.Label>
                   <Form.Control
                     type="text"
-                    name="userPhoneNumber"
+                    name="companyPhoneNumber"
+                    value={companyPhoneNumber}
                     placeholder="Masukkan no handphone"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>Kata Sandi</Form.Label>
                   <Form.Control
                     type="password"
-                    name="userPassword"
+                    name="passwordCompany"
+                    value={passwordCompany}
                     placeholder="Masukkan kata sandi"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Form.Group className="mt-4">
                   <Form.Label>Konfirmasi kata sandi</Form.Label>
                   <Form.Control
                     type="password"
-                    name="userConfirmPassword"
+                    name="confirmPasswordCompany"
+                    value={confirmPasswordCompany}
                     placeholder="Masukkan konfirmasi kata sandi"
+                    onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <Button
                   className={`${RegisterRecruiterStyle.register_button} mt-4`}
+                  onClick={(event) => this.submitData(event)}
                 >
                   Daftar
                 </Button>
@@ -124,4 +252,12 @@ class RegisterRecruiterPage extends Component {
   }
 }
 
-export default RegisterRecruiterPage;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+const mapDispatchToProps = { registerRecruiter };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegisterRecruiterPage);

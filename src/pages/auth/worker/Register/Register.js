@@ -39,13 +39,21 @@ class RegisterPage extends Component {
       alert("Passwords don't match.");
     } else {
       // console.log(this.props);
-      this.props.registerWorker({
-        fullnameWorker: this.state.form.fullnameWorker,
-        emailWorker: this.state.form.emailWorker,
-        phoneNumberWorker: this.state.form.phoneNumberWorker,
-        passwordWorker: confirmPasswordWorker,
-      });
-      alert("Register Worker sudah sukses. Silakan cek email anda.");
+      this.props
+        .registerWorker({
+          fullnameWorker: this.state.form.fullnameWorker,
+          emailWorker: this.state.form.emailWorker,
+          phoneNumberWorker: this.state.form.phoneNumberWorker,
+          passwordWorker: confirmPasswordWorker,
+        })
+        .then((res) => {
+          console.log(res);
+          this.props.history.push("/auth/worker/login");
+          alert("Register Worker sudah sukses. Silakan cek email anda.");
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
     }
   };
 
