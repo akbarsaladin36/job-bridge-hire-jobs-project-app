@@ -103,14 +103,6 @@
 /* Responsive Website */
 
 @media only screen and (max-width: 600px) {
-  .profile_picture_size {
-    margin-left: -50px;
-  }
-
-  .get_profile_button {
-    margin-left: 110px;
-  }
-
   .pagination > li > a {
     margin-left: 5px;
   }

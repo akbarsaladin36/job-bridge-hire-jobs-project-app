@@ -151,14 +151,14 @@ class SearchWorkerPage extends Component {
               </InputGroup>
             </Form.Row>
           </Form>
-          <div className="mt-5">
+          <div className="mt-5 ml-5 mr-5">
             {data.length > 0
               ? data.map((item, index) => {
                   return (
-                    <Row className="ml-5" key={index}>
-                      <Col className="ml-5">
+                    <Row key={index}>
+                      <Col>
                         <Row>
-                          <Col xs={2}>
+                          <Col md={2} className="text-center">
                             <Image
                               src={
                                 item.image_worker.length > 0
@@ -170,7 +170,7 @@ class SearchWorkerPage extends Component {
                               roundedCircle
                             />
                           </Col>
-                          <Col>
+                          <Col md={8} className="text-center">
                             <p>{item.fullname_worker}</p>
                             <p className="text-muted">
                               {`${item.role_worker} - ${item.work_preference_worker}`}
@@ -179,12 +179,13 @@ class SearchWorkerPage extends Component {
                             <Row className={SearchWorkerStyle.skills_position}>
                               {item.skill.map((item, index) => {
                                 return (
-                                  <Button
-                                    key={index}
-                                    className={`${SearchWorkerStyle.skills_button} mr-3`}
-                                  >
-                                    {item.name_skill}
-                                  </Button>
+                                  <Col key={index}>
+                                    <Button
+                                      className={`${SearchWorkerStyle.skills_button} mr-3`}
+                                    >
+                                      {item.name_skill}
+                                    </Button>
+                                  </Col>
                                 );
                               })}
                             </Row>
@@ -195,6 +196,7 @@ class SearchWorkerPage extends Component {
                         <Button
                           className={`${SearchWorkerStyle.get_profile_button} mt-4`}
                           onClick={() => this.getWorker(item.id_worker)}
+                          style={{ width: "100%" }}
                         >
                           Lihat Profil
                         </Button>
