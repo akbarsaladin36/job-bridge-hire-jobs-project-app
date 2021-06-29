@@ -10,7 +10,7 @@ body {
 
 .purpleArea {
   background-color: #5e50a1;
-  max-height: 19rem;
+  max-height: 25rem;
   padding-top: 7em;
 }
 
@@ -61,4 +61,8 @@ body {
 
 .formHeight {
   height: 50px;
+}
+
+.updateImage {
+  display: none;
 }
