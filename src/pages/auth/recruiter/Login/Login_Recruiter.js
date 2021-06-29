@@ -31,21 +31,22 @@ class LoginRecruiterPage extends Component {
   };
 
   handleLogin = (event) => {
+    event.preventDefault();
     const { userEmail, userPassword } = this.state.form;
-    if (!userEmail && !userPassword) {
+    if (userEmail === "" && userPassword === "") {
       this.setState({
         ...this.state,
-        hasError: "Isi dulu email dan password!",
+        hasError: "Fill all the form to login!",
       });
-    } else if (!userEmail) {
+    } else if (userEmail === "") {
       this.setState({
         ...this.state,
-        hasError: "Email kosong. Silakan diisi",
+        hasError: "Fill the email form!",
       });
-    } else if (!userPassword) {
+    } else if (userPassword === "") {
       this.setState({
         ...this.state,
-        hasError: "Password kosong. Silakan diisi!",
+        hasError: "Fill the password form!",
       });
     } else {
       this.props
@@ -143,7 +144,7 @@ class LoginRecruiterPage extends Component {
               </Form>
               <Button
                 className={`${LoginRecruiterStyle.sign_in_button} mt-2 mb-3`}
-                onClick={() => this.handleLogin()}
+                onClick={(event) => this.handleLogin(event)}
               >
                 Masuk
               </Button>

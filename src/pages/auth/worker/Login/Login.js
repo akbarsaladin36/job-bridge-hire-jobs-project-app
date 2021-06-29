@@ -30,19 +30,19 @@ class LoginPage extends Component {
     });
   };
 
-  handleLogin = (event) => {
+  handleLogin = () => {
     const { userEmail, userPassword } = this.state.form;
     if (userEmail === "" && userPassword === "") {
       this.setState({
-        hasError: "Isi dulu form dibawah ini!",
+        hasError: "Fill all the form to login!",
       });
     } else if (userEmail === "") {
       this.setState({
-        hasError: "Isi dulu email kamu!",
+        hasError: "Fill the email form!",
       });
     } else if (userPassword === "") {
       this.setState({
-        hasError: "Isi dulu password kamu!",
+        hasError: "Fill the password form!",
       });
     } else {
       this.props
@@ -56,16 +56,20 @@ class LoginPage extends Component {
           this.props.history.push("/");
         })
         .catch((err) => {
-          console.log("ERROR RSP", err.response);
+          // console.log("ERROR RSP", err.response);
           this.setState({
             hasError: err.response.data.msg,
+            form: {
+              userEmail: "",
+              userPassword: "",
+            },
           });
         });
     }
   };
 
   render() {
-    const { hasError } = this.state;
+    const { userEmail, userPassword, hasError } = this.state;
     return (
       <>
         <Container fluid>
@@ -105,6 +109,7 @@ class LoginPage extends Component {
                   <Form.Control
                     type="email"
                     name="userEmail"
+                    value={userEmail}
                     placeholder="Masukkan email"
                     onChange={(event) => this.changeText(event)}
                   />
@@ -114,6 +119,7 @@ class LoginPage extends Component {
                   <Form.Control
                     type="password"
                     name="userPassword"
+                    value={userPassword}
                     placeholder="Masukkan kata sandi"
                     onChange={(event) => this.changeText(event)}
                   />

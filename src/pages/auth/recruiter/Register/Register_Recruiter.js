@@ -46,57 +46,58 @@ class RegisterRecruiterPage extends Component {
       companyPhoneNumber,
     } = this.state.form;
     if (
-      !recruiterName &&
-      !recruiterEmail &&
-      !companyName &&
-      !companyField &&
-      !companyPhoneNumber &&
-      !passwordCompany &&
-      !confirmPasswordCompany
+      recruiterName === "" &&
+      recruiterEmail === "" &&
+      companyName === "" &&
+      companyField === "" &&
+      companyPhoneNumber === "" &&
+      passwordCompany === "" &&
+      confirmPasswordCompany === ""
     ) {
       this.setState({
         ...this.state,
         hasError: "Isi keseluruhan data di bawah ini!",
       });
-    } else if (!recruiterName) {
+    } else if (recruiterName === "") {
       this.setState({
         ...this.state,
-        hasError: "Isi nama recruiter terlebih dahulu!",
+        hasError: "Fill the recruiter name form!",
       });
-    } else if (!recruiterEmail) {
+    } else if (recruiterEmail === "") {
       this.setState({
         ...this.state,
-        hasError: "Isi emailmu!",
+        hasError: "Fill the recruiter email form!",
       });
-    } else if (!companyName) {
+    } else if (companyName === "") {
       this.setState({
         ...this.state,
-        hasError: "masukkan nama perusahaanmu!",
+        hasError: "Fill the recruiter company name form!",
       });
-    } else if (!companyField) {
+    } else if (companyField === "") {
       this.setState({
         ...this.state,
-        hasError: "masukkan bagian perusahaanmu!",
+        hasError: "Fill the recruiter company field form!",
       });
-    } else if (!companyPhoneNumber) {
+    } else if (companyPhoneNumber === "") {
       this.setState({
         ...this.state,
-        hasError: "masukkan no telephone perusahaanmu!",
+        hasError: "Fill the recruiter company phone number form!",
       });
-    } else if (!passwordCompany) {
+    } else if (passwordCompany === "") {
       this.setState({
         ...this.state,
-        hasError: "isi dulu password mu!",
+        hasError: "Fill the recruiter company password form!",
       });
-    } else if (!confirmPasswordCompany) {
+    } else if (confirmPasswordCompany === "") {
       this.setState({
         ...this.state,
-        hasError: "isi dulu konfirmasi passwordmu!",
+        hasError: "Fill the recruiter company confirmation password form!",
       });
     } else if (passwordCompany !== confirmPasswordCompany) {
       this.setState({
         ...this.state,
-        hasError: "passwordmu tidak sesuai dengan konfirmasi password!",
+        hasError:
+          "Your password is not match with confirmation password! Please try again.",
       });
     } else {
       // console.log(this.state.form);
