@@ -88,7 +88,12 @@ class App extends Component {
                 component={RegisterRecruiterPage}
               />
               <Route
-                path="/auth/reset-password"
+                path="/auth/worker/reset-password"
+                exact
+                component={ResetPasswordPage}
+              />
+              <Route
+                path="/auth/recruiter/reset-password"
                 exact
                 component={ResetPasswordPage}
               />

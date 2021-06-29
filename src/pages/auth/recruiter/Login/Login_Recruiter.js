@@ -108,7 +108,15 @@ class LoginRecruiterPage extends Component {
                     onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
-                <p className="float-end mt-3">Lupa kata sandi</p>
+                <p className="float-end mt-3">
+                  Lupa kata sandi{" "}
+                  <Link
+                    to="reset-password"
+                    className={LoginRecruiterStyle.daftar_disini_word}
+                  >
+                    Reset disini
+                  </Link>
+                </p>
                 {msg.length > 0 ? (
                   <Alert variant="warning" className="text-center">
                     {msg}
