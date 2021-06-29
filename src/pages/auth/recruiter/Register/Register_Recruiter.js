@@ -45,7 +45,20 @@ class RegisterRecruiterPage extends Component {
       companyField,
       companyPhoneNumber,
     } = this.state.form;
-    if (!recruiterName) {
+    if (
+      !recruiterName &&
+      !recruiterEmail &&
+      !companyName &&
+      !companyField &&
+      !companyPhoneNumber &&
+      !passwordCompany &&
+      !confirmPasswordCompany
+    ) {
+      this.setState({
+        ...this.state,
+        hasError: "Isi keseluruhan data di bawah ini!",
+      });
+    } else if (!recruiterName) {
       this.setState({
         ...this.state,
         hasError: "Isi nama recruiter terlebih dahulu!",
@@ -98,9 +111,13 @@ class RegisterRecruiterPage extends Component {
         })
         .then((res) => {
           console.log(res);
+          this.props.history.push("/auth/recruiter/login");
         })
         .catch((err) => {
           console.log(err);
+          this.setState({
+            hasError: err.response.data.msg,
+          });
         });
     }
   };
@@ -152,11 +169,6 @@ class RegisterRecruiterPage extends Component {
                 lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 euismod ipsum et dui rhoncus auctor
               </p>
-              {hasError && (
-                <div className="alert alert-danger" role="alert">
-                  {hasError}
-                </div>
-              )}
               <Form className="mt-5">
                 <Form.Group>
                   <Form.Label>Nama</Form.Label>
@@ -228,6 +240,11 @@ class RegisterRecruiterPage extends Component {
                     onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
+                {hasError && (
+                  <div className="alert alert-danger" role="alert">
+                    {hasError}
+                  </div>
+                )}
                 <Button
                   className={`${RegisterRecruiterStyle.register_button} mt-4`}
                   onClick={(event) => this.submitData(event)}

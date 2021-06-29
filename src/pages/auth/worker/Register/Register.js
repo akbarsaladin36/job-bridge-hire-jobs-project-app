@@ -19,6 +19,7 @@ class RegisterPage extends Component {
         passwordWorker: "",
         confirmPasswordWorker: "",
       },
+      hasError: false,
     };
   }
 

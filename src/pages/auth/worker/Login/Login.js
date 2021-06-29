@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginWorker } from "../../../../redux/action/auth";
 import { getDataWorker } from "../../../../redux/action/worker";
-import { Row, Col, Form, Button, Container, Alert } from "react-bootstrap";
+import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginStyle from "./LoginStyle.module.css";
 import Image1 from "../../../../assets/img/left-column-image.jpg";
@@ -17,8 +17,7 @@ class LoginPage extends Component {
         userEmail: "",
         userPassword: "",
       },
-      msg: "",
-      id: "",
+      hasError: false,
     };
   }
 
@@ -33,29 +32,40 @@ class LoginPage extends Component {
 
   handleLogin = (event) => {
     const { userEmail, userPassword } = this.state.form;
-    this.props
-      .loginWorker({
-        emailWorker: userEmail,
-        passwordWorker: userPassword,
-      })
-      .then((res) => {
-        localStorage.setItem("token", this.props.auth.data.token);
-        this.setState({
-          msg: this.props.auth.msg,
-        });
-        this.props.getDataWorker(this.props.auth.data.id_worker);
-        this.props.history.push("/");
-      })
-      .catch((err) => {
-        console.log("ERROR RSP", err.response);
-        this.setState({
-          msg: err.response.data.msg,
-        });
+    if (userEmail === "" && userPassword === "") {
+      this.setState({
+        hasError: "Isi dulu form dibawah ini!",
       });
+    } else if (userEmail === "") {
+      this.setState({
+        hasError: "Isi dulu email kamu!",
+      });
+    } else if (userPassword === "") {
+      this.setState({
+        hasError: "Isi dulu password kamu!",
+      });
+    } else {
+      this.props
+        .loginWorker({
+          emailWorker: userEmail,
+          passwordWorker: userPassword,
+        })
+        .then((res) => {
+          localStorage.setItem("token", this.props.auth.data.token);
+          this.props.getDataWorker(this.props.auth.data.id_worker);
+          this.props.history.push("/");
+        })
+        .catch((err) => {
+          console.log("ERROR RSP", err.response);
+          this.setState({
+            hasError: err.response.data.msg,
+          });
+        });
+    }
   };
 
   render() {
-    const { msg } = this.state;
+    const { hasError } = this.state;
     return (
       <>
         <Container fluid>
@@ -109,12 +119,10 @@ class LoginPage extends Component {
                   />
                 </Form.Group>
                 <p className="float-end mt-3">Lupa kata sandi</p>
-                {msg.length > 0 ? (
-                  <Alert variant="warning" className="text-center">
-                    {msg}
-                  </Alert>
-                ) : (
-                  ""
+                {hasError && (
+                  <div className="alert alert-danger" role="alert">
+                    {hasError}
+                  </div>
                 )}
                 <Button
                   className={`${LoginStyle.sign_in_button} mt-2`}
