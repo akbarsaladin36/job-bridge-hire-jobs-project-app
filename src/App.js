@@ -13,7 +13,7 @@ import EditWorker from "./pages/Worker/EditWorker/EditWorker";
 import Chat from "./pages/Chat/Chat";
 import ProfileRecruiter from "./pages/Recruiter/ProfileRecruiter/ProfileRecruiter";
 import EditRecruiter from "./pages/Recruiter/EditRecruiter/Profile";
-import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import ChangePassword from "./pages/Recruiter/ChangePassword/ChangePassword";
 // Import Components
 import NavBar from "./components/Navbar/Navbar";
 import UploadImage from "./components/UploadImage/UploadImage";

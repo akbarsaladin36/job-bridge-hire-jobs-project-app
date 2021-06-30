@@ -46,6 +46,29 @@ const recruiter = (state = initialState, action) => {
         ...state,
         hireViaEamil: "error",
       };
+    case "CHANGE_PASSWORD_PENDING":
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "CHANGE_PASSWORD_FULFILLED": // ketika sukses
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: action.payload.data.data,
+        msg: action.payload.data.msg,
+      };
+    case "CHANGE_PASSWORD_REJECTED": // ketika gagal
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        data: {},
+        msg: action.payload.response.data.msg,
+      };
     default:
       return state;
   }
