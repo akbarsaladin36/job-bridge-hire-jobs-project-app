@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import RegisterRecruiterStyle from "./RegisterRecruiterStyle.module.css";
 import { connect } from "react-redux";
-import Image1 from "../../../../assets/img/left-column-image.jpg";
+import { registerRecruiter } from "../../../../redux/action/auth";
+import RegisterRecruiterStyle from "./RegisterRecruiterStyle.module.css";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
-import { RegisterPerekrut } from "../../../../redux/action/auth";
 
 class RegisterRecruiterPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       form: {
-        fullnameRepresentationCompany: "",
-        emailRepresentationCompany: "",
+        recruiterName: "",
+        recruiterEmail: "",
+        passwordCompany: "",
         companyName: "",
         companyField: "",
         companyPhoneNumber: "",
-        passwordCompany: "",
-        confirmPasswordCompany: "",
       },
+      hasError: false,
+      hasSuccess: false,
     };
   }
 
@@ -33,53 +33,118 @@ class RegisterRecruiterPage extends Component {
     });
   };
 
-  registerRecruiter = (event) => {
+  submitData = (event) => {
     event.preventDefault();
-    // console.log(this.props);
-    const { passwordCompany, confirmPasswordCompany } = this.state.form;
-    if (passwordCompany !== confirmPasswordCompany) {
-      alert("Passwords don't match.");
-    } else {
-      // console.log(this.props);
-      this.props.RegisterPerekrut({
-        fullnameRepresentationCompany:
-          this.state.form.fullnameRepresentationCompany,
-        emailRepresentationCompany: this.state.form.emailRepresentationCompany,
-        companyName: this.state.form.companyName,
-        companyField: this.state.form.companyField,
-        companyPhoneNumber: this.state.form.companyPhoneNumber,
-        passwordCompany: confirmPasswordCompany,
-      });
-      alert("Register Worker sudah sukses. Silakan cek email anda.");
-    }
-  };
-  //   event.preventDefault();
-  //   console.log(this.state.form);
-  //   this.props.RegisterPerekrut(this.state.form).then((result) => {
-  //     console.log(result);
-  //   });
-  // };
-
-  render() {
     const {
-      fullnameRepresentationCompany,
-      emailRepresentationCompany,
+      recruiterName,
+      recruiterEmail,
+      passwordCompany,
+      confirmPasswordCompany,
       companyName,
       companyField,
       companyPhoneNumber,
+    } = this.state.form;
+    if (
+      recruiterName === "" &&
+      recruiterEmail === "" &&
+      companyName === "" &&
+      companyField === "" &&
+      companyPhoneNumber === "" &&
+      passwordCompany === "" &&
+      confirmPasswordCompany === ""
+    ) {
+      this.setState({
+        ...this.state,
+        hasError: "Fill all the form to register!",
+      });
+    } else if (recruiterName === "") {
+      this.setState({
+        ...this.state,
+        hasError: "Fill the recruiter name form!",
+      });
+    } else if (recruiterEmail === "") {
+      this.setState({
+        ...this.state,
+        hasError: "Fill the recruiter email form!",
+      });
+    } else if (companyName === "") {
+      this.setState({
+        ...this.state,
+        hasError: "Fill the recruiter company name form!",
+      });
+    } else if (companyField === "") {
+      this.setState({
+        ...this.state,
+        hasError: "Fill the recruiter company field form!",
+      });
+    } else if (companyPhoneNumber === "") {
+      this.setState({
+        ...this.state,
+        hasError: "Fill the recruiter company phone number form!",
+      });
+    } else if (passwordCompany === "") {
+      this.setState({
+        ...this.state,
+        hasError: "Fill the recruiter company password form!",
+      });
+    } else if (confirmPasswordCompany === "") {
+      this.setState({
+        ...this.state,
+        hasError: "Fill the recruiter company confirmation password form!",
+      });
+    } else if (passwordCompany !== confirmPasswordCompany) {
+      this.setState({
+        ...this.state,
+        hasError:
+          "Your password is not match with confirmation password! Please try again.",
+      });
+    } else {
+      // console.log(this.state.form);
+      this.props
+        .registerRecruiter({
+          fullnameRepresentationCompany: recruiterName,
+          emailRepresentationCompany: recruiterEmail,
+          passwordCompany: confirmPasswordCompany,
+          companyName: companyName,
+          companyField: companyField,
+          companyPhoneNumber: companyPhoneNumber,
+        })
+        .then((res) => {
+          console.log(res);
+          this.setState({
+            hasSuccess: res.action.payload.data.msg,
+            hasError: false,
+          });
+          window.setTimeout(() => {
+            this.props.history.push("/auth/recruiter/login");
+          }, 3000);
+        })
+        .catch((err) => {
+          console.log(err);
+          this.setState({
+            hasError: err.response.data.msg,
+          });
+        });
+    }
+  };
+
+  render() {
+    const {
+      recruiterName,
+      recruiterEmail,
       passwordCompany,
       confirmPasswordCompany,
-    } = this.state.form;
+      companyName,
+      companyField,
+      companyPhoneNumber,
+      hasError,
+      hasSuccess,
+    } = this.state;
     return (
       <>
         <Container fluid>
           <Row>
             <Col lg={7} className={RegisterRecruiterStyle.left_background}>
-              <img
-                src={Image1}
-                className={RegisterRecruiterStyle.image_background}
-                alt="job bridge background"
-              />
               <img
                 src={ImageLogo1}
                 className={RegisterRecruiterStyle.job_bridge_brand}
@@ -111,8 +176,8 @@ class RegisterRecruiterPage extends Component {
                   <Form.Label>Nama</Form.Label>
                   <Form.Control
                     type="text"
-                    name="fullnameRepresentationCompany"
-                    value={fullnameRepresentationCompany}
+                    name="recruiterName"
+                    value={recruiterName}
                     placeholder="Masukkan nama"
                     onChange={(event) => this.changeText(event)}
                   />
@@ -121,8 +186,8 @@ class RegisterRecruiterPage extends Component {
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="email"
-                    name="emailRepresentationCompany"
-                    value={emailRepresentationCompany}
+                    name="recruiterEmail"
+                    value={recruiterEmail}
                     placeholder="Masukkan alamat email"
                     onChange={(event) => this.changeText(event)}
                   />
@@ -177,9 +242,19 @@ class RegisterRecruiterPage extends Component {
                     onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
+                {hasError && (
+                  <div className="alert alert-danger" role="alert">
+                    {hasError}
+                  </div>
+                )}
+                {hasSuccess && (
+                  <div className="alert alert-success" role="alert">
+                    {hasSuccess}
+                  </div>
+                )}
                 <Button
                   className={`${RegisterRecruiterStyle.register_button} mt-4`}
-                  type="submit"
+                  onClick={(event) => this.submitData(event)}
                 >
                   Daftar
                 </Button>
@@ -204,8 +279,7 @@ class RegisterRecruiterPage extends Component {
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-
-const mapDispatchToProps = { RegisterPerekrut };
+const mapDispatchToProps = { registerRecruiter };
 
 export default connect(
   mapStateToProps,

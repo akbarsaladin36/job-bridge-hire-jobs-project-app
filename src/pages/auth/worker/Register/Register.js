@@ -3,7 +3,6 @@ import { Row, Col, Form, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import RegisterStyle from "./RegisterStyle.module.css";
-import Image1 from "../../../../assets/img/left-column-image.jpg";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 import { registerWorker } from "../../../../redux/action/auth";
@@ -19,6 +18,8 @@ class RegisterPage extends Component {
         passwordWorker: "",
         confirmPasswordWorker: "",
       },
+      hasError: false,
+      hasSuccess: false,
     };
   }
 
@@ -31,21 +32,83 @@ class RegisterPage extends Component {
     });
   };
 
+  resetData = () => {
+    this.setState({
+      form: {
+        ...this.state.form,
+      },
+    });
+  };
+
   submitData = (event) => {
     event.preventDefault();
     // console.log(this.props);
-    const { passwordWorker, confirmPasswordWorker } = this.state.form;
-    if (passwordWorker !== confirmPasswordWorker) {
-      alert("Passwords don't match.");
+    const {
+      fullnameWorker,
+      emailWorker,
+      phoneNumberWorker,
+      passwordWorker,
+      confirmPasswordWorker,
+    } = this.state.form;
+    if (
+      fullnameWorker === "" &&
+      emailWorker === "" &&
+      phoneNumberWorker === "" &&
+      passwordWorker === "" &&
+      confirmPasswordWorker === ""
+    ) {
+      this.setState({
+        hasError: "Fill all the form to register!",
+      });
+    } else if (fullnameWorker === "") {
+      this.setState({
+        hasError: "Fill the full name form!",
+      });
+    } else if (emailWorker === "") {
+      this.setState({
+        hasError: "Fill the email form!",
+      });
+    } else if (phoneNumberWorker === "") {
+      this.setState({
+        hasError: "Fill the phone number form!",
+      });
+    } else if (passwordWorker === "") {
+      this.setState({
+        hasError: "Fill the password form!",
+      });
+    } else if (confirmPasswordWorker === "") {
+      this.setState({
+        hasError: "Fill the confirmation password form!",
+      });
+    } else if (passwordWorker !== confirmPasswordWorker) {
+      this.setState({
+        hasError:
+          "Your password is not match with confirmation password! Please try again.",
+      });
     } else {
       // console.log(this.props);
-      this.props.registerWorker({
-        fullnameWorker: this.state.form.fullnameWorker,
-        emailWorker: this.state.form.emailWorker,
-        phoneNumberWorker: this.state.form.phoneNumberWorker,
-        passwordWorker: confirmPasswordWorker,
-      });
-      alert("Register Worker sudah sukses. Silakan cek email anda.");
+      this.props
+        .registerWorker({
+          fullnameWorker: fullnameWorker,
+          emailWorker: emailWorker,
+          phoneNumberWorker: phoneNumberWorker,
+          passwordWorker: confirmPasswordWorker,
+        })
+        .then((res) => {
+          this.setState({
+            hasSuccess: res.action.payload.data.msg,
+            hasError: false,
+          });
+          window.setTimeout(() => {
+            this.props.history.push("/auth/worker/login");
+          }, 3000);
+        })
+        .catch((err) => {
+          console.log(err.response);
+          this.setState({
+            hasError: err.response.data.msg,
+          });
+        });
     }
   };
 
@@ -56,17 +119,14 @@ class RegisterPage extends Component {
       phoneNumberWorker,
       passwordWorker,
       confirmPasswordWorker,
+      hasError,
+      hasSuccess,
     } = this.state;
     return (
       <>
         <Container fluid>
           <Row>
             <Col lg={7} className={RegisterStyle.left_background}>
-              <img
-                src={Image1}
-                className={RegisterStyle.image_background}
-                alt="job bridge background"
-              />
               <img
                 src={ImageLogo1}
                 className={RegisterStyle.job_bridge_brand}
@@ -93,7 +153,7 @@ class RegisterPage extends Component {
                 lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 euismod ipsum et dui rhoncus auctor
               </p>
-              <Form className="mt-5 ml-3" onSubmit={this.submitData}>
+              <Form className="mt-5 ml-3">
                 <Form.Group>
                   <Form.Label>Nama</Form.Label>
                   <Form.Control
@@ -144,9 +204,19 @@ class RegisterPage extends Component {
                     onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
+                {hasError && (
+                  <div className="alert alert-danger" role="alert">
+                    {hasError}
+                  </div>
+                )}
+                {hasSuccess && (
+                  <div className="alert alert-success" role="alert">
+                    {hasSuccess}
+                  </div>
+                )}
                 <Button
                   className={`${RegisterStyle.register_button} mt-4`}
-                  type="submit"
+                  onClick={(event) => this.submitData(event)}
                 >
                   Daftar
                 </Button>

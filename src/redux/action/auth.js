@@ -1,5 +1,12 @@
 import axiosApiIntances from "../../utils/axios";
 
+export const registerRecruiter = (data) => {
+  return {
+    type: "REGISTER_RECRUITER",
+    payload: axiosApiIntances.post("auth/register-company", data),
+  };
+};
+
 export const loginRecruiter = (data) => {
   return {
     type: "LOGIN_RECRUITER",
@@ -11,13 +18,6 @@ export const getRecruiterById = (id) => {
   return {
     type: "GET_RECRUITER",
     payload: axiosApiIntances.get(`recruiter/${id}`),
-  };
-};
-
-export const RegisterPerekrut = (data) => {
-  return {
-    type: "REGISTER_RECRUITER",
-    payload: axiosApiIntances.post("auth/register-company", data),
   };
 };
 
