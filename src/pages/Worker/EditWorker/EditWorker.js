@@ -352,7 +352,9 @@ class EditWorker extends Component {
       image,
     } = this.state.portofolioWorker;
     console.log(this.state);
-    console.log(this.props);
+    // console.log(this.props);
+    console.log(this.props.worker.biodata);
+    const { image_worker } = this.props.worker.biodata;
     return (
       <>
         <NavBar />
@@ -399,7 +401,10 @@ class EditWorker extends Component {
                     imageWorker === undefined ? (
                       <Image src={imgProfile} className={styles.imgProfile} />
                     ) : (
-                      <Image src={imageWorker} className={styles.imgProfile} />
+                      <Image
+                        src={`${process.env.REACT_APP_IMAGE_URL}${image_worker}`}
+                        className={styles.imgProfile}
+                      />
                     )}
                   </Row>
                   <p className={styles.nameWorker}>{fullnameWorker}</p>
