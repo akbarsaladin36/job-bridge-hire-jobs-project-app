@@ -193,7 +193,11 @@ class NavBar extends Component {
                           >
                             Change Photo Profile
                           </Dropdown.Item>
-                          <Dropdown.Item className={myStyle.listSort}>
+                          <Dropdown.Item
+                            className={myStyle.listSort}
+                            as={Link}
+                            to="/jobbridge/change-password"
+                          >
                             Change Password
                           </Dropdown.Item>
                           <Dropdown.Item

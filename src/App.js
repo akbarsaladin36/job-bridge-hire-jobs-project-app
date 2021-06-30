@@ -13,7 +13,7 @@ import EditWorker from "./pages/Worker/EditWorker/EditWorker";
 import Chat from "./pages/Chat/Chat";
 import ProfileRecruiter from "./pages/Recruiter/ProfileRecruiter/ProfileRecruiter";
 import EditRecruiter from "./pages/Recruiter/EditRecruiter/Profile";
-
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 // Import Components
 import NavBar from "./components/Navbar/Navbar";
 import UploadImage from "./components/UploadImage/UploadImage";
@@ -40,6 +40,11 @@ class App extends Component {
               <Route path="/jobbridge/hire/:id" exact component={Hire} />
               <Route path="/jobbridge" exact component={Home} />
               <Route path="/jobbridge/hire" exact component={Hire} />
+              <Route
+                path="/jobbridge/change-password"
+                exact
+                component={ChangePassword}
+              />
               <Route path="/" exact component={LandingPage} />
               <Route
                 path="/jobbridge/profile-worker"
