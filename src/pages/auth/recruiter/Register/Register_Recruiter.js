@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerRecruiter } from "../../../../redux/action/auth";
 import RegisterRecruiterStyle from "./RegisterRecruiterStyle.module.css";
-import Image1 from "../../../../assets/img/left-column-image.jpg";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
@@ -56,7 +55,7 @@ class RegisterRecruiterPage extends Component {
     ) {
       this.setState({
         ...this.state,
-        hasError: "Isi keseluruhan data di bawah ini!",
+        hasError: "Fill all the form to register!",
       });
     } else if (recruiterName === "") {
       this.setState({
@@ -112,7 +111,13 @@ class RegisterRecruiterPage extends Component {
         })
         .then((res) => {
           console.log(res);
-          this.props.history.push("/auth/recruiter/login");
+          this.setState({
+            hasSuccess: res.action.payload.data.msg,
+            hasError: false,
+          });
+          window.setTimeout(() => {
+            this.props.history.push("/auth/recruiter/login");
+          }, 3000);
         })
         .catch((err) => {
           console.log(err);
@@ -133,17 +138,13 @@ class RegisterRecruiterPage extends Component {
       companyField,
       companyPhoneNumber,
       hasError,
+      hasSuccess,
     } = this.state;
     return (
       <>
         <Container fluid>
           <Row>
             <Col lg={7} className={RegisterRecruiterStyle.left_background}>
-              <img
-                src={Image1}
-                className={RegisterRecruiterStyle.image_background}
-                alt="job bridge background"
-              />
               <img
                 src={ImageLogo1}
                 className={RegisterRecruiterStyle.job_bridge_brand}
@@ -244,6 +245,11 @@ class RegisterRecruiterPage extends Component {
                 {hasError && (
                   <div className="alert alert-danger" role="alert">
                     {hasError}
+                  </div>
+                )}
+                {hasSuccess && (
+                  <div className="alert alert-success" role="alert">
+                    {hasSuccess}
                   </div>
                 )}
                 <Button

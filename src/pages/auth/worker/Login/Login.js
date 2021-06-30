@@ -5,7 +5,6 @@ import { getDataWorker } from "../../../../redux/action/worker";
 import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginStyle from "./LoginStyle.module.css";
-import Image1 from "../../../../assets/img/left-column-image.jpg";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
@@ -17,6 +16,7 @@ class LoginPage extends Component {
         userEmail: "",
         userPassword: "",
       },
+      hasSuccess: false,
       hasError: false,
     };
   }
@@ -51,35 +51,33 @@ class LoginPage extends Component {
           passwordWorker: userPassword,
         })
         .then((res) => {
+          console.log(res);
           localStorage.setItem("token", this.props.auth.data.token);
           this.props.getDataWorker(this.props.auth.data.id_worker);
-          this.props.history.push("/");
+          this.setState({
+            hasSuccess: res.action.payload.data.msg,
+            hasError: false,
+          });
+          window.setTimeout(() => {
+            this.props.history.push("/");
+          }, 3000);
         })
         .catch((err) => {
           // console.log("ERROR RSP", err.response);
           this.setState({
             hasError: err.response.data.msg,
-            form: {
-              userEmail: "",
-              userPassword: "",
-            },
           });
         });
     }
   };
 
   render() {
-    const { userEmail, userPassword, hasError } = this.state;
+    const { userEmail, userPassword, hasError, hasSuccess } = this.state;
     return (
       <>
         <Container fluid>
           <Row>
             <Col lg={7} className={LoginStyle.left_background}>
-              <img
-                src={Image1}
-                className={LoginStyle.image_background}
-                alt="job bridge background"
-              />
               <img
                 src={ImageLogo1}
                 className={LoginStyle.job_bridge_brand}
@@ -128,6 +126,11 @@ class LoginPage extends Component {
                 {hasError && (
                   <div className="alert alert-danger" role="alert">
                     {hasError}
+                  </div>
+                )}
+                {hasSuccess && (
+                  <div className="alert alert-success" role="alert">
+                    {hasSuccess}
                   </div>
                 )}
                 <Button

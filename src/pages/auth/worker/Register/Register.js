@@ -3,7 +3,6 @@ import { Row, Col, Form, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import RegisterStyle from "./RegisterStyle.module.css";
-import Image1 from "../../../../assets/img/left-column-image.jpg";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 import { registerWorker } from "../../../../redux/action/auth";
@@ -96,11 +95,13 @@ class RegisterPage extends Component {
           passwordWorker: confirmPasswordWorker,
         })
         .then((res) => {
-          console.log(res);
           this.setState({
             hasSuccess: res.action.payload.data.msg,
+            hasError: false,
           });
-          this.props.history.push("/auth/worker/login");
+          window.setTimeout(() => {
+            this.props.history.push("/auth/worker/login");
+          }, 3000);
         })
         .catch((err) => {
           console.log(err.response);
@@ -126,11 +127,6 @@ class RegisterPage extends Component {
         <Container fluid>
           <Row>
             <Col lg={7} className={RegisterStyle.left_background}>
-              <img
-                src={Image1}
-                className={RegisterStyle.image_background}
-                alt="job bridge background"
-              />
               <img
                 src={ImageLogo1}
                 className={RegisterStyle.job_bridge_brand}
