@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginWorker } from "../../../../redux/action/auth";
 import { getDataWorker } from "../../../../redux/action/worker";
-import { Row, Col, Form, Button, Container, Alert } from "react-bootstrap";
+import { Row, Col, Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginStyle from "./LoginStyle.module.css";
-import Image1 from "../../../../assets/img/left-column-image.jpg";
 import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
@@ -17,8 +16,8 @@ class LoginPage extends Component {
         userEmail: "",
         userPassword: "",
       },
-      msg: "",
-      id: "",
+      hasSuccess: false,
+      hasError: false,
     };
   }
 
@@ -31,41 +30,54 @@ class LoginPage extends Component {
     });
   };
 
-  handleLogin = (event) => {
+  handleLogin = () => {
     const { userEmail, userPassword } = this.state.form;
-    this.props
-      .loginWorker({
-        emailWorker: userEmail,
-        passwordWorker: userPassword,
-      })
-      .then((res) => {
-        localStorage.setItem("token", this.props.auth.data.token);
-        this.setState({
-          msg: this.props.auth.msg,
-        });
-        this.props.getDataWorker(this.props.auth.data.id_worker);
-        this.props.history.push("/");
-      })
-      .catch((err) => {
-        console.log("ERROR RSP", err.response);
-        this.setState({
-          msg: err.response.data.msg,
-        });
+    if (userEmail === "" && userPassword === "") {
+      this.setState({
+        hasError: "Fill all the form to login!",
       });
+    } else if (userEmail === "") {
+      this.setState({
+        hasError: "Fill the email form!",
+      });
+    } else if (userPassword === "") {
+      this.setState({
+        hasError: "Fill the password form!",
+      });
+    } else {
+      this.props
+        .loginWorker({
+          emailWorker: userEmail,
+          passwordWorker: userPassword,
+        })
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("token", this.props.auth.data.token);
+          this.props.getDataWorker(this.props.auth.data.id_worker);
+          this.setState({
+            hasSuccess: res.action.payload.data.msg,
+            hasError: false,
+          });
+          window.setTimeout(() => {
+            this.props.history.push("/");
+          }, 3000);
+        })
+        .catch((err) => {
+          // console.log("ERROR RSP", err.response);
+          this.setState({
+            hasError: err.response.data.msg,
+          });
+        });
+    }
   };
 
   render() {
-    const { msg } = this.state;
+    const { userEmail, userPassword, hasError, hasSuccess } = this.state;
     return (
       <>
         <Container fluid>
           <Row>
             <Col lg={7} className={LoginStyle.left_background}>
-              <img
-                src={Image1}
-                className={LoginStyle.image_background}
-                alt="job bridge background"
-              />
               <img
                 src={ImageLogo1}
                 className={LoginStyle.job_bridge_brand}
@@ -95,6 +107,7 @@ class LoginPage extends Component {
                   <Form.Control
                     type="email"
                     name="userEmail"
+                    value={userEmail}
                     placeholder="Masukkan email"
                     onChange={(event) => this.changeText(event)}
                   />
@@ -104,17 +117,21 @@ class LoginPage extends Component {
                   <Form.Control
                     type="password"
                     name="userPassword"
+                    value={userPassword}
                     placeholder="Masukkan kata sandi"
                     onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
                 <p className="float-end mt-3">Lupa kata sandi</p>
-                {msg.length > 0 ? (
-                  <Alert variant="warning" className="text-center">
-                    {msg}
-                  </Alert>
-                ) : (
-                  ""
+                {hasError && (
+                  <div className="alert alert-danger" role="alert">
+                    {hasError}
+                  </div>
+                )}
+                {hasSuccess && (
+                  <div className="alert alert-success" role="alert">
+                    {hasSuccess}
+                  </div>
                 )}
                 <Button
                   className={`${LoginStyle.sign_in_button} mt-2`}
