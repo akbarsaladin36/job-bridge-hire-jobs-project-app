@@ -20,8 +20,9 @@ class NavBar extends Component {
       window.location.href = "/";
     }
   };
-
   render() {
+    console.log(this.props);
+
     const { login, roleUser } = this.props.auth;
     const { company_image } = this.props.auth.data;
     const { image_worker } = this.props.worker.biodata;
@@ -193,7 +194,11 @@ class NavBar extends Component {
                           >
                             Change Photo Profile
                           </Dropdown.Item>
-                          <Dropdown.Item className={myStyle.listSort}>
+                          <Dropdown.Item
+                            className={myStyle.listSort}
+                            // as={Link}
+                            // to="/jobbridge/change-password"
+                          >
                             Change Password
                           </Dropdown.Item>
                           <Dropdown.Item
@@ -212,9 +217,9 @@ class NavBar extends Component {
                           id="dropdown-basic"
                           className={myStyle.titleSort}
                         >
-                          {company_image === null ||
-                          company_image === "" ||
-                          company_image === undefined ? (
+                          {company_image !== null ||
+                          company_image !== "" ||
+                          company_image !== undefined ? (
                             <Image
                               src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
                               className={myStyle.imgProfile}
@@ -246,13 +251,10 @@ class NavBar extends Component {
                             Edit Profile
                           </Dropdown.Item>
                           <Dropdown.Item
-                            as={Link}
-                            to="/jobbridge/edit-recruiter"
                             className={myStyle.listSort}
+                            as={Link}
+                            to="/jobbridge/change-password"
                           >
-                            Change Photo Profile
-                          </Dropdown.Item>
-                          <Dropdown.Item className={myStyle.listSort}>
                             Change Password
                           </Dropdown.Item>
                           <Dropdown.Item
@@ -277,6 +279,7 @@ class NavBar extends Component {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   worker: state.worker,
+  recruiter: state.recruiter,
 });
 const mapDispatchToProps = { logout, getDataWorker };
 

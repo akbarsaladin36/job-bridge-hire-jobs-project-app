@@ -13,3 +13,10 @@ export const hireWorker = (data) => {
     payload: axiosApiIntances.post(`recruiter/hire`, data),
   };
 };
+
+export const changePassword = (data) => {
+  return {
+    type: "CHANGE_PASSWORD",
+    payload: axiosApiIntances.patch(`recruiter/change-password`, data),
+  };
+};
