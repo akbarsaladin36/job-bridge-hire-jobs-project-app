@@ -77,7 +77,7 @@ class ProfileWorker extends Component {
         <Container fluid className={styles.container1}></Container>
         <Container className={styles.container}>
           <Row className={styles.rowContainer}>
-            <Col lg={4} className={styles.left}>
+            <Col lg={4} md={4} sm={12} xs={12} className={styles.left}>
               <Col className={styles.colCardBiodata}>
                 {image_worker === null ||
                 image_worker === "" ||
@@ -145,7 +145,7 @@ class ProfileWorker extends Component {
                 </p>
               </Col>
             </Col>
-            <Col lg={8} className={styles.right}>
+            <Col lg={7} md={7} sm={12} xs={12} className={styles.right}>
               <Col className={styles.colRight}>
                 <Row className={styles.rowTab}>
                   <Button
