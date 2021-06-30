@@ -7,6 +7,13 @@ export const loginRecruiter = (data) => {
   };
 };
 
+export const getRecruiterById = (id) => {
+  return {
+    type: "GET_RECRUITER",
+    payload: axiosApiIntances.get(`recruiter/${id}`),
+  };
+};
+
 export const RegisterPerekrut = (data) => {
   return {
     type: "REGISTER_RECRUITER",

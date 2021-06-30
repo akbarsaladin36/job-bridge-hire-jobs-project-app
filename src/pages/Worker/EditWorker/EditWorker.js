@@ -25,7 +25,6 @@ import styles from "./EditWorker.module.css";
 import imgProfile from "../../../assets/img/img-not-found.png";
 import iconLocation from "../../../assets/img/icon-location.png";
 import iconPhone from "../../../assets/img/icon-phone.png";
-import iconEdit from "../../../assets/img/icon-edit.png";
 import iconDelete from "../../../assets/img/icon-delete.png";
 import rocket from "../../../assets/img/rocket.png";
 import UploadImage from "../../../components/UploadImage/UploadImage";
@@ -48,9 +47,10 @@ class EditWorker extends Component {
         descriptionWorker: this.props.worker.biodata.description_worker,
         image: null,
       },
-      setData: {
-        skills: ["php", "java", "phyton"],
-      },
+      tpmSkill: "",
+      newSkills: this.props.worker.skill.map((item) => {
+        return item.name_skill;
+      }),
       experience: {
         companyNameExperience: "",
         posistionExperience: "",
@@ -99,17 +99,6 @@ class EditWorker extends Component {
     });
   };
 
-  changeSkill = (event) => {
-    // console.log(event.target.value);
-    const data = event.target.value;
-    console.log(data);
-    this.setState({
-      setData: {
-        skills: [event.target.value],
-      },
-    });
-  };
-
   componentDidMount() {
     console.log("this get Data running");
     this.getData();
@@ -152,30 +141,6 @@ class EditWorker extends Component {
       },
     });
     console.log(this.state);
-  };
-
-  handleSkillEdit = (params) => {
-    const data = params.map((item) => {
-      return item.name_skill;
-    });
-    this.setState({
-      setData: {
-        skills: data,
-      },
-    });
-    console.log(data);
-  };
-
-  handleSkillDelete = (params) => {
-    const data = params.map((item) => {
-      return item.name_skill;
-    });
-    this.setState({
-      setData: {
-        skills: [],
-      },
-    });
-    console.log(data);
   };
 
   updateData = () => {
@@ -246,31 +211,52 @@ class EditWorker extends Component {
       });
   };
 
-  updateSkill = () => {
-    const id = this.props.auth.data.id_worker;
-    const { skills } = this.state.setData;
-    skills.map((e) => {
-      console.log(e);
-      const setData = {
-        skills: e.split(","),
-      };
-      this.props
-        .UpdateSkillWorker(id, setData)
-        .then((res) => {
-          alert("Please Click OK for Update your Profile !");
-        })
-        .catch((err) => {
-          console.log(err.response);
-        })
-        .finally(() => {
-          this.setState({
-            show: true,
-            setShow: true,
-          });
-          this.getData(id);
-          window.location.href = `/jobbridge/edit-worker`;
-        });
+  addSkill = (event) => {
+    // console.log(event.target.value);
+    this.setState({
+      tmpSkill: event.target.value,
     });
+  };
+
+  updateSkill = () => {
+    let { tmpSkill, newSkills } = this.state;
+    newSkills.push(tmpSkill);
+    console.log("add skill", newSkills);
+    const id = this.props.auth.data.id_worker;
+
+    this.props
+      .UpdateSkillWorker(id, { skills: newSkills })
+      .then((res) => {
+        alert("Please Click OK for Update your Profile !");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(() => {
+        this.props.getDataWorker(id);
+      });
+  };
+
+  handleSkillDelete = (id) => {
+    let { newSkills } = this.state;
+    console.log("delete skill", newSkills[id]);
+    newSkills.splice(id, 1);
+    this.setState({
+      newSkills: newSkills,
+    });
+
+    const idWorker = this.props.auth.data.id_worker;
+    this.props
+      .UpdateSkillWorker(idWorker, { skills: newSkills })
+      .then((res) => {
+        alert("Please Click OK for Update your Profile !");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(() => {
+        this.props.getDataWorker(idWorker);
+      });
   };
 
   submitData = () => {
@@ -346,7 +332,8 @@ class EditWorker extends Component {
       descriptionWorker,
     } = this.state.biodata;
     // const { experience } = this.props.worker.data;
-    const { skill, experience } = this.props.worker;
+    const { experience } = this.props.worker;
+    const skill = this.state.newSkills;
     const {
       companyNameExperience,
       posistionExperience,
@@ -608,9 +595,8 @@ class EditWorker extends Component {
                                 type="text"
                                 placeholder="Masukan skill "
                                 className={styles.placeholder}
-                                name=""
-                                value={this.state.setData.skills}
-                                onChange={(event) => this.changeSkill(event)}
+                                value={this.state.addSkill}
+                                onChange={(event) => this.addSkill(event)}
                               />
                             </Row>
                           </Col>
@@ -630,45 +616,34 @@ class EditWorker extends Component {
                           </Col>
                         </Form.Group>
                       </Col>
-                      <Col className={styles.colSkill}>
-                        <Row>
-                          <Col>
-                            <Row>
-                              {skill.map((item, index) => {
-                                return (
-                                  <Col
-                                    lg={2}
-                                    key={index}
-                                    className={styles.colIndex}
-                                  >
-                                    <p className={styles.nameSkill}>
-                                      {item.name_skill}
-                                    </p>
+                      {skill.length > 0
+                        ? skill.map((item, index) => {
+                            return (
+                              <Col key={index} className={styles.colSkill}>
+                                <Row>
+                                  <Col>
+                                    <Row>
+                                      <Col lg={2} className={styles.colIndex}>
+                                        <p className={styles.nameSkill}>
+                                          {item}
+                                        </p>
+                                      </Col>
+                                    </Row>
                                   </Col>
-                                );
-                              })}
-                            </Row>
-                          </Col>
-                          <Col lg={1} className={styles.colImageSkill}>
-                            <Row className={styles.rowSkillImage}>
-                              <Image
-                                src={iconEdit}
-                                className={styles.iconEdit}
-                                onClick={() => this.handleSkillEdit(skill)}
-                              />
-                            </Row>
-                          </Col>
-                          <Col lg={1} className={styles.colImageSkill}>
-                            <Row>
-                              <Image
-                                src={iconDelete}
-                                className={styles.iconDelete}
-                                onClick={() => this.handleSkillDelete(skill)}
-                              />
-                            </Row>
-                          </Col>
-                        </Row>
-                      </Col>
+                                  <Col lg={1} className={styles.colImageSkill}>
+                                    <Image
+                                      src={iconDelete}
+                                      className={styles.iconDelete}
+                                      onClick={() =>
+                                        this.handleSkillDelete(index)
+                                      }
+                                    />
+                                  </Col>
+                                </Row>
+                              </Col>
+                            );
+                          })
+                        : ""}
                     </Form>
                   </Col>
 

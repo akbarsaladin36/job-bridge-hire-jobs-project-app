@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateRecruiter } from "../../../redux/action/recruiter";
-import { logout } from "../../../redux/action/auth";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { logout, getRecruiterById } from "../../../redux/action/auth";
+import { Container, Row, Col, Image, Form } from "react-bootstrap";
 import NavBar from "../../../components/Navbar/Navbar";
 import myStyle from "./Profile.module.css";
 // import MobileFooter from "../../components/mobilefooter/mobilefooter";
@@ -36,6 +36,10 @@ class ProfilePage extends Component {
     const id = this.props.auth.data.id_company;
     const formData = new FormData();
     for (const key in this.state) {
+      if (this.state[key] === "") {
+        alert("please input field correctly !");
+        return false;
+      }
       key !== "companyImage"
         ? formData.append(key, this.state[key])
         : console.log("");
@@ -55,12 +59,8 @@ class ProfilePage extends Component {
         this.setState({
           isShow: true,
         });
-        alert("Succes Update Data, Please Re-login !");
-        setTimeout(() => {
-          // log out here
-          this.props.logout();
-          this.props.history.push("/auth/recruiter/login");
-        }, 2000);
+        alert("Succes Update Data !");
+        this.props.getRecruiterById(this.props.auth.data.id_company);
       });
   };
 
@@ -100,7 +100,7 @@ class ProfilePage extends Component {
       linkedin,
       companyImage,
     } = this.state;
-
+    // console.log(this.props.auth.data);
     return (
       <>
         <NavBar />
@@ -108,32 +108,30 @@ class ProfilePage extends Component {
           <div className={myStyle.purpleArea}>
             <Container>
               <Row className="py-4 d-flex justify-content-between">
-                <Col
-                  lg={3}
-                  md={3}
-                  sm={3}
-                  xs={3}
-                  className={`${myStyle.noPadding}`}
-                >
-                  <div className={`${myStyle.whiteColumn} mb-2`}>
-                    <Row className={`w-100 mx-auto`}>
-                      <Image
-                        src={companyImage}
-                        className="p-3"
-                        alt="NONE"
-                        roundedCircle
-                        fluid
-                      />
-                      <div className="custom-file mb-3 ml-2 mr-2">
-                        <input
+                <Col md={3} className={`${myStyle.noPadding} text-center`}>
+                  <div className={`${myStyle.whiteColumn} mb-2 pl-2 pr-2`}>
+                    <Row className={`w-100 pt-3`}>
+                      <Form.Group className="mx-auto">
+                        <Form.Label
+                          htmlFor="files"
+                          className={myStyle.boxUpdateImage}
+                        >
+                          <Image
+                            src={companyImage}
+                            style={{ width: "200px" }}
+                            className="pl-3"
+                            alt="NONE"
+                            roundedCircle
+                            fluid
+                          />
+                        </Form.Label>
+                        <Form.Control
                           type="file"
-                          className="custom-file-input"
+                          id="files"
                           onChange={(event) => this.handleImage(event)}
-                        ></input>
-                        <label className="custom-file-label">
-                          Change Photos...
-                        </label>
-                      </div>
+                          className={myStyle.updateImage}
+                        />
+                      </Form.Group>
                     </Row>
                     <h5 className={`${myStyle.fontBold} px-4 mb-1`}>
                       {companyName}
@@ -142,30 +140,25 @@ class ProfilePage extends Component {
                     <span className={`${myStyle.grayText} d-block px-4`}>
                       {city}
                     </span>
-                    <Row className="w-100 mx-auto px-4 mt-4">
-                      <p className={`${myStyle.grayText}`}>{description}</p>
-                    </Row>
+                    <p className={`${myStyle.grayText} pb-3`}>{description}</p>
                   </div>
                   <button
                     type="button"
-                    className={`${myStyle.hireButton} w-100 mt-2`}
+                    className={`${myStyle.hireButton} w-100`}
                     onClick={() => this.updateData()}
                   >
                     Simpan
                   </button>
                   <button
                     type="button`"
-                    className={`${myStyle.hireButtonOutline} w-100 mt-2`}
+                    className={`${myStyle.hireButtonOutline} w-100 mt-2 mb-2`}
                     onClick={() => this.clearData()}
                   >
                     Batal
                   </button>
                 </Col>
                 <Col
-                  lg={8}
                   md={8}
-                  sm={8}
-                  xs={8}
                   className={`${myStyle.whiteColumn} ${myStyle.noPadding}`}
                 >
                   <div className={`${myStyle.myBottomBorder} w-100`}>
@@ -309,6 +302,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-const mapDispatchToProps = { updateRecruiter, logout };
+const mapDispatchToProps = { updateRecruiter, logout, getRecruiterById };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
