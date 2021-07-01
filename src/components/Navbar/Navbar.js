@@ -155,7 +155,10 @@ class NavBar extends Component {
                         >
                           {image_worker === null ||
                           image_worker === "" ||
-                          image_worker === undefined ? (
+                          image_worker === undefined ||
+                          company_image === null ||
+                          company_image === "" ||
+                          company_image === undefined ? (
                             <Image
                               src={imgProfile}
                               className={myStyle.imgProfile}

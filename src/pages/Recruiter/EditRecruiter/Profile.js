@@ -22,7 +22,7 @@ class ProfilePage extends Component {
       phoneNumber: this.props.auth.data.company_phone_number,
       linkedin: this.props.auth.data.company_linkedin,
       // companyImage: `${process.env.REACT_APP_IMAGE_URL}${this.props.auth.data.company_image}`,
-      companyImage: `${imgProfile}`,
+      companyImage: this.props.auth.data.company_image,
       image: null,
     };
   }
