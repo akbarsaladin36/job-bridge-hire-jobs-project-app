@@ -354,6 +354,7 @@ class EditWorker extends Component {
     } = this.state.portofolioWorker;
     console.log(this.state);
     // console.log(this.props);
+    console.log(this.props);
     console.log(this.props.worker.biodata);
     const { image_worker } = this.props.worker.biodata;
     return (
@@ -777,12 +778,18 @@ class EditWorker extends Component {
                         <Row className={styles.rowTabContent}>
                           {experience.map((item, index) => {
                             return (
-                              <Row
-                                key={index}
-                                className={styles.rowExperienceWork}
-                              >
-                                <Experience experience={item} />
-                              </Row>
+                              <>
+                                <div
+                                  className={`position-relative ${styles.experienceHolder}`}
+                                >
+                                  <Row
+                                    key={index}
+                                    className={styles.rowExperienceWork}
+                                  >
+                                    <Experience experience={item} />
+                                  </Row>
+                                </div>
+                              </>
                             );
                           })}
                         </Row>

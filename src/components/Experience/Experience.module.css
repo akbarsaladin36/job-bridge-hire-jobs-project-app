@@ -239,8 +239,24 @@
 
 .rowExperienceWork {
   margin-bottom: 20px;
-  width: 100%;
+  /* width: 100%; */
   align-items: flex-start;
+}
+
+.deleteButtonHolder {
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.deleteButton {
+  background-color: transparent;
+  border: 2px solid #9c0000;
+  border-radius: 5px;
+  color: #9c0000;
 }
 
 .ExperienceWorkLeft {

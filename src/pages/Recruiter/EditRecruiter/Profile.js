@@ -5,6 +5,7 @@ import { logout, getRecruiterById } from "../../../redux/action/auth";
 import { Container, Row, Col, Image, Form } from "react-bootstrap";
 import NavBar from "../../../components/Navbar/Navbar";
 import myStyle from "./Profile.module.css";
+import imgProfile from "../../../assets/img/img-not-found.png";
 // import MobileFooter from "../../components/mobilefooter/mobilefooter";
 import Footer from "../../../components/Footer/Footer";
 
@@ -20,7 +21,8 @@ class ProfilePage extends Component {
       instagram: this.props.auth.data.company_instagram,
       phoneNumber: this.props.auth.data.company_phone_number,
       linkedin: this.props.auth.data.company_linkedin,
-      companyImage: `${process.env.REACT_APP_IMAGE_URL}${this.props.auth.data.company_image}`,
+      // companyImage: `${process.env.REACT_APP_IMAGE_URL}${this.props.auth.data.company_image}`,
+      companyImage: `${imgProfile}`,
       image: null,
     };
   }
@@ -100,6 +102,8 @@ class ProfilePage extends Component {
       linkedin,
       companyImage,
     } = this.state;
+    console.log(this.props.auth.data);
+    const { company_image } = this.props.auth.data;
     // console.log(this.props.auth.data);
     return (
       <>
@@ -116,21 +120,30 @@ class ProfilePage extends Component {
                           htmlFor="files"
                           className={myStyle.boxUpdateImage}
                         >
-                          <Image
-                            src={companyImage}
-                            style={{ width: "200px" }}
-                            className="pl-3"
-                            alt="NONE"
-                            roundedCircle
-                            fluid
+                          <Form.Control
+                            type="file"
+                            id="files"
+                            onChange={(event) => this.handleImage(event)}
+                            className={myStyle.updateImage}
                           />
+                          {companyImage === null ||
+                          companyImage === "" ||
+                          companyImage === undefined ? (
+                            <Image
+                              src={imgProfile}
+                              className={myStyle.imgProfile}
+                            />
+                          ) : (
+                            <Image
+                              src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
+                              style={{ width: "200px" }}
+                              className="pl-3"
+                              alt="NONE"
+                              roundedCircle
+                              fluid
+                            />
+                          )}
                         </Form.Label>
-                        <Form.Control
-                          type="file"
-                          id="files"
-                          onChange={(event) => this.handleImage(event)}
-                          className={myStyle.updateImage}
-                        />
                       </Form.Group>
                     </Row>
                     <h5 className={`${myStyle.fontBold} px-4 mb-1`}>

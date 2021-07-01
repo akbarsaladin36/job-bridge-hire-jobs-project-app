@@ -164,6 +164,36 @@ const auth = (state = initialState, action) => {
         msg: action.payload.data.msg,
       };
 
+    case "DELETE_EXPERIENCE_WORKER_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "DELETE_EXPERIENCE_WORKER_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        // data: action.payload.data.data[0],
+        msg: action.payload.data.msg,
+      };
+    case "DELETE_EXPERIENCE_WORKER_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        // data: {},
+        msg: action.payload.data.msg,
+      };
+
     case "CREATE_PORTOFOLIO_WORKER_PENDING":
       return {
         ...state,
