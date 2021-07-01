@@ -70,6 +70,7 @@ class ProfileWorker extends Component {
       gitlab_worker,
     } = this.props.worker.biodata;
     const { skill, portofolio, experience } = this.props.worker;
+    console.log(this.props.worker);
     return (
       <>
         <NavBar />
