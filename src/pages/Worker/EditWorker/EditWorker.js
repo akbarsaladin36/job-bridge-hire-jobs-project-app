@@ -285,45 +285,46 @@ class EditWorker extends Component {
       });
   };
 
-  // submitDataPortofolio = () => {
-  //   console.log("Save data!");
-  //   console.log(this.state.experience);
-  //   const id = this.props.auth.data.id_worker;
-  //   const formData = new FormData();
-  //   formData.append(
-  //     "appNamePortofolio",
-  //     this.state.portofolioWorker.appNamePortofolio
-  //   );
-  //   formData.append(
-  //     "linkRepositoryPortofolio",
-  //     this.state.portofolioWorker.linkRepositoryPortofolio
-  //   );
-  //   formData.append(
-  //     "appDescPortofolio",
-  //     this.state.portofolioWorker.appDescPortofolio
-  //   );
-  //   formData.append("image", this.state.portofolioWorker.image);
-  //   for (var pair of formData.entries()) {
-  //     console.log(pair[0] + ", " + pair[1]);
-  //   }
-  //   this.props
-  //     .CreatePortofolioWorker(id, formData)
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert("Please Click OK for create your work experience !");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.response);
-  //     })
-  //     .finally(() => {
-  //       this.setState({
-  //         show: true,
-  //         setShow: true,
-  //       });
-  //       this.props.getDataWorker(id);
-  //       window.location.href = `/jobbridge/edit-worker`;
-  //     });
-  // };
+  submitDataPortofolio = () => {
+    console.log("Save data!");
+    console.log(this.state.experience);
+    const id = this.props.auth.data.id_worker;
+    const formData = new FormData();
+    formData.append(
+      "appNamePortofolio",
+      this.state.portofolioWorker.appNamePortofolio
+    );
+    formData.append(
+      "linkRepositoryPortofolio",
+      this.state.portofolioWorker.linkRepositoryPortofolio
+    );
+    formData.append(
+      "appDescPortofolio",
+      this.state.portofolioWorker.appDescPortofolio
+    );
+    formData.append("image", this.state.portofolioWorker.image);
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+    this.props
+      .CreatePortofolioWorker(id, formData)
+      .then((res) => {
+        console.log(res);
+        alert("Please Click OK for create your work experience !");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      })
+      .finally(() => {
+        this.setState({
+          show: true,
+          setShow: true,
+        });
+        this.props.getDataWorker(id);
+        window.location.href = `/jobbridge/edit-worker`;
+      });
+  };
+
   render() {
     const {
       imageWorker,
