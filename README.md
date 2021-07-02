@@ -1,6 +1,6 @@
 <h1 align='center'>React JS - Job Bridge</h1>
   <p align="center">
-    <a href="link_deploy">View Demo</a>
+    <a href="https://job-bridge.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/akbarsaladin36/job-bridge-hire-jobs-project-app/issues">Report Bug</a>
     ·
