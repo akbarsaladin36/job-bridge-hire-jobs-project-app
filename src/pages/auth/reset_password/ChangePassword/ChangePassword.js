@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { Alert, Row, Col, Container, Button, Form } from "react-bootstrap";
 import ChangePasswordStyle from "./ChangePasswordStyle.module.css";
-import Image1 from "../../../../assets/img/left-column-image.jpg";
-import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
-import { ResetPassword } from "../../../../redux/action/auth"
+import { ResetPassword } from "../../../../redux/action/auth";
 import { connect } from "react-redux";
 
 class ChangePasswordPage extends Component {
@@ -17,64 +15,65 @@ class ChangePasswordPage extends Component {
         newPassword: "",
       },
       msg: "",
-      alert: false
-    }
+      alert: false,
+    };
   }
 
   changeText = (event) => {
     this.setState({
       form: {
         ...this.state.form,
-        [event.target.name]: event.target.value
-      }
-    })
-  }
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
 
   handleReset = (event) => {
     if (this.state.form.newPassword === this.state.form.confirmPassword) {
-      event.preventDefault()
-      this.props.ResetPassword({
-        email: this.state.form.email,
-        otp: this.state.form.otp,
-        newPassword: this.state.form.newPassword
-      })
-      .then((res) => {
-        this.setState({
-          msg: res.action.payload.data.msg,
-          alert: true
-         })
-        setTimeout(() => {
-          this.setState({
-            alert: false
-          })
-          localStorage.clear()
-          window.location.href = "/"
-        }, 3000)
-      })
-      .catch((err) => {
-        this.setState({
-          msg: err.response.data.msg,
-          alert: true,
+      event.preventDefault();
+      this.props
+        .ResetPassword({
+          email: this.state.form.email,
+          otp: this.state.form.otp,
+          newPassword: this.state.form.newPassword,
         })
-        setTimeout(() => {
+        .then((res) => {
           this.setState({
-            alert: false
-          })
-        }, 3000)
-      })
+            msg: res.action.payload.data.msg,
+            alert: true,
+          });
+          setTimeout(() => {
+            this.setState({
+              alert: false,
+            });
+            localStorage.clear();
+            window.location.href = "/";
+          }, 3000);
+        })
+        .catch((err) => {
+          this.setState({
+            msg: err.response.data.msg,
+            alert: true,
+          });
+          setTimeout(() => {
+            this.setState({
+              alert: false,
+            });
+          }, 3000);
+        });
     } else {
-      event.preventDefault()
+      event.preventDefault();
       this.setState({
         msg: "Please input the same password with the confirmation field",
-        alert: true
-      })
+        alert: true,
+      });
       setTimeout(() => {
         this.setState({
-          alert: false
-        })
-      }, 9000)
+          alert: false,
+        });
+      }, 9000);
     }
-  }
+  };
 
   render() {
     return (
@@ -82,16 +81,6 @@ class ChangePasswordPage extends Component {
         <Container fluid>
           <Row>
             <Col lg={7} className={ChangePasswordStyle.left_background}>
-              <img
-                src={Image1}
-                className={ChangePasswordStyle.image_background}
-                alt="job bridge background"
-              />
-              <img
-                src={ImageLogo1}
-                className={ChangePasswordStyle.job_bridge_brand}
-                alt="job bridge brand"
-              />
               <div>
                 <h1 className={ChangePasswordStyle.job_bridge_brand_word}>
                   Temukan developer berbakat dan terbaik di berbagai bidang
@@ -110,16 +99,17 @@ class ChangePasswordPage extends Component {
               />
               <h2>Reset Password</h2>
               <p className="mt-3">
-                Harap isi semua detail yang dibutuhkan untuk mengganti
-                password anda.
+                Harap isi semua detail yang dibutuhkan untuk mengganti password
+                anda.
               </p>
 
-                {this.state.alert
-                  ? (<Alert variant="warning" dismissible>
-                      {this.state.msg}
-                    </Alert>)
-                  : ("")
-                }
+              {this.state.alert ? (
+                <Alert variant="warning" dismissible>
+                  {this.state.msg}
+                </Alert>
+              ) : (
+                ""
+              )}
               {/* {this.state.form.isError
                 ? (<Alert 
                     variant="warning"
@@ -134,9 +124,7 @@ class ChangePasswordPage extends Component {
                 : ("")
               } */}
 
-              <Form className="mt-5"
-                onSubmit={this.handleReset}
-              >
+              <Form className="mt-5" onSubmit={this.handleReset}>
                 <Form.Group>
                   <Form.Label>Email</Form.Label>
                   <Form.Control
@@ -145,11 +133,11 @@ class ChangePasswordPage extends Component {
                     placeholder="Masukkan email anda"
                     required
                     onChange={(event) => {
-                      this.changeText(event)
+                      this.changeText(event);
                     }}
                   />
                 </Form.Group>
-                
+
                 <Form.Group>
                   <Form.Label>OTP</Form.Label>
                   <Form.Control
@@ -157,12 +145,11 @@ class ChangePasswordPage extends Component {
                     name="otp"
                     placeholder="4 digit angka yang kami kirim ke email anda"
                     onChange={(event) => {
-                      this.changeText(event)
+                      this.changeText(event);
                     }}
-
                   />
                 </Form.Group>
-                
+
                 <Form.Group className="mt-4">
                   <Form.Label>Kata sandi baru</Form.Label>
                   <Form.Control
@@ -170,7 +157,7 @@ class ChangePasswordPage extends Component {
                     name="newPassword"
                     placeholder="Masukkan kata sandi baru"
                     onChange={(event) => {
-                      this.changeText(event)
+                      this.changeText(event);
                     }}
                   />
                 </Form.Group>
@@ -182,7 +169,7 @@ class ChangePasswordPage extends Component {
                     name="confirmPassword"
                     placeholder="Masukkan konfirmasi kata sandi"
                     onChange={(event) => {
-                      this.changeText(event)
+                      this.changeText(event);
                     }}
                   />
                 </Form.Group>
@@ -203,12 +190,9 @@ class ChangePasswordPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
-})
+  auth: state.auth,
+});
 
-const mapDispatchToProps = { ResetPassword }
+const mapDispatchToProps = { ResetPassword };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChangePasswordPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePasswordPage);

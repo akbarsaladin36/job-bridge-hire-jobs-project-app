@@ -100,8 +100,8 @@ class SearchWorkerPage extends Component {
     return (
       <>
         <NavBar />
-        <Container className="pt-5" fluid>
-          <div className={`${SearchWorkerStyle.top_jobs_background} py-2 mt-5`}>
+        <Container className={`${SearchWorkerStyle.container}`}>
+          <div className={`${SearchWorkerStyle.top_jobs_background}`}>
             <h3 className="text-light ml-5">Top Jobs</h3>
           </div>
           <Form className={`${SearchWorkerStyle.form_size} mt-5`}>
@@ -111,13 +111,14 @@ class SearchWorkerPage extends Component {
                   placeholder="Search for any skill"
                   aria-label="Search for any skill"
                   aria-describedby="basic-addon2"
+                  className={SearchWorkerStyle.placeholder}
                   name="search"
                   value={search}
                   onChange={(event) => this.changeText(event)}
                 />
                 <DropdownButton
                   as={InputGroup.Append}
-                  variant="outline-secondary"
+                  variant="fff"
                   className={SearchWorkerStyle.sort_button}
                   title={sortBy.split("|")[1]}
                   id="input-group-dropdown-2"

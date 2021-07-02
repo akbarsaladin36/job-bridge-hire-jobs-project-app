@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Button, Form } from "react-bootstrap";
 import LoginAfterResetPasswordStyle from "./LoginAfterResetPasswordStyle.module.css";
-import Image1 from "../../../../assets/img/left-column-image.jpg";
-import ImageLogo1 from "../../../../assets/img/peword-white-logo.png";
 import ImageLogo2 from "../../../../assets/img/peword-purple-logo.png";
 
 class LoginAfterResetPasswordPage extends Component {
@@ -15,16 +13,6 @@ class LoginAfterResetPasswordPage extends Component {
               lg={7}
               className={LoginAfterResetPasswordStyle.left_background}
             >
-              <img
-                src={Image1}
-                className={LoginAfterResetPasswordStyle.image_background}
-                alt="job bridge background"
-              />
-              <img
-                src={ImageLogo1}
-                className={LoginAfterResetPasswordStyle.job_bridge_brand}
-                alt="job bridge brand"
-              />
               <div>
                 <h1
                   className={LoginAfterResetPasswordStyle.job_bridge_brand_word}

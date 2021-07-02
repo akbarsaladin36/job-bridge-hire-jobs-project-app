@@ -1,4 +1,4 @@
-<h1 align='center'>Next JS - Coffe Matte </h1>
+<h1 align='center'>Next JS - Job Bridge</h1>
   <p align="center">
     <a href="link_deploy">View Demo</a>
     ·
@@ -50,7 +50,7 @@ REACT_APP_IMAGE_URL=ENTER YOUR BACKEND API IMAGE URL
 4. Search Worker
 5. Hire a Worker
 
-- Worker  =
+- Worker =
 
 1. Sign Up, Login, and Forgot Password
 2. Update Profile Worker
@@ -69,9 +69,9 @@ REACT_APP_IMAGE_URL=ENTER YOUR BACKEND API IMAGE URL
 
 > All Members of Default Team
 
-|                                  <a href="#" target="_blank">**Team Leader**</a>                                   |                              <a href="#" target="_blank">**Full-Stack Developer**</a>                              |                                                      <a href="#" target="_blank">**Full-Stack Developer**</a>                                                      |                               <a href="#" target="_blank">**Full-Stack Developer**</a>                               |                                <a href="#" target="_blank">**Full-Stack Developer**</a>                                |                                                     |
-| :----------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|[![Full-Stack Developer Image](https://avatars.githubusercontent.com/u/63708360?v=4)](https://github.com/arsasf)|[![Front-End Developer Image](https://avatars.githubusercontent.com/u/71972244?v=4)](https://github.com/iJuliant)|[![Front-End Developer Image](https://avatars.githubusercontent.com/u/78992859?v=4)](https://github.com/Timotius-Nugroho)|[![Back-End Developer Image](https://avatars.githubusercontent.com/u/79574513?v=4)](https://github.com/arsasf)|[![Back-End Developer Image](https://avatars.githubusercontent.com/u/78518079?v=4)](https://github.com/elazsyahranie)|
-|`https://github.com/akbarsaladin36`</a>              |        <a href="https://github.com/link_github_frontend" target="_blank">`https://github.com/iJuliant`</a>        |                                <a href="https://github.com/link_github_frontend" target="_blank">`https://github.com/twicks95`</a>                                 |        <a href="https://github.com/link_github_backend" target="_blank">`https://github.com/arsasf`</a>        |        <a href="https://github.com/link_github_backend" target="_blank">`https://github.com/elazsyahranie`</a>        |
+|                                     <a href="#" target="_blank">**Team Leader**</a>                                      |                             <a href="#" target="_blank">**Full-Stack Developer**</a>                             |                                 <a href="#" target="_blank">**Full-Stack Developer**</a>                                 |                            <a href="#" target="_blank">**Full-Stack Developer**</a>                             |                                <a href="#" target="_blank">**Full-Stack Developer**</a>                                |     |
+| :----------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------: | :-: |
+| [![Full-Stack Developer Image](https://avatars.githubusercontent.com/u/63708360?v=4)](https://github.com/akbarsaladin36) | [![Back-End Developer Image](https://avatars.githubusercontent.com/u/71972244?v=4)](https://github.com/iJuliant) | [![Back-End Developer Image](https://avatars.githubusercontent.com/u/78992859?v=4)](https://github.com/Timotius-Nugroho) | [![Front-End Developer Image](https://avatars.githubusercontent.com/u/79574513?v=4)](https://github.com/arsasf) | [![Front-End Developer Image](https://avatars.githubusercontent.com/u/78518079?v=4)](https://github.com/elazsyahranie) |
+|           <a href="https://github.com/akbarsaladin36" target="_blank"> `https://github.com/akbarsaladin36`<a>            |             <a href="https://github.com/iJuliant" target="_blank">`https://github.com/iJuliant`</a>              |         <a href="https://github.com/Timotius-Nugroho" target="_blank">`https://github.com/Timotius-Nugroho`</a>          |               <a href="https://github.com/arsasf" target="_blank">`https://github.com/arsasf`</a>               |           <a href="https://github.com/elazsyahranie" target="_blank">`https://github.com/elazsyahranie`</a>            |
 
 ---
