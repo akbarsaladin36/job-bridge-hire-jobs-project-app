@@ -1,4 +1,4 @@
-<h1 align='center'>Next JS - Job Bridge</h1>
+<h1 align='center'>React JS - Job Bridge</h1>
   <p align="center">
     <a href="link_deploy">View Demo</a>
     ·
