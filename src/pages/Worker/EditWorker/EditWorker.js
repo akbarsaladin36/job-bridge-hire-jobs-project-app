@@ -122,6 +122,7 @@ class EditWorker extends Component {
     this.setState(
       {
         biodata: {
+          ...this.state.biodata,
           imageWorker: URL.createObjectURL(event.target.files[0]),
           image: event.target.files[0],
         },
@@ -165,18 +166,21 @@ class EditWorker extends Component {
     this.props
       .UpdateBiodataWorker(id, formData)
       .then((res) => {
-        alert("Please Click OK for Update your Profile !");
-      })
-      .catch((err) => {
-        console.log(err.response);
-      })
-      .finally(() => {
         this.setState({
           show: true,
           setShow: true,
+          msg: "Update Biodata Success!",
         });
-        this.getData(id);
-        window.location.href = `/jobbridge/edit-worker`;
+      })
+      .catch((err) => {
+        this.setState({
+          show: true,
+          setShow: true,
+          msg: err.response.data.msg,
+        });
+      })
+      .finally(() => {
+        this.props.getDataWorker(this.props.auth.data.id_worker);
       });
   };
 
@@ -194,18 +198,21 @@ class EditWorker extends Component {
     this.props
       .UpdateImageWorker(id, formData)
       .then((res) => {
-        alert("Please Click OK for Update your Profile !");
-      })
-      .catch((err) => {
-        console.log(err.response);
-      })
-      .finally(() => {
         this.setState({
           show: true,
           setShow: true,
+          msg: "Update Image Success!",
         });
-        this.getData(id);
-        window.location.href = `/jobbridge/edit-worker`;
+      })
+      .catch((err) => {
+        this.setState({
+          show: true,
+          setShow: true,
+          msg: err.response.data.msg,
+        });
+      })
+      .finally(() => {
+        this.props.getDataWorker(this.props.auth.data.id_worker);
       });
   };
 
@@ -224,10 +231,18 @@ class EditWorker extends Component {
     this.props
       .UpdateSkillWorker(id, { skills: newSkills })
       .then((res) => {
-        alert("Please Click OK for Update your Profile !");
+        this.setState({
+          show: true,
+          setShow: true,
+          msg: "Update Skill Success!",
+        });
       })
       .catch((err) => {
-        console.log(err.response);
+        this.setState({
+          show: true,
+          setShow: true,
+          msg: err.response.data.msg,
+        });
       })
       .finally(() => {
         this.props.getDataWorker(id);
@@ -245,13 +260,21 @@ class EditWorker extends Component {
     this.props
       .UpdateSkillWorker(idWorker, { skills: newSkills })
       .then((res) => {
-        alert("Please Click OK for Update your Profile !");
+        this.setState({
+          show: true,
+          setShow: true,
+          msg: "Delete Skill Success!",
+        });
       })
       .catch((err) => {
-        console.log(err.response);
+        this.setState({
+          show: true,
+          setShow: true,
+          msg: err.response.data.msg,
+        });
       })
       .finally(() => {
-        this.props.getDataWorker(idWorker);
+        this.props.getDataWorker(this.props.auth.data.id_worker);
       });
   };
 
@@ -261,7 +284,6 @@ class EditWorker extends Component {
       .CreateExperienceWorker(id, this.state.experience)
       .then((res) => {
         console.log(res);
-        alert("Please Click OK for create your work experience !");
         this.setState({
           show: true,
           setShow: true,
@@ -269,10 +291,14 @@ class EditWorker extends Component {
         });
       })
       .catch((err) => {
-        console.log(err.response);
+        this.setState({
+          show: true,
+          setShow: true,
+          msg: err.reponse.data.msg,
+        });
       })
       .finally(() => {
-        this.props.getDataWorker(id);
+        this.props.getDataWorker(this.props.auth.data.id_worker);
       });
   };
 
@@ -307,11 +333,10 @@ class EditWorker extends Component {
         });
       })
       .catch((err) => {
-        console.log(err.response);
         this.setState({
           show: true,
           setShow: true,
-          msg: "Create Portofolio Failed !",
+          msg: err.reponse.data.msg,
         });
       })
       .finally(() => {
@@ -380,11 +405,10 @@ class EditWorker extends Component {
         });
       })
       .catch((err) => {
-        console.log(err.response);
         this.setState({
           show: true,
           setShow: true,
-          msg: "Update Portofolio Failed !",
+          msg: err.response.data.msg,
         });
       })
       .finally(() => {
@@ -706,37 +730,28 @@ class EditWorker extends Component {
                             </Col>
                           </Form.Group>
                         </Col>
-                        {skill.length > 0
-                          ? skill.map((item, index) => {
-                              return (
-                                <Col key={index} className={styles.colSkill}>
-                                  <Row>
-                                    <Col>
-                                      <Row>
-                                        <Col lg={2} className={styles.colIndex}>
-                                          <p className={styles.nameSkill}>
-                                            {item}
-                                          </p>
-                                        </Col>
-                                      </Row>
-                                    </Col>
-                                    <Col
-                                      lg={1}
-                                      className={styles.colImageSkill}
-                                    >
-                                      <Image
-                                        src={iconDelete}
-                                        className={styles.iconDelete}
-                                        onClick={() =>
-                                          this.handleSkillDelete(index)
-                                        }
-                                      />
-                                    </Col>
-                                  </Row>
-                                </Col>
-                              );
-                            })
-                          : ""}
+                        <Col className={styles.rowButtonSkill}>
+                          {skill.length > 0
+                            ? skill.map((item, index) => {
+                                return (
+                                  <Col
+                                    lg={2}
+                                    key={index}
+                                    className={styles.colSkill}
+                                  >
+                                    <p className={styles.nameSkill}>{item}</p>
+                                    <Image
+                                      src={iconDelete}
+                                      className={styles.iconDelete}
+                                      onClick={() =>
+                                        this.handleSkillDelete(index)
+                                      }
+                                    />
+                                  </Col>
+                                );
+                              })
+                            : "Don't Have Skill"}
+                        </Col>
                       </Form>
                     </Col>
 
@@ -850,17 +865,19 @@ class EditWorker extends Component {
                           </Row>
                         </Col>
                         <Row className={styles.rowTabContent}>
-                          {experience.map((item, index) => {
-                            return (
-                              <Col lg={12} md={12} xs={12} key={index}>
-                                <Experience
-                                  experience={item}
-                                  delete={true}
-                                  userId={this.props.auth.data.id_worker}
-                                />
-                              </Col>
-                            );
-                          })}
+                          {experience.length > 0
+                            ? experience.map((item, index) => {
+                                return (
+                                  <Col lg={12} md={12} xs={12} key={index}>
+                                    <Experience
+                                      experience={item}
+                                      delete={true}
+                                      userId={this.props.auth.data.id_worker}
+                                    />
+                                  </Col>
+                                );
+                              })
+                            : "Don't have Experience"}
                         </Row>
                         <span className={styles.span}></span>
                       </Form>
@@ -955,19 +972,24 @@ class EditWorker extends Component {
                                 ? "Update Portofolio"
                                 : "Tambah portofolio"}
                             </Button>
-                            {this.props.worker.portofolio &&
-                              this.props.worker.portofolio.map(
-                                (item, index) => (
-                                  <Col lg={3} md={4} xs={6} key={index}>
-                                    <CardPortofolio
-                                      portofolio={item}
-                                      update={true}
-                                      data={this.handleSetData.bind(this)}
-                                      userId={this.props.auth.data.id_worker}
-                                    />
-                                  </Col>
-                                )
-                              )}
+                            <Col className={styles.boxCardPortofolio}>
+                              {this.props.worker.portofolio.length > 0
+                                ? this.props.worker.portofolio.map(
+                                    (item, index) => (
+                                      <Col lg={3} md={4} xs={6} key={index}>
+                                        <CardPortofolio
+                                          portofolio={item}
+                                          update={true}
+                                          data={this.handleSetData.bind(this)}
+                                          userId={
+                                            this.props.auth.data.id_worker
+                                          }
+                                        />
+                                      </Col>
+                                    )
+                                  )
+                                : "Don't Have Portofolio"}
+                            </Col>
                           </Row>
                         </Col>
                       </Form>
