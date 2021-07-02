@@ -24,7 +24,7 @@ The app is dynamically built and designed to seek, recruit, and promote talents 
 
 1. <a href="https://reactjs.org/docs/getting-started.html">React JS</a>
 2. Node_modules `npm install` or `yarn install`
-3. Backend API Coffee-Mate [`here`](https://github.com/arsasf/coffee-mate-backend.git)
+3. Backend API Coffee-Mate [`here`](https://github.com/akbarsaladin36/job-bridge-hire-jobs-project-rest-api.git)
 
 ## Getting Started
 
