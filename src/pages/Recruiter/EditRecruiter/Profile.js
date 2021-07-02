@@ -63,7 +63,6 @@ class ProfilePage extends Component {
         this.setState({
           isShow: true,
         });
-
         this.props.getRecruiterById(this.props.auth.data.id_company);
       });
   };
