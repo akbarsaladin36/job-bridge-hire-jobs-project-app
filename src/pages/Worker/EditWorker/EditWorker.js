@@ -262,17 +262,17 @@ class EditWorker extends Component {
       .then((res) => {
         console.log(res);
         alert("Please Click OK for create your work experience !");
+        this.setState({
+          show: true,
+          setShow: true,
+          msg: "Create Experience Success !",
+        });
       })
       .catch((err) => {
         console.log(err.response);
       })
       .finally(() => {
-        this.setState({
-          show: true,
-          setShow: true,
-        });
         this.props.getDataWorker(id);
-        window.location.href = `/jobbridge/edit-worker`;
       });
   };
 
@@ -362,7 +362,9 @@ class EditWorker extends Component {
       "appDescPortofolio",
       this.state.portofolioWorker.appDescPortofolio
     );
-    formData.append("image", this.state.portofolioWorker.image);
+    if (this.state.portofolioWorker.image) {
+      formData.append("image", this.state.portofolioWorker.image);
+    }
     for (var pair of formData.entries()) {
       console.log(pair[0] + ", " + pair[1]);
     }
@@ -851,7 +853,10 @@ class EditWorker extends Component {
                           {experience.map((item, index) => {
                             return (
                               <Col lg={12} md={12} xs={12} key={index}>
-                                <Experience experience={item} />
+                                <Experience
+                                  experience={item}
+                                  userId={this.props.auth.data.id_worker}
+                                />
                               </Col>
                             );
                           })}
