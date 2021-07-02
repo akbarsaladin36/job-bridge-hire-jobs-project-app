@@ -90,15 +90,19 @@ class Experience extends Component {
             <p className={styles.descriptionJob}>{job_desc_experience}</p>
           </Col>
           <Col lg={1} className={styles.deleteButtonHolder}>
-            <Button
-              className={styles.deleteButton}
-              as={Link}
-              to="/jobbridge/edit-worker"
-              type="submit"
-              onClick={() => this.deleteExperience()}
-            >
-              Delete
-            </Button>
+            {this.props.delete ? (
+              <Button
+                className={styles.deleteButton}
+                as={Link}
+                to="/jobbridge/edit-worker"
+                type="submit"
+                onClick={() => this.deleteExperience()}
+              >
+                Delete
+              </Button>
+            ) : (
+              ""
+            )}
           </Col>
         </Row>
       </>
