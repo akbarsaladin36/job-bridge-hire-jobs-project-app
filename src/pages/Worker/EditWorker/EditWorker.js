@@ -38,7 +38,7 @@ class EditWorker extends Component {
     this.state = {
       biodata: {
         // imageWorker: `${process.env.REACT_APP_IMAGE_URL}${this.props.worker.biodata.image_worker}`,
-        imageWorker: `${imgProfile}`,
+        imageWorker: `${this.props.worker.biodata.image_worker}`,
         fullnameWorker: this.props.worker.biodata.fullname_worker,
         roleWorker: this.props.worker.biodata.role_worker,
         workPreferenceWorker: this.props.worker.biodata.work_preference_worker,
@@ -313,11 +313,10 @@ class EditWorker extends Component {
           setShow: true,
           msg: "Create Portofolio Failed !",
         });
+      })
+      .finally(() => {
+        this.props.getDataWorker(this.props.auth.data.id_worker);
       });
-    // .finally(() => {
-    //   this.props.getDataWorker(this.props.auth.data.id_worker);
-    //   window.location.href = `/jobbridge/edit-worker`;
-    // });
   };
 
   handleSendImage = (data) => {

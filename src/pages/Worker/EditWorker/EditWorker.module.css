@@ -301,6 +301,15 @@
   text-align: justify;
 }
 
+.rowTabWork {
+  width: 100%;
+}
+
+/* .experienceHolder:hover {
+  background-color: rgba(251, 176, 23, 0.6);
+  border-radius: 30px;
+} */
+
 .menuSkill {
   /* margin-top: 40px; */
   border-radius: 4px;

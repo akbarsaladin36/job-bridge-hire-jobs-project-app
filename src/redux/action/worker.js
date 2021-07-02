@@ -35,6 +35,13 @@ export const CreateExperienceWorker = (id, formData) => {
   };
 };
 
+export const deleteExperienceWorker = (id) => {
+  return {
+    type: "DELETE_EXPERIENCE_WORKER",
+    payload: axiosApiIntances.delete(`worker/experience/${id}`),
+  };
+};
+
 export const CreatePortofolioWorker = (id, formData) => {
   return {
     type: "CREATE_PORTOFOLIO_WORKER",
