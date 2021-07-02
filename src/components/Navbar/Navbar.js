@@ -13,6 +13,11 @@ import mail from "../../assets/smallicons/mail.png";
 import chat from "../../assets/img/chat.png";
 
 class NavBar extends Component {
+
+  componentDidMount() {
+    console.log(this.props)
+  }
+
   handleLogout = (params) => {
     // console.log(this.props);
     if (params) {
