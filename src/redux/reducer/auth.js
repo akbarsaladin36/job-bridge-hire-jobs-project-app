@@ -159,6 +159,43 @@ const auth = (state = initialState, action) => {
         data: {},
         msg: action.payload.response.data.msg,
       };
+    case "REQUEST_RESET_PENDING":
+      return {
+        isLoading: true,
+        isError: false,
+      };
+    case "REQUEST_RESET_FULFILLED":
+      console.log(action)
+      return {
+        isLoading: false,
+        isError: false,
+        msg: action.payload.data.msg,
+      };
+    case "REQUEST_RESET_REJECTED":
+      console.log(action.payload.response.data.msg)
+      return {
+        isLoading: false,
+        isError: true,
+        msg: action.payload.response.data.msg,
+      };
+    case "RESET_PASSWORD_PENDING":
+      return {
+        isLoading: true,
+        isError: false,
+      };
+    case "RESET_PASSWORD_FULFILLED":
+      return {
+        isLoading: false,
+        isError: false,
+        login: false,
+        msg: action.payload.data.msg
+      };
+    case "RESET_PASSWORD_REJECTED":
+      return {
+        isLoading: false,
+        isError: true,
+        msg: action.payload.response.data.msg
+      }
     default:
       return state;
   }
