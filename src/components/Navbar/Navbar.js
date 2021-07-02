@@ -155,10 +155,7 @@ class NavBar extends Component {
                         >
                           {image_worker === null ||
                           image_worker === "" ||
-                          image_worker === undefined ||
-                          company_image === null ||
-                          company_image === "" ||
-                          company_image === undefined ? (
+                          image_worker === undefined ? (
                             <Image
                               src={imgProfile}
                               className={myStyle.imgProfile}
@@ -169,7 +166,6 @@ class NavBar extends Component {
                               className={myStyle.imgProfile}
                             />
                           )}
-
                           <p className={myStyle.handleResponsive}>Profile</p>
                         </Dropdown.Toggle>
                         <Dropdown.Menu
