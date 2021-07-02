@@ -2,20 +2,46 @@
 
 .cardImage {
   font-family: "Open Sans", sans-serif;
-  width: auto;
-  height: 150px;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
   border-radius: 4px;
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 10px;
-  cursor: pointer;
+}
+
+.cardImageDetails {
+  width: 100%;
+  height: 200px !important;
+  object-fit: cover;
+  border-radius: 4px;
+  padding: 25px;
+}
+
+.cardBodyDetails {
+  width: 400px !important;
+  padding: 10px;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  z-index: 1;
+  display: flex;
 }
 
 .cardBody {
-  cursor: pointer;
   padding-top: 10px;
   align-items: center;
-  width: auto;
+  width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.cardBodyUpdate {
+  padding-top: 10px;
+  align-items: center;
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -27,25 +53,42 @@
   display: block;
 }
 
-.cardBody {
-  background-color: white;
-  border-color: white !important ;
+.boxButton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.cardBody:hover {
-  background-color: #fbaf17;
-  width: 400px;
-  margin-bottom: -200px;
-  position: absolute;
-  z-index: 2;
-  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.363);
-  padding: 5px;
-  border: 3px solid #5e50a1;
-  border-radius: 8px;
+.buttonDetails {
+  border: 2px solid #5f2eea;
+  color: #5f2eea !important;
+  width: 75%;
+  margin-bottom: 20px;
 }
-.cardImage1:not(:hover) + .cardContent:not(:hover) {
-  display: none;
+
+.textDesc {
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 14px;
+  text-align: justify;
 }
+
+.buttonUpdate {
+  border: 2px solid #fbb017;
+  color: #fbb017 !important;
+  width: 75%;
+  margin-bottom: 20px;
+}
+.buttonDelete {
+  border: 2px solid #1f2a36;
+  color: #1f2a36 !important;
+  width: 75%;
+  margin-bottom: 20px;
+}
+
 .title {
   text-align: center;
   font-weight: bold;
@@ -64,6 +107,33 @@
   background-color: white !important;
   color: #5f2eea !important;
   border-color: #5f2eea !important;
+}
+
+.buttonDetails:focus,
+.buttonDetails:hover,
+.buttonDetails:hover {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #5f2eea;
+  color: white !important;
+}
+
+.buttonDelete:focus,
+.buttonDelete:hover,
+.buttonDelete:hover {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #1f2a36;
+  color: white !important;
+}
+
+.buttonUpdate:focus,
+.buttonUpdate:hover,
+.buttonUpdate:hover {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #fbb017;
+  color: white !important;
 }
 
 @media (max-width: 991.98px) {

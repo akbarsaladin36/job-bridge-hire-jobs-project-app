@@ -75,7 +75,6 @@ class ProfileWorker extends Component {
       <>
         <NavBar />
         <Container fluid className={styles.container2}></Container>
-        <Container fluid className={styles.container1}></Container>
         <Container className={styles.container}>
           <Row className={styles.rowContainer}>
             <Col lg={4} md={4} sm={12} xs={12} className={styles.left}>

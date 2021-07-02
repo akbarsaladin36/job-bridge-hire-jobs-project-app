@@ -223,6 +223,91 @@ const auth = (state = initialState, action) => {
         // data: {},
         msg: action.payload.data.msg,
       };
+
+    case "GET_PORTOFOLIO_ID_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "GET_PORTOFOLIO_ID_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        portofolioId: action.payload.data.data[0],
+        msg: action.payload.data.msg,
+      };
+    case "GET_PORTOFOLIO_ID_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        data: {},
+        msg: action.payload.response.data[0].msg,
+        portofolioId: action.payload.data.data[0].portofolio.msg,
+      };
+    case "UPDATE_PORTOFOLIO_ID_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "UPDATE_PORTOFOLIO_ID_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        msg: action.payload.data.msg,
+      };
+    case "UPDATE_PORTOFOLIO_ID_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        data: {},
+      };
+    case "DELETE_PORTOFOLIO_PENDING":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: true,
+        isError: false,
+        msg: "",
+      };
+    case "DELETE_PORTOFOLIO_FULFILLED":
+      return {
+        ...state,
+        login: true,
+        roleUser: 0,
+        isLoading: false,
+        isError: false,
+        msg: action.payload.data.msg,
+      };
+    case "DELETE_PORTOFOLIO_REJECTED":
+      return {
+        ...state,
+        login: false,
+        roleUser: 0,
+        isLoading: false,
+        isError: true,
+        data: {},
+      };
     default:
       return state;
   }

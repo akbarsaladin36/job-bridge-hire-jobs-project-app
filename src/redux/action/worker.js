@@ -48,3 +48,24 @@ export const CreatePortofolioWorker = (id, formData) => {
     payload: axiosApiIntances.post(`worker/portofolio/${id}`, formData),
   };
 };
+
+export const getPortofolioId = (id) => {
+  return {
+    type: "GET_PORTOFOLIO_ID",
+    payload: axiosApiIntances.get(`worker/portofolio/${id}`),
+  };
+};
+
+export const UpdatePortofolioId = (id, formData) => {
+  return {
+    type: "UPDATE_PORTOFOLIO_ID",
+    payload: axiosApiIntances.patch(`worker/portofolio/${id}`, formData),
+  };
+};
+
+export const deletePortofolio = (id) => {
+  return {
+    type: "DELETE_PORTOFOLIO",
+    payload: axiosApiIntances.delete(`worker/portofolio/${id}`),
+  };
+};

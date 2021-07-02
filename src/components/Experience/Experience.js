@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import { Row, Col, Image, Button } from "react-bootstrap";
 import styles from "./Experience.module.css";
 import suitcase from "../../assets/img/suitcase.png";
-import { deleteExperienceWorker } from "../../redux/action/worker";
+import {
+  deleteExperienceWorker,
+  getDataWorker,
+} from "../../redux/action/worker";
 
 class Experience extends Component {
   deleteExperience = () => {
@@ -14,19 +17,10 @@ class Experience extends Component {
       .deleteExperienceWorker(id)
       .then((res) => {
         alert("Erase your experience history? This action cannot be undone!");
+        this.props.getDataWorker(this.props.userId);
       })
       .catch((err) => {
         console.log(err.response);
-      })
-      .finally(() => {
-        this.setState({
-          show: true,
-          setShow: true,
-        });
-        // this.getData(id);
-        setTimeout(function () {
-          window.location.href = `/jobbridge/edit-worker`;
-        }, 3000);
       });
   };
 
@@ -119,6 +113,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   deleteExperienceWorker,
+  getDataWorker,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Experience);
