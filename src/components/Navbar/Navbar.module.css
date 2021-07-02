@@ -6,7 +6,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  z-index: 999;
+  z-index: 10;
 }
 .containerNavbar {
   padding-left: 0;

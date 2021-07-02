@@ -76,7 +76,7 @@
 .bodyToast1 {
   position: fixed;
   display: flex;
-  z-index: 4;
+  z-index: 99;
   left: 0;
   width: 50%;
   top: 20px;
@@ -306,19 +306,12 @@
   width: 100%;
 }
 
-/* .experienceHolder:hover {
-  background-color: rgba(251, 176, 23, 0.6);
-  border-radius: 30px;
-} */
-
 .menuSkill {
-  /* margin-top: 40px; */
   border-radius: 4px;
   height: 28px;
   font-size: 12px;
   font-weight: 600;
   color: white;
-  background-color: brown;
 }
 
 .nameSkill {

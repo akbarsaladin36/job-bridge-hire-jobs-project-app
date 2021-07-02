@@ -27,10 +27,9 @@
   font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  padding-right: 0px;
   padding-left: 0;
   height: max-content;
-  align-items: center;
+  justify-content: flex-start;
 }
 .colCardBiodata {
   width: 90%;
@@ -41,6 +40,7 @@
   justify-content: center;
   align-items: flex-start;
   border-radius: 8px;
+  margin-left: 0;
 }
 .imgProfile {
   width: 150px;
@@ -80,6 +80,17 @@
   line-height: 20px;
   text-align: left;
   color: #9ea0a5;
+}
+
+.textNotFound {
+  width: 100%;
+  display: flex;
+  font-size: medium;
+  font-weight: bold;
+  color: #46505c;
+  height: 450px;
+  justify-content: center;
+  align-items: center;
 }
 
 .listSkill {
@@ -166,11 +177,11 @@
   font-family: "Open Sans", sans-serif;
   border-radius: 8px;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  width: max-content;
+  width: 100% !important;
 }
-
+.colRight {
+  width: 100%;
+}
 .rowTab {
   padding: 20px;
 }
@@ -189,13 +200,29 @@
   line-height: 56px;
   text-align: left;
 }
-
+.PortofolioActive,
+.ExperienceWorkActive {
+  margin-right: 20px;
+  color: #9ea0a5;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 56px;
+  text-align: left;
+  border-bottom: 5px solid #5e50a1;
+}
 .Portofolio:hover,
 .Portofolio:active,
 .Portofolio:focus,
+.PortofolioActive:hover,
+.PortofolioActive:active,
+.PortofolioActive:focus,
 .ExperienceWork:hover,
 .ExperienceWork:active,
-.ExperienceWork:focus {
+.ExperienceWork:focus,
+.ExperienceWorkActive:hover,
+.ExperienceWorkActive:active,
+.ExperienceWorkActive:focus {
   border-bottom: 5px solid #5e50a1;
   color: #1f2a36;
   outline: none !important;

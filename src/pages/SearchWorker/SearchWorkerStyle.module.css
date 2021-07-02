@@ -20,7 +20,12 @@
   margin-left: 10% !important;
 }
 .placeholder {
+  font-size: 15px;
   height: 45px;
+  border-left: 2px solid #5e50a1;
+  border-top: 2px solid #5e50a1;
+  border-bottom: 2px solid #5e50a1;
+  border-right: 0;
 }
 
 .placeholder:focus,
@@ -53,9 +58,11 @@
 }
 
 .skills_button {
+  width: max-content !important;
   border-color: #fbb017 !important;
   color: white !important;
   background-color: #fbb017 !important;
+  text-transform: capitalize;
 }
 
 .skills_button:hover {
@@ -83,6 +90,46 @@
   background-color: white !important;
   width: 150px;
   height: 50px;
+}
+
+.dropdown {
+  background-color: white;
+}
+.boxMenu {
+  background-color: #5e50a1;
+  color: white;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 3px solid #dedede;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.titleSort {
+  background-color: white !important;
+  color: #5e50a1 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  border-top: 2px solid #5e50a1 !important;
+  border-bottom: 2px solid #5e50a1 !important;
+  border-left: 0 !important;
+  border-right: 2px solid #5e50a1 !important;
+}
+
+.listSort {
+  border-radius: 3px;
+  font-weight: lighter;
+  color: white;
+}
+.titleSort:hover,
+.titleSort:active,
+.titleSort:focus,
+.listSort:hover,
+.listSort:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: #fbb017;
+  color: white;
+  font-weight: 500;
 }
 
 .pagination {

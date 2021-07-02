@@ -5,14 +5,13 @@ import {
   Button,
   InputGroup,
   Dropdown,
-  DropdownButton,
   Row,
   Col,
   Image,
 } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import axiosApiIntances from "../../utils/axios";
-import ProfilePicture from "../../assets/img/default-profile-picture.png";
+import ProfilePicture from "../../assets/img/img-not-found.png";
 import SearchWorkerStyle from "./SearchWorkerStyle.module.css";
 import NavBar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -116,30 +115,50 @@ class SearchWorkerPage extends Component {
                   value={search}
                   onChange={(event) => this.changeText(event)}
                 />
-                <DropdownButton
+
+                <Dropdown
                   as={InputGroup.Append}
                   variant="fff"
-                  className={SearchWorkerStyle.sort_button}
-                  title={sortBy.split("|")[1]}
+                  className={SearchWorkerStyle.dropdown}
                   id="input-group-dropdown-2"
                   onSelect={this.handleSelect}
                 >
-                  <Dropdown.Item eventKey="ORDER BY w.fullname_worker ASC|Sortir berdasarkan Nama">
-                    Sortir berdasarkan Nama
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="ORDER BY w.number_of_skills_worker DESC|Sortir berdasarkan Skill">
-                    Sortir berdasarkan Skill
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="ORDER BY w.city_worker ASC|Sortir berdasarkan Lokasi">
-                    Sortir berdasarkan Lokasi
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="AND w.work_preference_worker = 'part-time'|Sortir berdasarkan Freelance">
-                    Sortir berdasarkan Freelance
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="AND w.work_preference_worker = 'full-time'|Sortir berdasarkan Fulltime">
-                    Sortir berdasarkan Fulltime
-                  </Dropdown.Item>
-                </DropdownButton>
+                  <Dropdown.Toggle className={SearchWorkerStyle.titleSort}>
+                    {sortBy.split("|")[1]}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className={SearchWorkerStyle.boxMenu}>
+                    <Dropdown.Item
+                      className={SearchWorkerStyle.listSort}
+                      eventKey="ORDER BY w.fullname_worker ASC|Sortir berdasarkan Nama"
+                    >
+                      Sortir berdasarkan Nama
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      className={SearchWorkerStyle.listSort}
+                      eventKey="ORDER BY w.number_of_skills_worker DESC|Sortir berdasarkan Skill"
+                    >
+                      Sortir berdasarkan Skill
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      className={SearchWorkerStyle.listSort}
+                      eventKey="ORDER BY w.city_worker ASC|Sortir berdasarkan Lokasi"
+                    >
+                      Sortir berdasarkan Lokasi
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      className={SearchWorkerStyle.listSort}
+                      eventKey="AND w.work_preference_worker = 'part-time'|Sortir berdasarkan Freelance"
+                    >
+                      Sortir berdasarkan Freelance
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      className={SearchWorkerStyle.listSort}
+                      eventKey="AND w.work_preference_worker = 'full-time'|Sortir berdasarkan Fulltime"
+                    >
+                      Sortir berdasarkan Fulltime
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
                 <InputGroup.Append>
                   <Button
                     variant="outline-secondary"
@@ -185,7 +204,6 @@ class SearchWorkerPage extends Component {
                                   <Col key={index} xs={3}>
                                     <Button
                                       className={`${SearchWorkerStyle.skills_button} mr-3`}
-                                      style={{ width: "100%" }}
                                     >
                                       {item.name_skill}
                                     </Button>
@@ -211,7 +229,7 @@ class SearchWorkerPage extends Component {
                     </Row>
                   );
                 })
-              : ""}
+              : "Not Found !"}
           </div>
           <ReactPaginate
             previousLabel={"<"}

@@ -23,6 +23,8 @@ class ProfileWorker extends Component {
       tabContent: false,
       hireButton: true,
       idWorker: null,
+      activePortofolio: false,
+      activeExprerience: false,
     };
   }
 
@@ -51,6 +53,8 @@ class ProfileWorker extends Component {
   handleTabContent = (params) => {
     this.setState({
       tabContent: params,
+      activeExprerience: params === true ? params : false,
+      activePortofolio: params === false ? params : true,
     });
   };
   render() {
@@ -145,19 +149,27 @@ class ProfileWorker extends Component {
                 </p>
               </Col>
             </Col>
-            <Col lg={7} md={7} sm={12} xs={12} className={styles.right}>
+            <Col lg={8} md={7} sm={12} xs={12} className={styles.right}>
               <Col className={styles.colRight}>
                 <Row className={styles.rowTab}>
                   <Button
                     variant="fff"
-                    className={styles.Portofolio}
+                    className={
+                      !this.state.activePortofolio
+                        ? styles.PortofolioActive
+                        : styles.Portofolio
+                    }
                     onClick={() => this.handleTabContent(false)}
                   >
                     Portofolio
                   </Button>
                   <Button
                     variant="fff"
-                    className={styles.ExperienceWork}
+                    className={
+                      !this.state.activeExprerience
+                        ? styles.ExperienceWork
+                        : styles.ExperienceWorkActive
+                    }
                     onClick={() => this.handleTabContent(true)}
                   >
                     Pengalaman Kerja
@@ -165,19 +177,23 @@ class ProfileWorker extends Component {
                 </Row>
                 {tabContent === false ? (
                   <Row className={styles.rowTabContent}>
-                    {Object.keys(portofolio).length !== 0
-                      ? portofolio.map((item, index) => {
-                          return (
-                            <Col
-                              lg={4}
-                              key={index}
-                              className={styles.colTabContent}
-                            >
-                              <Portofolio portofolio={item} />
-                            </Col>
-                          );
-                        })
-                      : "Don't Have Skill"}
+                    {Object.keys(portofolio).length !== 0 ? (
+                      portofolio.map((item, index) => {
+                        return (
+                          <Col
+                            lg={4}
+                            key={index}
+                            className={styles.colTabContent}
+                          >
+                            <Portofolio portofolio={item} />
+                          </Col>
+                        );
+                      })
+                    ) : (
+                      <h1 className={styles.textNotFound}>
+                        Don't Have Portofolio
+                      </h1>
+                    )}
                   </Row>
                 ) : (
                   <Row className={styles.rowTabContent}>

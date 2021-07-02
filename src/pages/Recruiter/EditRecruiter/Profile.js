@@ -6,7 +6,6 @@ import { Container, Row, Col, Image, Form } from "react-bootstrap";
 import NavBar from "../../../components/Navbar/Navbar";
 import myStyle from "./Profile.module.css";
 import imgProfile from "../../../assets/img/img-not-found.png";
-// import MobileFooter from "../../components/mobilefooter/mobilefooter";
 import Footer from "../../../components/Footer/Footer";
 
 class ProfilePage extends Component {
@@ -21,7 +20,6 @@ class ProfilePage extends Component {
       instagram: this.props.auth.data.company_instagram,
       phoneNumber: this.props.auth.data.company_phone_number,
       linkedin: this.props.auth.data.company_linkedin,
-      // companyImage: `${process.env.REACT_APP_IMAGE_URL}${this.props.auth.data.company_image}`,
       companyImage: this.props.auth.data.company_image,
       image: null,
     };
@@ -90,8 +88,6 @@ class ProfilePage extends Component {
   };
 
   render() {
-    // console.log("PROPS", this.props);
-    // console.log(this.state);
     const {
       companyName,
       field,
@@ -103,66 +99,67 @@ class ProfilePage extends Component {
       linkedin,
       companyImage,
     } = this.state;
-    // console.log(this.props.auth.data);
     const { company_image } = this.props.auth.data;
-    // console.log(this.props.auth.data);
     return (
       <>
         <NavBar />
-        <div style={{ minHeight: "90rem" }} className={myStyle.fullArea}>
-          <div className={myStyle.purpleArea}>
-            <Container>
-              <Row className="py-4 d-flex justify-content-between">
-                <Col md={3} className={`${myStyle.noPadding} text-center`}>
-                  <div className={`${myStyle.whiteColumn} mb-2 pl-2 pr-2`}>
-                    <Row className={`w-100 pt-3`}>
-                      <Form.Group className="mx-auto">
-                        <Form.Label
-                          htmlFor="files"
-                          className={myStyle.boxUpdateImage}
-                        >
-                          <Form.Control
-                            type="file"
-                            id="files"
-                            onChange={(event) => this.handleImage(event)}
-                            className={myStyle.updateImage}
+        <div className={myStyle.fullArea}>
+          <div className={myStyle.purpleArea}></div>
+          <Container className={myStyle.container}>
+            <Row className="py-4 d-flex justify-content-between">
+              <Col md={4} className={`${myStyle.noPadding} text-center`}>
+                <div className={`${myStyle.whiteColumn} `}>
+                  <Row className={` pt-3`}>
+                    <Form.Group className="mx-auto">
+                      <Form.Label
+                        htmlFor="files"
+                        className={myStyle.boxUpdateImage}
+                      >
+                        <Form.Control
+                          type="file"
+                          id="files"
+                          onChange={(event) => this.handleImage(event)}
+                          className={myStyle.updateImage}
+                        />
+                        {companyImage === null ||
+                        companyImage === "" ||
+                        companyImage === undefined ? (
+                          <Image
+                            src={imgProfile}
+                            className={myStyle.imgProfile}
                           />
-                          {companyImage === null ||
-                          companyImage === "" ||
-                          companyImage === undefined ? (
-                            <Image
-                              src={imgProfile}
-                              className={myStyle.imgProfile}
-                            />
-                          ) : (
-                            <Image
-                              src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
-                              style={{ width: "200px" }}
-                              className="pl-3"
-                              alt="NONE"
-                              roundedCircle
-                              fluid
-                            />
-                          )}
-                        </Form.Label>
-                      </Form.Group>
-                    </Row>
-                    <h5 className={`${myStyle.fontBold} px-4 mb-1`}>
-                      {companyName}
-                    </h5>
-                    <span className={`d-block px-4 mb-1`}>{field}</span>
-                    <span className={`${myStyle.grayText} d-block px-4`}>
-                      {city}
-                    </span>
-                    <p className={`${myStyle.grayText} pb-3`}>{description}</p>
-                  </div>
+                        ) : (
+                          <Image
+                            src={`${process.env.REACT_APP_IMAGE_URL}${company_image}`}
+                            style={{ width: "200px" }}
+                            className={`${myStyle.img} "pl-3"`}
+                            alt="NONE"
+                            roundedCircle
+                            fluid
+                          />
+                        )}
+                      </Form.Label>
+                    </Form.Group>
+                  </Row>
+                  <h5 className={`${myStyle.fontBold}`}>{companyName}</h5>
+                  <span className={`${myStyle.fontJob} d-block px-4 mb-1`}>
+                    {field}
+                  </span>
+                  <span className={`${myStyle.grayText} d-block px-4`}>
+                    {city}
+                  </span>
+                  <p className={`${myStyle.grayText} pb-3`}>{description}</p>
+                </div>
+                <div className={myStyle.boxButton}>
                   <button
                     type="button"
-                    className={`${myStyle.hireButton} w-100`}
+                    className={`${myStyle.hireButton}`}
                     onClick={() => this.updateData()}
                   >
                     Simpan
                   </button>
+                </div>
+                <div className={myStyle.boxButton}>
                   <button
                     type="button`"
                     className={`${myStyle.hireButtonOutline} w-100 mt-2 mb-2`}
@@ -170,15 +167,13 @@ class ProfilePage extends Component {
                   >
                     Batal
                   </button>
-                </Col>
-                <Col
-                  md={8}
-                  className={`${myStyle.whiteColumn} ${myStyle.noPadding}`}
-                >
-                  <div className={`${myStyle.myBottomBorder} w-100`}>
-                    <h3 className={`px-4 pt-3 pb-2`}>Data Diri</h3>
-                  </div>
-                  <form className="px-4 pt-3 pb-4">
+                </div>
+              </Col>
+              <Col md={8} className={`${myStyle.right}`}>
+                <div className={myStyle.boxRight}>
+                  <h3 className={myStyle.title}>Data Diri</h3>
+                  <hr />
+                  <form>
                     <div className="mb-3">
                       <label className="form-label">
                         <span className={`${myStyle.grayText}`}>
@@ -187,7 +182,7 @@ class ProfilePage extends Component {
                       </label>
                       <input
                         type="text"
-                        className={`${myStyle.formHeight} form-control`}
+                        className={`${myStyle.placeholder} form-control`}
                         aria-describedby="namaPerusahaan"
                         placeholder="Masukkan nama perusahaan"
                         name="companyName"
@@ -201,7 +196,7 @@ class ProfilePage extends Component {
                       </label>
                       <input
                         type="text"
-                        className={`${myStyle.formHeight} form-control`}
+                        className={`${myStyle.placeholder} form-control`}
                         aria-describedby="bidang"
                         placeholder="Masukkan bidang perusahaan ex : Financial"
                         name="field"
@@ -215,7 +210,7 @@ class ProfilePage extends Component {
                       </label>
                       <input
                         type="text"
-                        className={`${myStyle.formHeight} form-control`}
+                        className={`${myStyle.placeholder} form-control`}
                         id="exampleDomisili"
                         placeholder="Masukkan Domisili"
                         name="city"
@@ -248,7 +243,7 @@ class ProfilePage extends Component {
                       </label>
                       <input
                         type="text"
-                        className={`${myStyle.formHeight} form-control`}
+                        className={`${myStyle.placeholder} form-control`}
                         aria-describedby="namaPerusahaan"
                         placeholder="Masukkan email"
                         name="companyEmail"
@@ -262,7 +257,7 @@ class ProfilePage extends Component {
                       </label>
                       <input
                         type="text"
-                        className={`${myStyle.formHeight} form-control`}
+                        className={`${myStyle.placeholder} form-control`}
                         aria-describedby="namaPerusahaan"
                         placeholder="Masukkan Username IG"
                         name="instagram"
@@ -278,7 +273,7 @@ class ProfilePage extends Component {
                       </label>
                       <input
                         type="text"
-                        className={`${myStyle.formHeight} form-control`}
+                        className={`${myStyle.placeholder} form-control`}
                         aria-describedby="namaPerusahaan"
                         placeholder="Masukkan nomor telepon"
                         name="phoneNumber"
@@ -292,7 +287,7 @@ class ProfilePage extends Component {
                       </label>
                       <input
                         type="text"
-                        className={`${myStyle.formHeight} form-control`}
+                        className={`${myStyle.placeholder} form-control`}
                         aria-describedby="namaPerusahaan"
                         placeholder="Masukkan nama Linkedin"
                         name="linkedin"
@@ -301,10 +296,10 @@ class ProfilePage extends Component {
                       ></input>
                     </div>
                   </form>
-                </Col>
-              </Row>
-            </Container>
-          </div>
+                </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
         <Footer />
       </>

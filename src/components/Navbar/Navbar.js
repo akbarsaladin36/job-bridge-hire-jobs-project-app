@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { getDataWorker } from "../../redux/action/worker";
 import { logout } from "../../redux/action/auth";
 import { Container, Navbar, Nav, Image, Dropdown, Row } from "react-bootstrap";
-// import { Link } from "react-router-dom";
 import myStyle from "./Navbar.module.css";
 import logo from "../../assets/smallicons/logo-job-bridge.png";
 import imgProfile from "../../assets/img/img-not-found.png";

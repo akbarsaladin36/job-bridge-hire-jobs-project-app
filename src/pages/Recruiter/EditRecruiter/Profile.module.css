@@ -1,24 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 
-body {
-  font-family: "Open Sans", sans-serif;
-}
-
 .fullArea {
+  font-family: "Open Sans", sans-serif;
   background-color: #e5e5e5;
+  max-height: max-content;
 }
 
 .purpleArea {
   background-color: #5e50a1;
-  max-height: 25rem;
-  padding-top: 7em;
+  height: 400px;
+  padding-top: 8em;
 }
 
 .whiteColumn {
+  width: 90%;
   background-color: white;
   border-radius: 8px;
+  padding: 40px;
 }
-
+.container {
+  margin-top: -19em;
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+.boxButton {
+  width: 90%;
+  margin-top: 20px;
+}
+.img {
+  object-fit: cover;
+}
 .hireButton {
   height: 50px;
   background-color: #5e50a1;
@@ -26,6 +37,7 @@ body {
   border-radius: 4px;
   color: white;
   border: none;
+  width: 100%;
 }
 
 .imgProfile {
@@ -43,6 +55,17 @@ body {
   border: 1px solid #5e50a1;
 }
 
+.hireButton:hover,
+.hireButton:active,
+.hireButton:focus,
+.hireButtonOutline:hover,
+.hireButtonOutline:active,
+.hireButtonOutline:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: #fbb017;
+}
+
 .noPadding {
   padding-left: 0px !important;
   padding-right: 0px !important;
@@ -52,8 +75,15 @@ body {
   font-weight: bold;
 }
 
+.fontJob {
+  font-weight: 600 !important;
+  font-size: 16px;
+}
+
 .grayText {
   color: #9ea0a5;
+  margin-top: 10px;
+  font-weight: 14px !important;
 }
 
 .noMargin {
@@ -71,4 +101,32 @@ body {
 
 .updateImage {
   display: none;
+}
+
+.right {
+  border-radius: 10px;
+  padding: 50px;
+  background-color: white;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  color: #1f2a36;
+}
+
+.placeholder {
+  height: 45px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #858d96;
+}
+
+.placeholder:focus,
+.placeholder:active,
+.placeholder option:focus,
+.placeholder option:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 2px solid #5e50a1;
 }
