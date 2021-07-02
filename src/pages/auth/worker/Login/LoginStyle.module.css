@@ -29,10 +29,11 @@
   bottom: 45%;
   right: 85%;
   margin: auto;
-  width: 400px;
+  font-weight: bold;
+  width: 75%;
   height: 400px;
   line-height: 2em;
-  text-align: justify;
+  text-align: left;
   word-spacing: 8px;
 }
 
@@ -60,6 +61,7 @@
 }
 
 .daftar_disini_word {
+  margin-left: 10px;
   color: #fbb017;
   text-decoration: none;
 }

@@ -122,7 +122,13 @@ class LoginPage extends Component {
                     onChange={(event) => this.changeText(event)}
                   />
                 </Form.Group>
-                <p className="float-end mt-3">Lupa kata sandi</p>
+                <p className="float-end mt-3">Lupa kata sandi
+                  <span>
+                    <Link to="/auth/reset-password"
+                      className={LoginStyle.daftar_disini_word}>
+                      Reset disini
+                    </Link>
+                </span></p>
                 {hasError && (
                   <div className="alert alert-danger" role="alert">
                     {hasError}

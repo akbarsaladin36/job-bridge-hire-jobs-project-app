@@ -13,6 +13,10 @@ import mail from "../../assets/smallicons/mail.png";
 import chat from "../../assets/img/chat.png";
 
 class NavBar extends Component {
+  componentDidMount() {
+    console.log(this.props);
+  }
+
   handleLogout = (params) => {
     // console.log(this.props);
     if (params) {
@@ -23,7 +27,9 @@ class NavBar extends Component {
 
   render() {
     const { login, roleUser } = this.props.auth;
-    const { company_image } = this.props.auth.data;
+    const company_image = this.props.auth.data
+      ? this.props.auth.data.company_image
+      : "";
     const { image_worker } = this.props.worker.biodata;
     const { logout } = this.props;
     // console.log(this.props);
@@ -45,7 +51,7 @@ class NavBar extends Component {
                     </Navbar.Brand>
                   )}
                 </Nav>
-                {login === false ? (
+                {login === false || !this.props.auth.data ? (
                   <Nav>
                     <Dropdown className={myStyle.dropdownDaftar}>
                       <Dropdown.Toggle

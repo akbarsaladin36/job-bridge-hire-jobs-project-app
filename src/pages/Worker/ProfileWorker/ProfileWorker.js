@@ -177,7 +177,7 @@ class ProfileWorker extends Component {
                             </Col>
                           );
                         })
-                      : ""}
+                      : "Don't Have Skill"}
                   </Row>
                 ) : (
                   <Row className={styles.rowTabContent}>
@@ -192,7 +192,7 @@ class ProfileWorker extends Component {
                             </Row>
                           );
                         })
-                      : ""}
+                      : "Don't Have Experience"}
                   </Row>
                 )}
               </Col>

@@ -52,16 +52,17 @@ class ProfilePage extends Component {
     this.props
       .updateRecruiter(id, formData)
       .then((res) => {
-        console.log("RES UPDATE", res);
+        // console.log("RES UPDATE", res);
+        alert("Succes Update Data !");
       })
       .catch((err) => {
-        console.log(err.response);
+        // console.log(err.response.data.msg);
+        alert(err.response.data.msg);
       })
       .finally(() => {
         this.setState({
           isShow: true,
         });
-        alert("Succes Update Data !");
         this.props.getRecruiterById(this.props.auth.data.id_company);
       });
   };
@@ -89,7 +90,7 @@ class ProfilePage extends Component {
   };
 
   render() {
-    console.log("PROPS", this.props);
+    // console.log("PROPS", this.props);
     // console.log(this.state);
     const {
       companyName,
@@ -102,7 +103,7 @@ class ProfilePage extends Component {
       linkedin,
       companyImage,
     } = this.state;
-    console.log(this.props.auth.data);
+    // console.log(this.props.auth.data);
     const { company_image } = this.props.auth.data;
     // console.log(this.props.auth.data);
     return (

@@ -6,7 +6,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  z-index: 2;
+  z-index: 999;
 }
 .containerNavbar {
   padding-left: 0;
@@ -94,6 +94,7 @@
   border-radius: 100%;
   width: 32px;
   height: 32px;
+  object-fit: cover;
 }
 
 .listSort {

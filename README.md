@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+<h1 align='center'>React JS - Job Bridge</h1>
+  <p align="center">
+    <a href="link_deploy">View Demo</a>
+    ·
+    <a href="https://github.com/akbarsaladin36/job-bridge-hire-jobs-project-app/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/akbarsaladin36/job-bridge-hire-jobs-project-app/pulls">Request Feature</a>
+  </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Image Banner](src/assets/img/banner.png)
 
-## Available Scripts
+## About The Project
 
-In the project directory, you can run:
+Millions of talents are struggling to find a job that fits their competency, some of them never know they have one. This app is creating space for hidden gems in Tech Industry to connect them with hundreds of companies in Indonesia.
 
-### `npm start`
+The app is dynamically built and designed to seek, recruit, and promote talents in the tech industry. By providing all the details that companies need to find their perfect developer, hopefully, this app will do its job to help people reaching their dreams and companies to make a faster and more efficient hiring process.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Built With
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[![React](https://img.shields.io/badge/React-v17.0.2-blue)](https://github.com/facebook/react)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-v4.6.x-blue)](https://github.com/react-bootstrap/react-bootstrap)
 
-### `npm test`
+## Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. <a href="https://reactjs.org/docs/getting-started.html">React JS</a>
+2. Node_modules `npm install` or `yarn install`
+3. Backend API Coffee-Mate [`here`](https://github.com/akbarsaladin36/job-bridge-hire-jobs-project-rest-api.git)
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Download this Project or you can type `git clone https://github.com/akbarsaladin36/job-bridge-hire-jobs-project-app.git`
+2. Open app's directory in CMD or Terminal
+3. Type `npm install` or `yarn install`
+4. Add .env file at root folder project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+REACT_APP_BASE_URL=ENTER YOUR BACKEND API URL
+REACT_APP_IMAGE_URL=ENTER YOUR BACKEND API IMAGE URL
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Type `npm start`
 
-### `npm run eject`
+## Feature
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Recruiter =
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Sign Up, Login, and Forgot Password
+2. Update Profile Recruiter
+3. Change Password Worker
+4. Search Worker
+5. Hire a Worker
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Worker =
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Sign Up, Login, and Forgot Password
+2. Update Profile Worker
+3. Change Password Worker
+4. Search Worker
 
-## Learn More
+## Acknowledgements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [Axios](https://www.npmjs.com/package/axios)
+- [React](https://reactjs.org/)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [ENV](https://www.npmjs.com/package/dotenv)
+- [Redux](https://github.com/reduxjs/react-redux)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Team
 
-### Code Splitting
+> All Members of Default Team
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+|                                     <a href="#" target="_blank">**Team Leader**</a>                                      |                             <a href="#" target="_blank">**Full-Stack Developer**</a>                             |                                 <a href="#" target="_blank">**Full-Stack Developer**</a>                                 |                            <a href="#" target="_blank">**Full-Stack Developer**</a>                             |                                <a href="#" target="_blank">**Full-Stack Developer**</a>                                |     |
+| :----------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------: | :-: |
+| [![Full-Stack Developer Image](https://avatars.githubusercontent.com/u/63708360?v=4)](https://github.com/akbarsaladin36) | [![Back-End Developer Image](https://avatars.githubusercontent.com/u/71972244?v=4)](https://github.com/iJuliant) | [![Back-End Developer Image](https://avatars.githubusercontent.com/u/78992859?v=4)](https://github.com/Timotius-Nugroho) | [![Front-End Developer Image](https://avatars.githubusercontent.com/u/79574513?v=4)](https://github.com/arsasf) | [![Front-End Developer Image](https://avatars.githubusercontent.com/u/78518079?v=4)](https://github.com/elazsyahranie) |
+|           <a href="https://github.com/akbarsaladin36" target="_blank"> `https://github.com/akbarsaladin36`<a>            |             <a href="https://github.com/iJuliant" target="_blank">`https://github.com/iJuliant`</a>              |         <a href="https://github.com/Timotius-Nugroho" target="_blank">`https://github.com/Timotius-Nugroho`</a>          |               <a href="https://github.com/arsasf" target="_blank">`https://github.com/arsasf`</a>               |           <a href="https://github.com/elazsyahranie" target="_blank">`https://github.com/elazsyahranie`</a>            |
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
