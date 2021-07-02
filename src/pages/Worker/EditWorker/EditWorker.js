@@ -855,6 +855,7 @@ class EditWorker extends Component {
                               <Col lg={12} md={12} xs={12} key={index}>
                                 <Experience
                                   experience={item}
+                                  delete={true}
                                   userId={this.props.auth.data.id_worker}
                                 />
                               </Col>
