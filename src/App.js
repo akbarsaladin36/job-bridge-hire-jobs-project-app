@@ -97,6 +97,11 @@ class App extends Component {
                 exact
                 component={ResetPasswordPage}
               />
+              {/* <Route
+                path="/auth/recruiter/reset-password"
+                exact
+                component={ResetPasswordPage}
+              /> */}
               <Route
                 path="/auth/change-password"
                 exact

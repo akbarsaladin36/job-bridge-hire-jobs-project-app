@@ -151,7 +151,7 @@ class SearchWorkerPage extends Component {
               </InputGroup>
             </Form.Row>
           </Form>
-          <div className="mt-5 ml-5 mr-5">
+          <div className="mt-5 ml-5 mr-5 pl-5 pr-5">
             {data.length > 0
               ? data.map((item, index) => {
                   return (
@@ -170,18 +170,21 @@ class SearchWorkerPage extends Component {
                               roundedCircle
                             />
                           </Col>
-                          <Col md={8} className="text-center">
-                            <p>{item.fullname_worker}</p>
-                            <p className="text-muted">
+                          <Col md={8}>
+                            <p className="ml-3">{item.fullname_worker}</p>
+                            <p className="text-muted ml-3">
                               {`${item.role_worker} - ${item.work_preference_worker}`}
                             </p>
-                            <p className="text-muted">{item.address_worker}</p>
+                            <p className="text-muted ml-3">
+                              {item.address_worker}
+                            </p>
                             <Row className={SearchWorkerStyle.skills_position}>
                               {item.skill.map((item, index) => {
                                 return (
-                                  <Col key={index}>
+                                  <Col key={index} xs={3}>
                                     <Button
                                       className={`${SearchWorkerStyle.skills_button} mr-3`}
+                                      style={{ width: "100%" }}
                                     >
                                       {item.name_skill}
                                     </Button>

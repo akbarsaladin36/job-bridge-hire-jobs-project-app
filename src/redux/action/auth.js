@@ -40,3 +40,17 @@ export const registerWorker = (data) => {
     payload: axiosApiIntances.post("auth/register-worker", data),
   };
 };
+
+export const RequestReset = (data) => {
+  return {
+    type: "REQUEST_RESET",
+    payload: axiosApiIntances.patch("auth/request-otp", data)
+  }
+}
+
+export const ResetPassword = (data) => {
+  return {
+    type: "RESET_PASSWORD",
+    payload: axiosApiIntances.patch("auth/reset-password", data)
+  }
+}
