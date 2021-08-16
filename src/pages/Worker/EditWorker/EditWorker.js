@@ -508,7 +508,7 @@ class EditWorker extends Component {
                           src={`${process.env.REACT_APP_IMAGE_URL}${image_worker}`}
                           className={styles.imgProfile}
                         />
-                      )}
+                      )}  
                     </Row>
                     <p className={styles.nameWorker}>{fullnameWorker}</p>
                     <p className={styles.jobWorker}>{roleWorker}</p>
